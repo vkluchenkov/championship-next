@@ -11,7 +11,7 @@ export const juniorsMaxAge = 15;
 export const adultsMinAge = 16;
 export const adultsMaxAge = 39;
 
-// Minimum numbers of workshops to be eligible for compatition or World Show
+// Minimum numbers of workshops to be eligible for competition or World Show
 export const minWsKids = 1;
 export const minWsAdults = 3;
 
@@ -56,7 +56,7 @@ export const motionVariants = {
 export const darkTheme = createTheme({
   palette: {
     primary: {
-      main: '#eec571',
+      main: '#f9b12a',
     },
     mode: 'dark',
   },
