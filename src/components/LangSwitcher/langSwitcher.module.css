@@ -1,0 +1,37 @@
+.langSwitcher {
+  display: flex;
+  justify-content: center;
+}
+
+.lang {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 7px 10px;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-color);
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.langActive {
+  font-weight: 700;
+  color: var(--accent-text-color);
+}
+
+@media screen and (min-width: 768px) {
+  .lang {
+    font-size: 16px;
+    padding: 10px 15px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .lang:hover {
+    opacity: 0.7;
+  }
+}

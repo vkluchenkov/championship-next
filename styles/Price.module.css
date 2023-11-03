@@ -1,0 +1,158 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0 0;
+  gap: 15px;
+}
+
+.workshopsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.period {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.period_active {
+  border: 2px solid var(--accent-text-color);
+}
+
+.period_expired {
+  opacity: 0.6;
+}
+
+.period__title {
+  margin: 0;
+  padding: 0 0 10px;
+  font-style: normal;
+  font-weight: 600;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--main-text-color);
+}
+
+.period__singleTitle {
+  margin: 0;
+  padding: 10px 0 10px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--main-text-color);
+}
+
+.period__description {
+  font-weight: 200;
+  text-align: center;
+}
+
+.period__fullPass {
+  font-size: 20px;
+  text-align: center;
+  color: var(--accent-text-color);
+}
+
+.table {
+  border: 1px solid var(--main-text-color);
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.table__header {
+  text-align: center;
+}
+
+.table__row {
+  display: grid;
+  grid-template-columns: 3fr minmax(80px, 1fr) minmax(80px, 1fr);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.table__row:last-of-type {
+  border-bottom: none;
+}
+
+.table__cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 10px 5px;
+}
+
+.table__cell:last-of-type {
+  border-right: none;
+}
+
+.table__cell_fullWidth {
+  grid-column-start: span 3;
+}
+
+.table__cell_singlePrice {
+  grid-column-start: span 2;
+}
+
+@media screen and (min-width: 768px) {
+  .period {
+    padding: 15px;
+  }
+
+  .period,
+  .table {
+    border-radius: 10px;
+  }
+
+  .table__row {
+    grid-template-columns: 4fr minmax(200px, 1fr) minmax(200px, 1fr);
+  }
+
+  .table__cell {
+    padding: 12px 20px;
+  }
+
+  .period__fullPass {
+    font-size: 24px;
+  }
+
+  .workshopsContainer {
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .period__fullPass {
+    font-size: 28px;
+  }
+
+  .period {
+    padding: 20px 25px;
+  }
+
+  .workshopsContainer {
+    max-width: 900px;
+    gap: 20px;
+  }
+
+  .table {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+}

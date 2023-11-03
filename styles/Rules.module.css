@@ -1,0 +1,16 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0 0;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  /* gap: 5px; */
+  padding: 13px 0;
+}
+
+.levels {
+  font-weight: 600;
+}
