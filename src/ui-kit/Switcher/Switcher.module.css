@@ -24,8 +24,13 @@
 
 .optionActive {
   font-weight: 700;
-  background: linear-gradient(90deg, #eec571 -15.03%, #ad560a 50.97%, #eec571 110.43%);
-  border: 1px solid #eec571;
+  background: linear-gradient(
+    90deg,
+    var(--btn-gradient-light) -15.03%,
+    var(--btn-gradient-dark) 50.97%,
+    var(--btn-gradient-light) 110.43%
+  );
+  border: 1px solid var(--btn-gradient-light);
   color: var(--main-text-color);
 }
 

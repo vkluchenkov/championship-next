@@ -1,7 +1,7 @@
 .footer {
   position: relative;
-  background: #15021e url('/images/camel.png') bottom right -33px no-repeat;
-  background-size: 214px;
+  /* background: #15021e url('/images/camel.png') bottom right -33px no-repeat; */
+  /* background-size: 214px; */
   padding: 30px 20px 20px;
   display: flex;
   flex-direction: column;
@@ -78,8 +78,8 @@
 
 @media screen and (min-width: 768px) {
   .footer {
-    background: #15021e url('/images/camel.png') bottom right -20px no-repeat;
-    background-size: 302px;
+    /* background: #15021e url('/images/camel.png') bottom right -20px no-repeat;
+    background-size: 302px; */
     margin: auto 0 0;
   }
 }
@@ -112,7 +112,7 @@
 
 @media screen and (min-width: 1280px) {
   .footer {
-    background: none;
+    /* background: none; */
     max-width: 1500px;
     margin: auto auto 0;
     padding: 50px 160px;

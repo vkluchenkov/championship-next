@@ -34,8 +34,13 @@ export const defaultUrl = 'https://danceweekend.art';
 export const senderEmail = 'danceweekend@aliah.dance';
 export const senderName = 'Dance Weekend in Warsaw festival';
 
-// talegram
+// telegram
 export const telegramUrl = 'https://t.me/+isxRvGCBaf9jMjQ0';
+
+// Social links
+export const facebookUrl = 'https://www.facebook.com/danceweekendwarsaw';
+export const instagramUrl = 'https://www.instagram.com/danceweekendwarsaw/';
+export const emailUrl = 'mailto:danceweekend@aliah.dance';
 
 // Revolut payment link
 export const revolutUrl = 'https://revolut.me/aliahbellydance/eur/';

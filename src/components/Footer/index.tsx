@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import styles from './footer.module.css';
+import { emailUrl, facebookUrl, instagramUrl } from '@/src/ulis/constants';
 
 export const Footer: React.FC = () => {
   const { t, lang } = useTranslation();
@@ -15,18 +16,18 @@ export const Footer: React.FC = () => {
       </div>
       <div className={styles.footer__social}>
         <Link
-          href='https://www.facebook.com/danceweekendwarsaw'
+          href={facebookUrl}
           target='_blank'
           className={clsx(styles.social__button, styles.social__button_fb)}
         />
         <Link
-          href='https://www.instagram.com/danceweekendwarsaw/'
+          href={instagramUrl}
           target='_blank'
           className={clsx(styles.social__button, styles.social__button_insta)}
         />
         <Link
           type='button'
-          href='mailto:danceweekend@aliah.dance'
+          href={emailUrl}
           className={clsx(styles.social__button, styles.social__button_email)}
         />
       </div>
@@ -42,7 +43,7 @@ export const Footer: React.FC = () => {
           </Link>
         </p>
         <p className={styles.footer__copyright}>
-          ©2016-{year} Dance Weekend in Warsaw festival
+          ©{year} Open Bellydance Championship of Poland
           <br />
           {t('common:footerCopyright')}
         </p>
