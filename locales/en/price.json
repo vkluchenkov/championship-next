@@ -1,13 +1,9 @@
 {
   "pageTitle": "Prices and conditions",
-  "live": "Live version",
-  "online": "Online version",
   "workshops": {
     "title": "Workshops",
     "singleTitle": "Single Workshops",
-    "description": "It’s possible to buy workshops as a package — FULL PASS (all the festival workshops) or single workshops of your choice.",
-    "promo": "Promo*",
-    "promoDescription": "*first 10 packages",
+    "description": "It’s possible to buy workshops as a package — FULL PASS (all the workshops) or single workshops of your choice.",
     "fullPass": "Full Pass",
     "soldOut": "sold out",
     "teachers": {
@@ -20,46 +16,30 @@
       "polina": "Polina",
       "eva": "Eva",
       "levana": "Levana"
-    },
-    "kidsDiscount": "Kids and baby age groups get 50% discount on Full Pass, applied automatically during the registration",
-    "groupOfferTitle": "Special offer for groups!",
-    "groupOfferText": "When you register a group of 3+ persons, each participant in this group is entitled to 20% discount for Full Pass (on condition that every person from this group buys Full Pass). Please, choose this discount during the registration. Discount can not be summarized with personal discounts or discounts for kids."
+    }
   },
   "competition": {
     "title": "Competition price",
-    "attention": "Attention! In order to take part in competition, you must have workshops. At least <0>one workshop or Full Pass</0> for kids, at least <0>3 workshops or Full Pass</0> for adults.",
     "categoryTitle": "Category",
     "kids": "Kids and baby solo",
     "juniors+": "Juniors and adults solo",
     "allLevels": "All levels",
-    "risingStar": "Rising star / open level",
-    "professionals": "Professionals and Queen of live tabla",
-    "professionalsOnline": "Professionals",
-    "soloPass": "Solo Pass",
-    "solosPassDescription": "With the Solo pass you can dance unlimited times in all solo categories, except live tabla solo. You save, if you dance more than 3 times.",
-    "soloPassKids": "Kids",
-    "soloPassRisingStar": "Rising star / open level",
-    "soloPassProfessionals": "Professionals",
+    "notPro": "Debut, beginners, semi-pro",
+    "professionals": "Professionals",
     "groups": "Groups and duos",
     "perPerson": "each dancer",
-    "with": "with",
-    "without": "without"
+    "price": "Price"
   },
-  "worldShow": {
-    "title": "World show",
-    "attention": "Attention! To participate in World show, you must order workshops. At least <0>one workshop or Full Pass</0> for kids, at least <0>3 workshops or Full Pass</0> for adults.",
+  "show": {
+    "title": "Gala show",
     "soloNormal": "Solo performance",
-    "soloDiscounted": "Solo performance (with Full Pass)",
     "groups": "Groups and duos",
     "perPerson": "per person"
   },
   "payment": {
     "title": "Payment conditions and options",
     "conditionsTitle": "Conditions",
-    "conditionsText": "All the payments for the participation in the festival are non-refundable in any case, except for the cancellation of the festival. If you are not able to visit our festival, you are allowed to transfer your package to another person with mandatory notification of the organizers. In this case competition categories could be changed to other ones within the purchased package. Addition of new categories to this registration is possible only if there are free spots left.",
-    "installmentsTitle": "Installments",
-    "installmentsText": "There is a possibility to pay for your package in 2 installments. The first 50% should be paid right after the registration, the other 50% any time before 31.07.2023. This option is not available for Full Pass buyers only. Not available for Promo price period.",
-    "installmentsWarning": "In case if the second payment is failed to be transferred in due time, you will be fined the amount of 100€, which must be paid with the second part before the festival begins.",
+    "conditionsText": "All the payments for the participation in the Championship are non-refundable in any case, except for the cancellation of the event. If you are not able to visit the Championship, you are allowed to transfer your package to another person with mandatory notification of the organizers. In this case competition categories could be changed to other ones within the purchased package. Addition of new categories to this registration is possible only if there are free spots left.",
     "optionsTitle": "Payment options",
     "optionsDescription": "Details for the chosen payment options will be provided after the registration.",
     "optionsCards": "Credit / debit cards",
@@ -68,15 +48,14 @@
     "ImmediateArrival": "immediate arrival",
     "bankeArrival": "arrival in 3-10 work days",
     "termsTitle": "Payment terms",
-    "term1": "If the registration is made with “regular” prices, payment should be completed within 5 work days. Otherwise your registration will be cancelled.",
-    "term2": "If the registration is made with “promo” or “sale” prices, payment should be completed within 1 work day. Otherwise your registration will be cancelled.",
-    "term3": "Work day – is a day when banks and other financial institutions work in your country.",
-    "term4": "We recommend to save and send us your payment confirmation. It can be a bank receipt, an internet bank receipt or a screenshot, etc."
+    "term1": "Payment should be completed within 5 work days. Otherwise your registration will be cancelled.",
+    "term2": "Work day – is a day when banks and other financial institutions work in your country.",
+    "term3": "We recommend to save and send us your payment confirmation. It can be a bank receipt, an internet bank receipt or a screenshot, etc."
   },
   "privacyPolicy": {
     "title": "Privacy policy and personal data",
-    "p1": "We use your personal data provided during the registration ONLY in purposes related to your participation in our festival. We do not share this data with any 3rd party for any purpose.",
-    "p2": "Completing the registration to Dance Weekend in Warsaw you acknowledge and agree to be filmed and photographed for the marketing purposes of the festival and for the purposes of providing opportunity to every participant to buy photos and videos of their performances.",
-    "p3": "Completing the registration to Dance Weekend in Warsaw you also agree to receive information emails from our festival. We will not send you any marketing letters or emails not related to the festival. You can unsubscribe at any time. Beware that in this case you may not receive important information about the festival like schedule changes, competition information and other."
+    "p1": "We use your personal data provided during the registration ONLY in purposes related to your participation in the Championship. We do not share this data with any 3rd party for any purpose.",
+    "p2": "Completing the registration to the Championship you acknowledge and agree to be filmed and photographed for the marketing purposes of the festival and for the purposes of providing opportunity to every participant to buy photos and videos of their performances.",
+    "p3": "Completing the registration to the Championship you also agree to receive information emails from our festival. We will not send you any marketing letters or emails not related to the Championship. You can unsubscribe at any time. Beware that in this case you may not receive important information like schedule changes, competition information and other."
   }
 }

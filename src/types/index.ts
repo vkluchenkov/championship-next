@@ -3,11 +3,9 @@ export type SupportedLangs = 'ru' | 'en' | 'pl';
 
 export interface PricePeriod {
   price: {
-    [version in Version]: {
-      fullPassPrice: number;
-      group1Price: number;
-      group2Price: number;
-    };
+    fullPassPrice: number;
+    group1Price: number;
+    group2Price: number;
   };
   description?: string;
   startDate?: Date;
@@ -15,20 +13,11 @@ export interface PricePeriod {
   isPromo?: boolean;
 }
 
-export type SoloPriceCats =
-  | 'kids'
-  | 'risingStar'
-  | 'professionals'
-  | 'soloPassKids'
-  | 'soloPassRisingStar'
-  | 'soloPassProfessionals';
+export type SoloPriceCats = 'kids' | 'risingStar' | 'professionals';
 
 export interface ContestSoloPrice {
   price: {
-    [version in Version]: {
-      priceNormal: number;
-      priceDiscounted: number;
-    };
+    priceNormal: number;
   };
 }
 
