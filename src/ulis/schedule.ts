@@ -42,199 +42,25 @@ export const schedule: Day[] = [
   {
     translations: {
       en: {
-        dayTitle: '17.08 Thursday',
+        dayTitle: '19.01 Friday',
       },
       ru: {
-        dayTitle: '17.08 Четверг',
+        dayTitle: '19.01 Пятница',
       },
     },
     dayEvents: [
       {
         id: 1,
-        start: '8:30',
-        type: 'other',
-        translations: {
-          en: {
-            title: 'Check-in',
-          },
-          ru: {
-            title: 'Регистрация',
-          },
-        },
-      },
-      {
-        id: 2,
-        start: '9:00',
-        end: '11:00',
-        type: 'workshop',
-        teachersPriceGroup: 'group1',
-        translations: {
-          en: {
-            title: 'Diana Gnatchenko',
-            description: 'Mejanse choreography',
-          },
-          ru: {
-            title: 'Диана Гнатченко',
-            description: 'Хореография Mejanse',
-          },
-        },
-      },
-      {
-        id: 3,
-        start: '11:15',
-        end: '13:15',
-        type: 'workshop',
-        teachersPriceGroup: 'group2',
-        translations: {
-          en: {
-            title: 'Eva Charkina',
-            description: 'Muwashahat choreography',
-          },
-          ru: {
-            title: 'Ева Чаркина',
-            description: 'Хореография Muwashahat',
-          },
-        },
-      },
-      {
-        id: 4,
-        start: '13:30',
-        end: '16:00',
-        type: 'workshop',
-        teachersPriceGroup: 'group1',
-        translations: {
-          en: {
-            title: 'Aliah & Chronis Taxidis',
-            description: 'Tarab choreography with live music',
-          },
-          ru: {
-            title: 'Aliah & Chronis Taxidis',
-            description: 'Хореография Tarab под живую музыку',
-          },
-        },
-      },
-      {
-        id: 5,
-        start: '16:15',
-        end: '18:15',
-        type: 'workshop',
-        teachersPriceGroup: 'group1',
-        translations: {
-          en: {
-            title: 'Leandro Ferreyra',
-            description: 'Latin drum solo choreography',
-          },
-          ru: {
-            title: 'Leandro Ferreyra',
-            description: 'Хореография Latin drum solo',
-          },
-        },
-      },
-      {
-        id: 6,
-        start: '20:00',
-        type: 'other',
-        translations: {
-          en: {
-            title: 'Welcome party',
-          },
-          ru: {
-            title: 'Welcome party',
-          },
-        },
-      },
-    ],
-  },
-  {
-    translations: {
-      en: {
-        dayTitle: '18.08 Friday',
-      },
-      ru: {
-        dayTitle: '18.08 Пятница',
-      },
-    },
-    dayEvents: [
-      {
-        id: 7,
-        start: '9:00',
-        end: '11:30',
-        type: 'workshop',
-        teachersPriceGroup: 'group1',
-        translations: {
-          en: {
-            title: 'Diana Gnatchenko',
-            description: 'Drum solo choreography',
-          },
-          ru: {
-            title: 'Диана Гнатченко',
-            description: 'Хореография Drum solo',
-          },
-        },
-      },
-      {
-        id: 8,
-        start: '11:45',
-        end: '13:45',
-        type: 'workshop',
-        teachersPriceGroup: 'group1',
-        translations: {
-          en: {
-            title: 'Pablo Acosta',
-            description: 'Modern balady choreography',
-          },
-          ru: {
-            title: 'Pablo Acosta',
-            description: 'Хореография Modern balady',
-          },
-        },
-      },
-      {
-        id: 9,
-        start: '14:00',
-        end: '15:30',
-        type: 'workshop',
-        teachersPriceGroup: 'group2',
-        translations: {
-          en: {
-            title: 'Polina Ostrovska',
-            description: 'Mejanse choreography',
-          },
-          ru: {
-            title: 'Полина Островская',
-            description: 'Хореография Mejanse',
-          },
-        },
-      },
-      {
-        id: 10,
-        start: '15:45',
-        end: '18:15',
-        type: 'workshop',
-        teachersPriceGroup: 'group1',
-        translations: {
-          en: {
-            title: 'Chronis Taxidis',
-            description: 'Live tabla improvisation for competitions',
-          },
-          ru: {
-            title: 'Chronis Taxidis',
-            description: 'Live tabla — конкурсная импровизация',
-          },
-        },
-      },
-      {
-        id: 11,
-        start: '20:00',
+        start: '19:00',
         type: 'show',
         translations: {
           en: {
-            title: 'Arabic Dreams gala show',
-            description: 'with festival stars',
+            title: 'Gala show',
+            description: 'with open stage',
           },
           ru: {
-            title: 'Гала шоу Arabic Dreams',
-            description: 'со звездами фестиваля',
+            title: 'Гала шоу',
+            description: 'с открытой сценой',
           },
         },
       },
@@ -243,15 +69,15 @@ export const schedule: Day[] = [
   {
     translations: {
       en: {
-        dayTitle: '19.08 Saturday',
+        dayTitle: '20.01 Saturday',
       },
       ru: {
-        dayTitle: '19.08 Суббота',
+        dayTitle: '20.01 Суббота',
       },
     },
     dayEvents: [
       {
-        id: 12,
+        id: 2,
         start: '9:00',
         type: 'contest',
         translations: {
@@ -268,15 +94,15 @@ export const schedule: Day[] = [
   {
     translations: {
       en: {
-        dayTitle: '20.08 Sunday',
+        dayTitle: '21.01 Sunday',
       },
       ru: {
-        dayTitle: '20.08 Воскресенье',
+        dayTitle: '21.01 Воскресенье',
       },
     },
     dayEvents: [
       {
-        id: 13,
+        id: 3,
         start: '9:00',
         end: '11:00',
         type: 'workshop',
@@ -293,7 +119,7 @@ export const schedule: Day[] = [
         },
       },
       {
-        id: 14,
+        id: 4,
         start: '11:15',
         end: '13:45',
         type: 'workshop',
@@ -310,7 +136,7 @@ export const schedule: Day[] = [
         },
       },
       {
-        id: 15,
+        id: 5,
         start: '14:00',
         end: '16:00',
         type: 'workshop',
@@ -327,7 +153,7 @@ export const schedule: Day[] = [
         },
       },
       {
-        id: 16,
+        id: 6,
         start: '16:15',
         end: '18:15',
         type: 'workshop',
@@ -340,21 +166,6 @@ export const schedule: Day[] = [
           ru: {
             title: 'Pablo Acosta',
             description: 'Хореография Fusion tango oriental',
-          },
-        },
-      },
-      {
-        id: 17,
-        start: '19:30',
-        type: 'show',
-        translations: {
-          en: {
-            title: 'World show',
-            description: 'Gala show with festival participants',
-          },
-          ru: {
-            title: 'World show',
-            description: 'Гала шоу с участницами фестиваля',
           },
         },
       },
