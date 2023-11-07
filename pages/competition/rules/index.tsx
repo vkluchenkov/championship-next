@@ -80,7 +80,6 @@ const ContestRules: NextPage = () => {
       <p className={textStyles.p}>{t('prizesMain')}</p>
       <p className={textStyles.p}>{t('prizesSolo')}</p>
       <p className={textStyles.p}>{t('prizesGroups')}</p>
-      <p className={textStyles.p}>{t('prizesQueen')}</p>
       <p className={textStyles.p}>{t('prizesAdditional')}</p>
       <p className={textStyles.p}>{t('prizesKids')}</p>
 

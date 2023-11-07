@@ -20,6 +20,9 @@ export const menu: MenuItem[] = [
       ru: {
         title: 'Регистрация',
       },
+      pl: {
+        title: 'Регистрация',
+      },
     },
   },
   {
@@ -29,6 +32,9 @@ export const menu: MenuItem[] = [
         title: 'Prices',
       },
       ru: {
+        title: 'Цены',
+      },
+      pl: {
         title: 'Цены',
       },
     },
@@ -42,6 +48,9 @@ export const menu: MenuItem[] = [
       ru: {
         title: 'Конкурс',
       },
+      pl: {
+        title: 'Конкурс',
+      },
     },
     subItems: [
       {
@@ -51,6 +60,9 @@ export const menu: MenuItem[] = [
             title: 'Rules',
           },
           ru: {
+            title: 'Положение конкурса',
+          },
+          pl: {
             title: 'Положение конкурса',
           },
         },
@@ -64,44 +76,26 @@ export const menu: MenuItem[] = [
           ru: {
             title: 'Судейство',
           },
+          pl: {
+            title: 'Судейство',
+          },
         },
       },
     ],
   },
   {
-    link: '/shows',
+    link: '/gala',
     translations: {
       en: {
-        title: 'Shows',
+        title: 'Gala show',
       },
       ru: {
-        title: 'Шоу',
+        title: 'Гала Шоу',
+      },
+      pl: {
+        title: 'Гала Шоу',
       },
     },
-    subItems: [
-      {
-        link: '/shows/arabic-dreams',
-        translations: {
-          en: {
-            title: 'Arabic Dreams',
-          },
-          ru: {
-            title: 'Arabic Dreams',
-          },
-        },
-      },
-      {
-        link: '/shows/world-show',
-        translations: {
-          en: {
-            title: 'World show',
-          },
-          ru: {
-            title: 'World show',
-          },
-        },
-      },
-    ],
   },
   {
     link: '/info',
@@ -110,6 +104,9 @@ export const menu: MenuItem[] = [
         title: 'Info',
       },
       ru: {
+        title: 'Информация',
+      },
+      pl: {
         title: 'Информация',
       },
     },
@@ -123,6 +120,9 @@ export const menu: MenuItem[] = [
           ru: {
             title: 'Фото и видео съемка',
           },
+          pl: {
+            title: 'Фото и видео съемка',
+          },
         },
       },
       {
@@ -134,6 +134,9 @@ export const menu: MenuItem[] = [
           ru: {
             title: 'Базар',
           },
+          pl: {
+            title: 'Базар',
+          },
         },
       },
       {
@@ -143,6 +146,9 @@ export const menu: MenuItem[] = [
             title: 'FAQ',
           },
           ru: {
+            title: 'FAQ',
+          },
+          pl: {
             title: 'FAQ',
           },
         },
