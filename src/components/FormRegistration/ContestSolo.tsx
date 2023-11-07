@@ -11,8 +11,6 @@ import { ContestSoloList } from './ContestSoloList';
 
 export const ContestSolo: React.FC<ContestSoloStepProps> = ({
   setStepTotal,
-  isEligible,
-  soloPassPrice,
   setIsNextDisabled,
 }) => {
   const { t } = useTranslation('registration');
@@ -27,10 +25,8 @@ export const ContestSolo: React.FC<ContestSoloStepProps> = ({
     formState: { errors },
   } = methods;
 
-  const version = watch('version');
   const ageGroup = watch('ageGroup');
   const contestLevels = watch('contestLevels');
-  const isSoloPass = watch('isSoloPass');
   const isSoloContest = watch('isSoloContest');
   const soloContest = watch('soloContest');
   const soloContestSelected = soloContest.filter((cat) => cat.selected);
@@ -43,38 +39,34 @@ export const ContestSolo: React.FC<ContestSoloStepProps> = ({
 
   // Clear all contest entries on checkbox disable or if not eligible
   useEffect(() => {
-    if ((!isSoloContest && soloContest.length > 0) || (!isEligible && soloContest.length > 0)) {
+    if (!isSoloContest && soloContest.length > 0) {
       soloContest.forEach((i) => (i.selected = false));
-      setValue('isSoloPass', false);
       resetField('contestLevel');
-      if (!isEligible && soloContest) setValue('isSoloContest', false);
+      if (soloContest) setValue('isSoloContest', false);
     }
-  }, [isSoloContest, soloContest, isEligible, setValue, resetField]);
+  }, [isSoloContest, soloContest, setValue, resetField]);
 
   // Set step total
   useEffect(() => {
     let total = 0;
-    if (isSoloPass) total = total + soloPassPrice;
     if (soloContestSelected) {
       const catsPrice = soloContestSelected.reduce((prev, current) => prev + current.price, 0);
       total = total + catsPrice;
     }
     setStepTotal(total);
-  }, [isSoloPass, soloPassPrice, soloContestSelected, setStepTotal]);
+  }, [soloContestSelected, setStepTotal]);
 
   const ageGroupList = getContestAgeGroupsList(ageGroup);
 
   return (
     <div className={styles.form}>
       <h2 className={textStyles.h2}>{t('form.contest.soloTitle')}</h2>
-      {!isEligible && <p>{t('form.contest.oops')}</p>}
-      {isEligible && (
-        <FormInputCheckbox
-          control={control}
-          name='isSoloContest'
-          label={<p className={textStyles.p}>{t('form.contest.checkboxLabel')}</p>}
-        />
-      )}
+
+      <FormInputCheckbox
+        control={control}
+        name='isSoloContest'
+        label={<p className={textStyles.p}>{t('form.contest.checkboxLabel')}</p>}
+      />
 
       <Collapse in={isSoloContest} unmountOnExit>
         <div className={styles.form}>
@@ -116,28 +108,9 @@ export const ContestSolo: React.FC<ContestSoloStepProps> = ({
             </FormInputSelect>
           )}
 
-          {/* Solo Pass selection */}
-          {ageGroup && ageGroup !== 'baby' && version === 'live' && (
-            <div>
-              <h4 className={textStyles.h4}>{t('form.contest.soloPassTitle')}:</h4>
-              <FormInputCheckbox
-                name='isSoloPass'
-                control={control}
-                label={
-                  <p className={textStyles.p}>
-                    {t('form.contest.soloPassLabel')}
-                    {': '}
-                    <span className={textStyles.accent}>
-                      {soloPassPrice > 0 ? soloPassPrice + '€' : ''}
-                    </span>
-                  </p>
-                }
-              />
-              <p className={textStyles.p}>{t('form.contest.solosPassDescription')}</p>
-            </div>
+          {!!soloContest.length && (
+            <h4 className={textStyles.h4}>{t('form.contest.stylesTitle')}:</h4>
           )}
-
-          <h4 className={textStyles.h4}>{t('form.contest.stylesTitle')}:</h4>
           <ContestSoloList />
         </div>
       </Collapse>

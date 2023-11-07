@@ -9,11 +9,11 @@
   "form": {
     "common": {
       "required": "This field is required",
-      "numbersError": "This field is for numbers only",
       "prev": "← Back",
       "next": "Next →",
       "total": "Total",
-      "submit": "Submit!"
+      "submit": "Submit!",
+      "numbersError": "This field is for numbers only"
     },
     "personal": {
       "title": "Tell us about yourself",
@@ -32,6 +32,7 @@
     },
     "workshops": {
       "title": "Workshops",
+      "checkboxLabel": "I want to take part in workshops",
       "selectTitle": "Full Pass or one by one?",
       "fullPass": "Full Pass",
       "fullPassDescription1": "It’s possible to buy workshops as a package — Full Pass or single workshops of your choice. ",
@@ -39,10 +40,7 @@
       "fullPassDescriptionSoldOut": "Full Pass for this edition of our festival has been sold out. It is only possible to buy single workshops.",
       "singleWs": "Single workshops",
       "discounts": {
-        "title": "Full Pass / group discounts",
-        "group": "Group discount 20%",
-        "groupName": "Group name",
-        "groupDescription": "20% discount on Full Pass for registration of 3+ participants as a group. Discount won't be summarized with personal discounts or discounts for kids.",
+        "title": "Full Pass discounts",
         "30%": "Certificate 30%",
         "50%": "Certificate 50%",
         "free": "Certificate Free Full Pass",
@@ -68,9 +66,9 @@
       },
       "levels": {
         "title": "Level",
+        "debut": "Debut",
         "beginners": "Beginners",
-        "intermediate": "Intermediate",
-        "risingStar": "Rising star (beginners + intermediate)",
+        "semi-pro": "Semi professionals",
         "professionals": "Professionals",
         "openLevel": "Open level"
       },

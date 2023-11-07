@@ -27,7 +27,6 @@ export const WorkshopsList: React.FC<WorkshopsSingleProps> = ({ currentPricePeri
   const currentLang = lang as SupportedLangs;
 
   const watchWorkshops = watch('workshops');
-  const version = watch('version');
 
   const controlledFields = fields.map((field, index) => {
     return {
@@ -50,7 +49,7 @@ export const WorkshopsList: React.FC<WorkshopsSingleProps> = ({ currentPricePeri
 
   const workshops = uniqueDays.map((day) => {
     const workshopsInputs = controlledFields.map((ws) => {
-      const price = currentPricePeriod?.price[version][`${ws.teachersPriceGroup!}Price`];
+      const price = currentPricePeriod?.price[`${ws.teachersPriceGroup!}Price`];
       if (ws.day === day)
         return (
           <FormControlLabel
@@ -64,7 +63,7 @@ export const WorkshopsList: React.FC<WorkshopsSingleProps> = ({ currentPricePeri
                 <br />
                 {ws.translations[currentLang].title}: {ws.translations[currentLang].description}
                 <br />
-                <span className={textStyles.accent}>{price}€</span>
+                <span className={textStyles.accent}>{price}zł</span>
               </p>
             }
           />

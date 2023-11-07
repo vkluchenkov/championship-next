@@ -397,7 +397,7 @@ export const contestCategories: ContestCategory[] = [
         title: 'Беби соло',
       },
     },
-    categories: allStyles,
+    categories: babySoloSet,
   },
   {
     age: '4-6',
@@ -439,23 +439,6 @@ export const contestCategories: ContestCategory[] = [
   {
     age: '7-11',
     ageGroup: 'kids',
-    levels: ['beginners', 'semi-pro'],
-    translations: {
-      en: {
-        title: 'Kids solo',
-      },
-      ru: {
-        title: 'Дети соло',
-      },
-      pl: {
-        title: 'Дети соло',
-      },
-    },
-    categories: mainSoloSet,
-  },
-  {
-    age: '7-11',
-    ageGroup: 'kids',
     levels: ['debut'],
     translations: {
       en: {
@@ -469,6 +452,23 @@ export const contestCategories: ContestCategory[] = [
       },
     },
     categories: allStyles,
+  },
+  {
+    age: '7-11',
+    ageGroup: 'kids',
+    levels: ['beginners', 'semi-pro'],
+    translations: {
+      en: {
+        title: 'Kids solo',
+      },
+      ru: {
+        title: 'Дети соло',
+      },
+      pl: {
+        title: 'Дети соло',
+      },
+    },
+    categories: mainSoloSet,
   },
 
   {

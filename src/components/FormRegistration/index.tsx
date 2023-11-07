@@ -15,13 +15,7 @@ import {
   Step,
   WorkshopsField,
 } from './types';
-import {
-  contestSoloPrice,
-  isOnlinePromoPeriod,
-  ispromoPeriod,
-  kidsDiscount,
-  workshopsPrice,
-} from '@/src/ulis/price';
+import { contestSoloPrice, ispromoPeriod, kidsDiscount, workshopsPrice } from '@/src/ulis/price';
 import { Collapse, Snackbar, Alert } from '@mui/material';
 import { getAgeGroup } from '@/src/ulis/getAgeGroup';
 import { ContestSolo } from './ContestSolo';
@@ -56,52 +50,22 @@ const liveSteps: Step[] = [
   {
     id: 'contestGroups',
     prev: 'contestSolo',
-    next: 'worldShow',
+    next: 'show',
   },
   {
-    id: 'worldShow',
+    id: 'show',
     prev: 'contestGroups',
     next: 'summary',
   },
   {
     id: 'summary',
-    prev: 'worldShow',
-    next: null,
-  },
-];
-
-const onlineSteps: Step[] = [
-  {
-    id: 'personal',
-    prev: null,
-    next: 'workshops',
-  },
-  {
-    id: 'workshops',
-    prev: 'personal',
-    next: 'contestSolo',
-  },
-  {
-    id: 'contestSolo',
-    prev: 'workshops',
-    next: 'contestGroups',
-  },
-  {
-    id: 'contestGroups',
-    prev: 'contestSolo',
-    next: 'summary',
-  },
-  {
-    id: 'summary',
-    prev: 'contestGroups',
+    prev: 'show',
     next: null,
   },
 ];
 
 const defaultValues: Partial<FormFields> = {
-  version: 'live',
   isFullPass: false,
-  isSoloPass: false,
   fullPassDiscount: 'none',
   workshops: [],
   isSoloContest: false,
@@ -112,11 +76,7 @@ const defaultValues: Partial<FormFields> = {
   rulesAccepted: false,
 };
 
-interface FormRegistrationProps {
-  version: Version;
-}
-
-export const FormRegistration: React.FC<FormRegistrationProps> = ({ version }) => {
+export const FormRegistration: React.FC = () => {
   const { t, lang } = useTranslation('registration');
   const currentLang = lang as SupportedLangs;
 
@@ -151,20 +111,18 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ version }) =
   const contestAgeGroup = watch('contestAgeGroup');
   const isFullPass = watch('isFullPass');
   const fullPassDiscount = watch('fullPassDiscount');
-  const isWorkshops = watch('workshops');
+  const isWorkshops = watch('isWorkshops');
+  const workshops = watch('workshops');
   const contestLevel = watch('contestLevel');
+  const isSoloContest = watch('isSoloContest');
+  const isGroupContest = watch('isGroupContest');
 
-  const selectedWorkshops = isWorkshops.filter((ws) => ws.selected);
+  const selectedWorkshops = workshops.filter((ws) => ws.selected);
 
   const isStep = useMemo(() => {
-    const steps = version === 'live' ? liveSteps : onlineSteps;
+    const steps = liveSteps;
     return steps.find((step) => step.id === currentStep);
-  }, [currentStep, version]);
-
-  // Set version from props
-  useEffect(() => {
-    setValue('version', version);
-  }, [version, setValue]);
+  }, [currentStep]);
 
   // open Total snackbar on change
   useEffect(() => {
@@ -196,34 +154,37 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ version }) =
     const filteredByAgeGroup = contestCategories.filter(
       (cat) => cat.ageGroup === contestAgeGroup || cat.ageGroups?.includes(contestAgeGroup!)
     );
+    // Filter solo only
+    const filteredBySolo = filteredByAgeGroup.filter(
+      (cat) => !cat.isDuoCategory && !cat.isGroupCategory
+    );
 
-    // Add only solo styles from with props "version" type
     const levels: Level[] = [];
 
-    filteredByAgeGroup.forEach((cat, index) => {
+    filteredBySolo.forEach((cat, index) => {
+      if (cat.levels.includes(contestLevel) || cat.levels.includes('openLevel')) {
+        cat.categories.forEach((style) => {
+          style.isSolo &&
+            res.push({
+              ...style,
+              selected: false,
+              id: style.translations.en.categoryTitle,
+              price: 0,
+            });
+        });
+      }
       cat.levels.forEach((level) => {
         if (level !== 'openLevel') {
           const isLevel = levels.includes(level);
           if (!isLevel) levels.push(level);
         }
       });
-
-      cat.categories.forEach((style) => {
-        style.isSolo &&
-          style.types.includes(version) &&
-          res.push({
-            ...style,
-            selected: false,
-            id: style.translations.en.categoryTitle,
-            price: 0,
-          });
-      });
     });
 
     setValue('soloContest', res);
     setValue('contestLevels', levels);
     // setValue('contestLevel', levels[0]);
-  }, [contestAgeGroup, setValue, version]);
+  }, [contestAgeGroup, setValue, contestLevel]);
 
   // Summarize step totals
   useEffect(() => {
@@ -239,7 +200,6 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ version }) =
       fullPassPrice: fullPassPrice,
       currentPricePeriod: currentPricePeriod,
       currentLang: currentLang,
-      soloPassPrice: soloPassPrice,
       total: total,
     };
     await axios
@@ -276,23 +236,19 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ version }) =
   };
 
   const currentPricePeriod = useMemo(() => {
-    const isPromo = version === 'live' ? ispromoPeriod : isOnlinePromoPeriod;
+    const isPromo = ispromoPeriod;
 
     const today = new Date();
     if (isPromo) return workshopsPrice.find((i) => i.isPromo);
     else return workshopsPrice.find((i) => i.startDate! <= today && today <= i.endDate!);
-  }, [version]);
+  }, []);
 
   const fullPassPrice = useMemo(() => {
     // Kids discount for live version
     const basePrice =
-      version === 'live' && (ageGroup === 'baby' || ageGroup === 'kids')
-        ? currentPricePeriod && currentPricePeriod.price[version].fullPassPrice * kidsDiscount
-        : currentPricePeriod?.price[version].fullPassPrice;
-
-    // additional discounts (certificates, etc.)
-    if (fullPassDiscount === 'group' && basePrice)
-      return Number.parseFloat((basePrice * 0.8).toFixed(2));
+      ageGroup === 'baby' || ageGroup === 'kids'
+        ? currentPricePeriod && currentPricePeriod.price.fullPassPrice * kidsDiscount
+        : currentPricePeriod?.price.fullPassPrice;
 
     if (fullPassDiscount === '30%' && basePrice)
       return Number.parseFloat((basePrice * 0.7).toFixed(2));
@@ -301,43 +257,15 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ version }) =
       return Number.parseFloat((basePrice * 0.5).toFixed(2));
     if (fullPassDiscount === 'free' && basePrice) return 0;
     else return basePrice;
-  }, [ageGroup, currentPricePeriod, fullPassDiscount, version]);
+  }, [ageGroup, currentPricePeriod, fullPassDiscount]);
 
-  const fullPassDiscountList: FullPassDiscount[] = useMemo(() => {
-    // Kids and baby can't have less than 100% discount in live version
-    if (version === 'live')
-      return ageGroup === 'baby' || ageGroup === 'kids'
-        ? ['none', 'free']
-        : ['none', 'group', '30%', '50%', 'free'];
-    // No group discounts for online
-    else return ['none', '30%', '50%', 'free'];
-  }, [ageGroup, version]);
+  const fullPassDiscountList: FullPassDiscount[] = ['none', '30%', '50%', 'free'];
 
+  // Eligibility for gala show
   const isEligible = useMemo(() => {
-    if (ageGroup === 'baby' || ageGroup === 'kids') {
-      if (isFullPass || selectedWorkshops.length >= minWsKids) return true;
-      else return false;
-    } else {
-      if (isFullPass || selectedWorkshops.length >= minWsAdults) return true;
-      else return false;
-    }
-  }, [ageGroup, isFullPass, selectedWorkshops]);
-
-  const soloPassPrice = useMemo(() => {
-    const priceKids = contestSoloPrice.soloPassKids.price[version];
-    const priceRisingStar = contestSoloPrice.soloPassRisingStar.price[version];
-    const priceProfessionals = contestSoloPrice.soloPassProfessionals.price[version];
-
-    // Price for Kids and Baby
-    if (ageGroup === 'baby' || ageGroup === 'kids')
-      return isFullPass ? priceKids.priceDiscounted : priceKids.priceNormal;
-    // Price for everyone else
-    else {
-      if (contestLevel === 'professionals')
-        return isFullPass ? priceProfessionals.priceDiscounted : priceProfessionals.priceNormal;
-      else return isFullPass ? priceRisingStar.priceDiscounted : priceRisingStar.priceNormal;
-    }
-  }, [ageGroup, contestLevel, isFullPass, version]);
+    if (isFullPass || isWorkshops || isSoloContest || isGroupContest) return true;
+    else return false;
+  }, [isFullPass, isWorkshops, isSoloContest, isGroupContest]);
 
   return (
     <FormProvider {...methods}>
@@ -381,7 +309,7 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ version }) =
         {currentStep === 'contestSolo' && (
           <AnimatePresence>
             <motion.div
-              key={'workshops'}
+              key={'contestSolo'}
               initial='hidden'
               animate='enter'
               exit='exit'
@@ -390,8 +318,6 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ version }) =
             >
               <ContestSolo
                 setStepTotal={setContestSoloTotal}
-                isEligible={isEligible}
-                soloPassPrice={soloPassPrice}
                 setIsNextDisabled={setIsNextDisabled}
               />
             </motion.div>
@@ -401,7 +327,7 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ version }) =
         {currentStep === 'contestGroups' && (
           <AnimatePresence>
             <motion.div
-              key={'workshops'}
+              key={'contestGroups'}
               initial='hidden'
               animate='enter'
               exit='exit'
@@ -409,7 +335,6 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ version }) =
               transition={{ type: 'linear', duration: 0.3 }}
             >
               <ContestGroups
-                isEligible={isEligible}
                 setStepTotal={setContestGroupsTotal}
                 lastDirection={lastDirection}
                 onStepSubmit={hanleSteps}
@@ -418,17 +343,22 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ version }) =
           </AnimatePresence>
         )}
 
-        {currentStep === 'worldShow' && (
+        {currentStep === 'show' && (
           <AnimatePresence>
             <motion.div
-              key={'workshops'}
+              key={'show'}
               initial='hidden'
               animate='enter'
               exit='exit'
               variants={motionVariants}
               transition={{ type: 'linear', duration: 0.3 }}
             >
-              <WorldShow isEligible={isEligible} setStepTotal={setWorldShowTotal} />
+              <WorldShow
+                isEligible={isEligible}
+                setStepTotal={setWorldShowTotal}
+                setIsNextDisabled={setIsNextDisabled}
+                isNextDisabled={isNextDisabled}
+              />
             </motion.div>
           </AnimatePresence>
         )}
@@ -436,7 +366,7 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ version }) =
         {currentStep === 'summary' && (
           <AnimatePresence>
             <motion.div
-              key={'workshops'}
+              key={'summary'}
               initial='hidden'
               animate='enter'
               exit='exit'
@@ -446,7 +376,6 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ version }) =
               <Summary
                 fullPassPrice={fullPassPrice}
                 currentPricePeriod={currentPricePeriod}
-                soloPassPrice={soloPassPrice}
                 total={total}
                 setIsNextDisabled={setIsNextDisabled}
               />
@@ -456,7 +385,7 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ version }) =
 
         <Collapse in={isTotalOpen && currentStep !== 'summary'} unmountOnExit>
           <h2 className={clsx(textStyles.h2)}>
-            {t('form.common.total')}: <span className={textStyles.accent}>{total}€</span>
+            {t('form.common.total')}: <span className={textStyles.accent}>{total}zł</span>
           </h2>
         </Collapse>
 
