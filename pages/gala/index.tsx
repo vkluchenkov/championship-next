@@ -20,12 +20,13 @@ const WorldShow: NextPage = () => {
 
   const content = (
     <>
-      <div className={styles.logoWrapper}>
+      {/* <div className={styles.logoWrapper}>
         <Image src={worldShowLogo} alt={t('pageTitle')} fill />
-      </div>
+      </div> */}
       <p className={textStyles.p}>
         <span className={textStyles.accent}>{t('dateTitle')}:</span> 19.01.2024 / 19:00
       </p>
+      <p className={textStyles.p}>{t('freeEntrance')}</p>
       <p className={textStyles.p}>{t('description')}</p>
       <h2 className={clsx(textStyles.h2, textStyles.accent)}>{t('conditionsTitle')}</h2>
       <p className={textStyles.p}>{t('conditionsGeneral')}</p>
