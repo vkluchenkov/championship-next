@@ -28,7 +28,7 @@ export const margin = 1.1; //percent
 export const photoFileSizeLimit = 10485760;
 
 // Default website url
-export const defaultUrl = 'https://danceweekend.art';
+export const defaultUrl = 'https://championship.dance';
 
 // emails
 export const senderEmail = 'danceweekend@aliah.dance';
@@ -41,6 +41,10 @@ export const telegramUrl = 'https://t.me/+isxRvGCBaf9jMjQ0';
 export const facebookUrl = 'https://www.facebook.com/danceweekendwarsaw';
 export const instagramUrl = 'https://www.instagram.com/danceweekendwarsaw/';
 export const emailUrl = 'mailto:danceweekend@aliah.dance';
+
+// map links
+export const cpkUrl = 'https://goo.gl/maps/SnjPT318FQs6SeTW8';
+export const atlasUrl = 'https://maps.app.goo.gl/ZMpBgh8sb3sPhiEe6';
 
 // Revolut payment link
 export const revolutUrl = 'https://revolut.me/aliahbellydance/pln/';

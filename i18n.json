@@ -12,6 +12,7 @@
     "/info/bazaar": ["bazaar"],
     "/info/faq": ["faq"],
     "/info/schedule": ["schedule"],
+    "/info/contacts": ["contacts"],
     "/music": ["music"],
     "/price": ["price"],
     "/payment": ["payment"],

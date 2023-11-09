@@ -112,6 +112,20 @@ export const menu: MenuItem[] = [
     },
     subItems: [
       {
+        link: '/info/schedule',
+        translations: {
+          en: {
+            title: 'Schedule',
+          },
+          ru: {
+            title: 'Расписание',
+          },
+          pl: {
+            title: 'Schedule',
+          },
+        },
+      },
+      {
         link: '/info/photo-video',
         translations: {
           en: {
@@ -154,16 +168,16 @@ export const menu: MenuItem[] = [
         },
       },
       {
-        link: '/info/schedule',
+        link: '/info/contacts',
         translations: {
           en: {
-            title: 'Schedule',
+            title: 'Contacts',
           },
           ru: {
-            title: 'Расписание',
+            title: 'Контакты',
           },
           pl: {
-            title: 'Schedule',
+            title: 'Контакты',
           },
         },
       },
