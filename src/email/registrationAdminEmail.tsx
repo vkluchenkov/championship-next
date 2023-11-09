@@ -29,7 +29,7 @@ const url = process.env.DEPLOY_URL || defaultUrl;
 export const registrationAdminEmail = (props: registrationUserEmailProps) => {
   const { form, t } = props;
 
-  const accentColor = '#eec571!important';
+  const accentColor = '#f9b12a!important';
   const h4Style = {
     fontSize: '16px',
     lineHeight: '1.2',
@@ -111,7 +111,7 @@ export const registrationAdminEmail = (props: registrationUserEmailProps) => {
         <>
           <li>
             {t('form.workshops.fullPass')}:{' '}
-            <span style={{ color: accentColor }}>{form.fullPassPrice}€</span>
+            <span style={{ color: accentColor }}>{form.fullPassPrice}zł</span>
           </li>
 
           <li>
@@ -121,14 +121,7 @@ export const registrationAdminEmail = (props: registrationUserEmailProps) => {
             </span>
           </li>
 
-          {form.fullPassDiscount === 'group' && (
-            <li>
-              {t('form.workshops.discounts.groupName')}:{' '}
-              <span style={{ color: accentColor }}>{form.fullPassGroupName}</span>
-            </li>
-          )}
-
-          {form.fullPassDiscount != 'group' && form.fullPassDiscount != 'none' && (
+          {form.fullPassDiscount != 'none' && (
             <li>
               {t('form.workshops.discounts.details')}:{' '}
               <span style={{ color: accentColor }}>{form.fullPassDiscountSource}</span>
@@ -138,14 +131,14 @@ export const registrationAdminEmail = (props: registrationUserEmailProps) => {
       );
     }
     return workshops.map((ws) => {
-      const price = form.currentPricePeriod?.price[form.version][`${ws.teachersPriceGroup!}Price`];
+      const price = form.currentPricePeriod?.price[`${ws.teachersPriceGroup!}Price`];
       return (
         <li key={ws.id}>
           <span style={{ color: accentColor }}>{ws.translations[form.currentLang].title}</span>
           <br />
           {ws.translations[form.currentLang].description}
           <br />
-          <span style={{ color: accentColor }}>{price}€</span>
+          <span style={{ color: accentColor }}>{price}zł</span>
         </li>
       );
     });
@@ -164,7 +157,7 @@ export const registrationAdminEmail = (props: registrationUserEmailProps) => {
               - {cat.translations[form.currentLang].categoryTitle}
               {cat.price > 0 && (
                 <>
-                  : <span style={{ color: accentColor }}>{cat.price}€</span>
+                  : <span style={{ color: accentColor }}>{cat.price}zł</span>
                 </>
               )}
             </li>
@@ -191,13 +184,6 @@ export const registrationAdminEmail = (props: registrationUserEmailProps) => {
                   <span style={{ color: accentColor }}>
                     {t(`form.contest.levels.${form.contestLevel}`)}
                   </span>
-                </li>
-              )}
-
-              {form.isSoloPass && (
-                <li>
-                  {t('form.contest.soloPassTitle')}:{' '}
-                  <span style={{ color: accentColor }}>{form.soloPassPrice}€</span>
                 </li>
               )}
               {stylesData}
@@ -229,16 +215,14 @@ export const registrationAdminEmail = (props: registrationUserEmailProps) => {
                     cat.isGroupCategory === isGroupType
                 );
                 const catStyle = contestCategory?.categories.find(
-                  (style) =>
-                    style.types.includes('live') &&
-                    style.translations.en.categoryTitle === group.style
+                  (style) => style.translations.en.categoryTitle === group.style
                 );
 
                 return (
                   <li key={group.name}>
                     <p style={{ ...h4Style, padding: '15px 0 0' }}>
                       {t('form.contest.groups.group')}/{t('form.contest.groups.duo')} #{index + 1} :
-                      <span style={{ color: accentColor }}> {group.price}€</span>
+                      <span style={{ color: accentColor }}> {group.price}zł</span>
                     </p>
 
                     <ul style={{ listStyle: 'none', padding: 0, lineHeight: 1.5 }}>
@@ -280,9 +264,7 @@ export const registrationAdminEmail = (props: registrationUserEmailProps) => {
 
   // WorldShow
   const worldShowData = () => {
-    const soloPrice = isFullPass
-      ? worldShowPrice.soloPriceDicounted
-      : worldShowPrice.soloPriceNormal;
+    const soloPrice = worldShowPrice.soloPriceNormal;
 
     if (form.isWorldShowSolo || form.isWorldShowGroup)
       return (
@@ -291,14 +273,14 @@ export const registrationAdminEmail = (props: registrationUserEmailProps) => {
 
           {form.isWorldShowSolo && (
             <MjmlText mj-class='text'>
-              {t('form.worldShow.solo')}: <span style={{ color: accentColor }}>{soloPrice}€</span>
+              {t('form.worldShow.solo')}: <span style={{ color: accentColor }}>{soloPrice}zł</span>
             </MjmlText>
           )}
 
           {form.isWorldShowGroup && (
             <MjmlText mj-class='text'>
               {t('form.summary.worldShowGroup')}:{' '}
-              <span style={{ color: accentColor }}>{form.worldShowGroup?.price}€</span>
+              <span style={{ color: accentColor }}>{form.worldShowGroup?.price}zł</span>
               <br />
               {t('form.contest.groups.name')}:{' '}
               <span style={{ color: accentColor }}>{form.worldShowGroup?.name}</span>
@@ -387,7 +369,7 @@ export const registrationAdminEmail = (props: registrationUserEmailProps) => {
         <MjmlSection padding='10px' />
 
         {/* Main section */}
-        <MjmlSection background-color='#231d2f' padding='20px 30px 30px' border-radius='15px'>
+        <MjmlSection background-color='#1f0b15' padding='20px 30px 30px' border-radius='15px'>
           <MjmlColumn>
             {/* Title */}
             <MjmlText mj-class='h1 accent'>
@@ -396,12 +378,6 @@ export const registrationAdminEmail = (props: registrationUserEmailProps) => {
 
             {/* Order title */}
             <MjmlText mj-class='h2'>{t('email.adminOrderTitle')}:</MjmlText>
-
-            {/* Festival version */}
-            <MjmlText mj-class='h3'>
-              {t('form.summary.versionTitle')}:{' '}
-              <span style={{ color: accentColor }}>{form.version}</span>
-            </MjmlText>
 
             {/* Personal data*/}
             <MjmlText mj-class='h3'>{t('form.summary.personalTitle')}</MjmlText>
@@ -435,18 +411,8 @@ export const registrationAdminEmail = (props: registrationUserEmailProps) => {
 
             <MjmlText mj-class='text'>
               {t('form.summary.money.total')}:{' '}
-              <span style={{ color: accentColor }}>{form.total}€</span>
+              <span style={{ color: accentColor }}>{form.total}zł</span>
             </MjmlText>
-
-            {form.isInstallments && (
-              <MjmlText mj-class='text'>
-                {t('form.summary.money.amountNow')}:{' '}
-                <span style={{ color: accentColor }}>{form.total / 2}€</span>
-                <br />
-                {t('form.summary.money.amountAfter')}:{' '}
-                <span style={{ color: accentColor }}>{form.total / 2}€</span>
-              </MjmlText>
-            )}
           </MjmlColumn>
         </MjmlSection>
 
@@ -454,7 +420,7 @@ export const registrationAdminEmail = (props: registrationUserEmailProps) => {
         <MjmlSection padding='10px' />
 
         {/* Footer */}
-        <MjmlSection background-color='#231d2f' padding='20px 10px' border-radius='15px'>
+        <MjmlSection background-color='#1f0b15' padding='20px 10px' border-radius='15px'>
           <MjmlColumn>
             <MjmlText mj-class='copyright'>{t('email.copyright')}</MjmlText>
           </MjmlColumn>

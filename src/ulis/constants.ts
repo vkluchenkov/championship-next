@@ -32,7 +32,7 @@ export const defaultUrl = 'https://danceweekend.art';
 
 // emails
 export const senderEmail = 'danceweekend@aliah.dance';
-export const senderName = 'Dance Weekend in Warsaw festival';
+export const senderName = 'Open Bellydance Championship of Poland';
 
 // telegram
 export const telegramUrl = 'https://t.me/+isxRvGCBaf9jMjQ0';

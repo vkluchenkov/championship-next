@@ -137,7 +137,6 @@ export const Workshops: React.FC<WorkshopsStepProps> = ({
   ) : (
     <>
       <p className={textStyles.p}>{t('form.workshops.fullPassDescription1')}</p>
-      <p className={textStyles.p}>{t('form.workshops.fullPassDescription2')}</p>
     </>
   );
 
