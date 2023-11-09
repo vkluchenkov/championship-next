@@ -47,6 +47,9 @@ export const schedule: Day[] = [
       ru: {
         dayTitle: '19.01 Пятница',
       },
+      pl: {
+        dayTitle: '19.01 Пятница',
+      },
     },
     dayEvents: [
       {
@@ -62,6 +65,10 @@ export const schedule: Day[] = [
             title: 'Гала шоу',
             description: 'с открытой сценой',
           },
+          pl: {
+            title: 'Гала шоу',
+            description: 'с открытой сценой',
+          },
         },
       },
     ],
@@ -72,6 +79,9 @@ export const schedule: Day[] = [
         dayTitle: '20.01 Saturday',
       },
       ru: {
+        dayTitle: '20.01 Суббота',
+      },
+      pl: {
         dayTitle: '20.01 Суббота',
       },
     },
@@ -87,6 +97,9 @@ export const schedule: Day[] = [
           ru: {
             title: 'Конкурс',
           },
+          pl: {
+            title: 'Конкурс',
+          },
         },
       },
     ],
@@ -97,6 +110,9 @@ export const schedule: Day[] = [
         dayTitle: '21.01 Sunday',
       },
       ru: {
+        dayTitle: '21.01 Воскресенье',
+      },
+      pl: {
         dayTitle: '21.01 Воскресенье',
       },
     },
@@ -113,6 +129,10 @@ export const schedule: Day[] = [
             description: 'Classical oriental choreography',
           },
           ru: {
+            title: 'Leandro Ferreyra',
+            description: 'Хореография Classical oriental',
+          },
+          pl: {
             title: 'Leandro Ferreyra',
             description: 'Хореография Classical oriental',
           },
@@ -133,6 +153,10 @@ export const schedule: Day[] = [
             title: 'Диана Гнатченко',
             description: 'Хореография Pop song',
           },
+          pl: {
+            title: 'Диана Гнатченко',
+            description: 'Хореография Pop song',
+          },
         },
       },
       {
@@ -150,6 +174,10 @@ export const schedule: Day[] = [
             title: 'Levana',
             description: 'Хореография Shaaby',
           },
+          pl: {
+            title: 'Levana',
+            description: 'Хореография Shaaby',
+          },
         },
       },
       {
@@ -164,6 +192,10 @@ export const schedule: Day[] = [
             description: 'Fusion tango oriental choreography',
           },
           ru: {
+            title: 'Pablo Acosta',
+            description: 'Хореография Fusion tango oriental',
+          },
+          pl: {
             title: 'Pablo Acosta',
             description: 'Хореография Fusion tango oriental',
           },
