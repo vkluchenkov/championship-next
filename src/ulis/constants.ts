@@ -43,7 +43,7 @@ export const instagramUrl = 'https://www.instagram.com/danceweekendwarsaw/';
 export const emailUrl = 'mailto:danceweekend@aliah.dance';
 
 // Revolut payment link
-export const revolutUrl = 'https://revolut.me/aliahbellydance/eur/';
+export const revolutUrl = 'https://revolut.me/aliahbellydance/pln/';
 
 // Animation preset for all transitions
 export const motionVariants = {
