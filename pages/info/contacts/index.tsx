@@ -4,20 +4,12 @@ import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/Contacts.module.css';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
-import { StyledAccordeon } from '@/src/ui-kit/StyledAccordeon';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { atlasUrl, cpkUrl, emailUrl, facebookUrl, instagramUrl } from '@/src/ulis/constants';
 
 const Contacts: NextPage = () => {
   const { t, lang } = useTranslation('contacts');
-
-  const a2 = (
-    <Trans
-      i18nKey='faq:a2'
-      components={[<Link href='/competition/rules/' target='_blank' key={1} />]}
-    />
-  );
 
   return (
     <Layout title={t('pageTitle')}>
