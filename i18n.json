@@ -11,6 +11,7 @@
     "/info/photo-video": ["photoVideo"],
     "/info/bazaar": ["bazaar"],
     "/info/faq": ["faq"],
+    "/info/schedule": ["schedule"],
     "/music": ["music"],
     "/price": ["price"],
     "/payment": ["payment"],

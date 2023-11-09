@@ -153,6 +153,20 @@ export const menu: MenuItem[] = [
           },
         },
       },
+      {
+        link: '/info/schedule',
+        translations: {
+          en: {
+            title: 'Schedule',
+          },
+          ru: {
+            title: 'Расписание',
+          },
+          pl: {
+            title: 'Schedule',
+          },
+        },
+      },
     ],
   },
 ];
