@@ -18,6 +18,13 @@ const FAQ: NextPage = () => {
     />
   );
 
+  const a3 = (
+    <Trans
+      i18nKey='faq:a3'
+      components={[<Link href='/info/contacts/' target='_blank' key={1} />]}
+    />
+  );
+
   return (
     <Layout title={t('pageTitle')}>
       <h1 className={textStyles.h1}>{t('pageTitle')}</h1>
@@ -26,7 +33,7 @@ const FAQ: NextPage = () => {
 
         <StyledAccordeon summary={t('q1')} details={<p className={textStyles.p}>{t('a1')}</p>} />
         <StyledAccordeon summary={t('q2')} details={<p className={textStyles.p}>{a2}</p>} />
-        <StyledAccordeon summary={t('q3')} details={<p className={textStyles.p}>{t('a3')}</p>} />
+        <StyledAccordeon summary={t('q3')} details={<p className={textStyles.p}>{a3}</p>} />
         <StyledAccordeon summary={t('q4')} details={<p className={textStyles.p}>{t('a4')}</p>} />
       </section>
     </Layout>
