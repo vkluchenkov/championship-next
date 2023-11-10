@@ -124,7 +124,7 @@
     padding: 12px 20px;
   }
 
-  .period__fullPass {
+  .root .period__fullPass {
     font-size: 24px;
   }
 }

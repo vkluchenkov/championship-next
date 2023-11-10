@@ -24,13 +24,13 @@ const Price: NextPage = () => {
   const group2Names = teachersWsGroups.group2.map((n) => t(`workshops.teachers.${n}`)).join(', ');
 
   const workshops = workshopsPrice.map((period, index) => {
-    const getTitle = () => {
-      const startDate = period.startDate?.toLocaleDateString('pl');
-      const endDate = period.endDate?.toLocaleDateString('pl');
-      if (period.isPromo) return t('workshops.promo');
-      if (!period.startDate && !period.endDate && !period.isPromo) return '';
-      else return `${startDate} – ${endDate}`;
-    };
+    // const getTitle = () => {
+    //   const startDate = period.startDate?.toLocaleDateString('pl');
+    //   const endDate = period.endDate?.toLocaleDateString('pl');
+    //   if (period.isPromo) return t('workshops.promo');
+    //   if (!period.startDate && !period.endDate && !period.isPromo) return '';
+    //   else return `${startDate} – ${endDate}`;
+    // };
 
     return (
       <div
