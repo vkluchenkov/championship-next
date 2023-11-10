@@ -1,4 +1,5 @@
 .root {
+  display: block;
 }
 
 .section {
@@ -16,7 +17,7 @@
   margin: 0 auto;
 }
 
-.period {
+.root .period {
   display: flex;
   flex-direction: column;
   padding: 10px;
