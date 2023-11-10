@@ -77,7 +77,7 @@ const Payment: NextPage = () => {
       <h1 className={textStyles.h1}>{t('pageTitle')}</h1>
 
       <section className={styles.section}>
-        <PayPalScriptProvider options={{ 'client-id': paypalClientId, currency: 'PLN' }}>
+        <PayPalScriptProvider options={{ clientId: paypalClientId, currency: 'PLN' }}>
           <ThemeProvider theme={darkTheme}>
             <FormProvider {...methods}>
               <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
