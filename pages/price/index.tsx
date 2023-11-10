@@ -24,24 +24,11 @@ const Price: NextPage = () => {
   const group2Names = teachersWsGroups.group2.map((n) => t(`workshops.teachers.${n}`)).join(', ');
 
   const workshops = workshopsPrice.map((period, index) => {
-    // const getTitle = () => {
-    //   const startDate = period.startDate?.toLocaleDateString('pl');
-    //   const endDate = period.endDate?.toLocaleDateString('pl');
-    //   if (period.isPromo) return t('workshops.promo');
-    //   if (!period.startDate && !period.endDate && !period.isPromo) return '';
-    //   else return `${startDate} – ${endDate}`;
-    // };
-
     return (
       <div
         key={period.price.fullPassPrice + index}
         className={clsx(styles.period, styles.period_active)}
       >
-        {/* <h4 className={styles.period__title}>{getTitle()}</h4> */}
-        {/* <h4 className={styles.period__title}>
-          {period.startDate?.toLocaleDateString('pl')} — {period.endDate?.toLocaleDateString('pl')}
-        </h4> */}
-
         <p className={clsx(textStyles.p, styles.period__fullPass)}>
           {isSoldOut
             ? `${t('workshops.fullPass')}: ${t('workshops.soldOut')}`
@@ -60,7 +47,8 @@ const Price: NextPage = () => {
         </p>
 
         <p className={textStyles.p}>
-          {group2Names}:<span className={textStyles.accent}> {period.price.group2Price}zł</span>
+          {group2Names}:
+          <span className={textStyles.accent}>&nbsp;{period.price.group2Price}zł</span>
         </p>
       </div>
     );

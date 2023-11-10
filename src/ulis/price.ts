@@ -6,8 +6,8 @@ export const isFullPassSoldOut = false;
 
 //Translation keys for Price page
 export const teachersWsGroups = {
-  group1: ['pablo', 'diana', 'leandro', 'chronis', 'aliahChronis'],
-  group2: ['polina', 'eva', 'levana'],
+  group1: ['polina', 'ramile', 'suraiya'],
+  group2: ['pablo'],
 };
 
 export const kidsDiscount = 1; //Coefficient

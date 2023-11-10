@@ -7,15 +7,10 @@
     "fullPass": "Full Pass",
     "soldOut": "распродан",
     "teachers": {
-      "pablo": "Pablo",
-      "diana": "Диана",
-      "alexey": "Алексей",
-      "leandro": "Leandro",
-      "chronis": "Chronis",
-      "aliahChronis": "Aliah\u00a0&\u00a0Chronis",
-      "polina": "Полина",
-      "eva": "Ева",
-      "levana": "Levana"
+      "pablo": "Pablo Acosta",
+      "polina": "Полина Островская",
+      "ramile": "Ramile",
+      "suraiya": "Suraiya"
     }
   },
   "competition": {
