@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Trans from 'next-translate/Trans';
 import useTranslation from 'next-translate/useTranslation';
 import { Schedule } from '@/src/components/Schedule';
+import '@/styles/Text.module.css';
 
 export default function Home() {
   const { t } = useTranslation();
