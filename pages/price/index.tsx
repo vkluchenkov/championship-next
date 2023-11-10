@@ -38,9 +38,9 @@ const Price: NextPage = () => {
         className={clsx(styles.period, styles.period_active)}
       >
         {/* <h4 className={styles.period__title}>{getTitle()}</h4> */}
-        <h4 className={styles.period__title}>
+        {/* <h4 className={styles.period__title}>
           {period.startDate?.toLocaleDateString('pl')} — {period.endDate?.toLocaleDateString('pl')}
-        </h4>
+        </h4> */}
 
         <p className={clsx(textStyles.p, styles.period__fullPass)}>
           {isSoldOut
