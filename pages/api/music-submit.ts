@@ -109,8 +109,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const ftpUploadDir = () => {
       if (event === 'worldShow') {
-        if (type === 'solo') return `/World Show/solo/`;
-        else return `/World Show/Groups and Duos/`;
+        if (type === 'solo') return `/Show/solo/`;
+        else return `/Show/Groups and Duos/`;
       }
 
       if (event === 'contest') {

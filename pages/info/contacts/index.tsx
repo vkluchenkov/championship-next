@@ -50,7 +50,7 @@ const Contacts: NextPage = () => {
             {t('Atlas')}
           </Link>
         </p>
-        <p className={textStyles.p}>{t('AtlasInfo')}</p>
+        {/* <p className={textStyles.p}>{t('AtlasInfo')}</p> */}
       </section>
     </Layout>
   );

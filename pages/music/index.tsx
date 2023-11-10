@@ -22,7 +22,6 @@ const Music: NextPage = () => {
   const { handleSubmit, watch, setValue, reset } = methods;
 
   const [isLoading, setIsLoading] = useState(false);
-  // const [isSnackBarOpen, setIsSnackBarOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isDurationCorrect, setIsDurationCorrect] = useState(false);
@@ -32,6 +31,7 @@ const Music: NextPage = () => {
   const type = watch('type');
   const audioLength = watch('audioLength');
   const event = watch('event');
+  const level = watch('level');
 
   // Get audio duration
   useEffect(() => {
@@ -52,10 +52,38 @@ const Music: NextPage = () => {
     audioLength > 0 && setIsDurationCorrect(audioLength <= audioLimit * margin);
   }, [audioLength, audioLimit]);
 
+  // Reset level on Age change
+  useEffect(() => {
+    setValue('level', undefined);
+  }, [ageGroup, setValue]);
+
+  // Reset everything on type change
+  useEffect(() => {
+    setValue('level', undefined);
+    setValue('ageGroup', undefined);
+    setValue('categories', undefined);
+    setValue('groupName', undefined);
+    setValue('name', undefined);
+    setValue('surname', undefined);
+    setValue('event', undefined);
+  }, [type, setValue]);
+
+  // Reset everything contest related on event change
+  useEffect(() => {
+    setValue('level', undefined);
+    setValue('ageGroup', undefined);
+    setValue('categories', undefined);
+  }, [event, setValue]);
+
+  // Reset style on level change
+  useEffect(() => {
+    setValue('category', undefined);
+  }, [level, setValue]);
+
   // Map contest levels and styles by age group and type
   useEffect(() => {
     if (ageGroup) {
-      const categories: (Style & { isDuo: boolean; isGroup: boolean })[] = [];
+      const styles: (Style & { isDuo: boolean; isGroup: boolean })[] = [];
       const levels: Level[] = [];
 
       // Filter by age
@@ -72,29 +100,28 @@ const Music: NextPage = () => {
 
       // Fill categories from filtered
       filteredByType.forEach((cat, index) => {
+        if ((level && cat.levels.includes(level)) || cat.levels.includes('openLevel')) {
+          cat.categories.forEach((style) => {
+            styles.push({
+              ...style,
+              isDuo: !!cat.isDuoCategory,
+              isGroup: !!cat.isGroupCategory,
+            });
+          });
+        }
         cat.levels.forEach((level) => {
           if (level !== 'openLevel') {
             const isLevel = levels.includes(level);
             if (!isLevel) levels.push(level);
           }
         });
-
-        cat.categories.forEach(
-          (style) =>
-            !style.isImprovisation &&
-            categories.push({
-              ...style,
-              isDuo: !!cat.isDuoCategory,
-              isGroup: !!cat.isGroupCategory,
-            })
-        );
       });
 
-      setValue('categories', categories);
+      setValue('categories', styles);
       setValue('levels', levels);
-      setValue('level', levels[0]);
+      // !level && setValue('level', levels[0]);
     }
-  }, [ageGroup, setValue, type]);
+  }, [ageGroup, setValue, type, level]);
 
   // Handle snackbar close
   const handleClose = useCallback((event?: React.SyntheticEvent | Event, reason?: string) => {

@@ -8,7 +8,7 @@
     "event": "Event",
     "file": "Music file",
     "contest": "Competition",
-    "worldShow": "World Show",
+    "worldShow": "Gala Show",
     "submit": "Submit",
     "patternError": "This field can contain only Latin characters and numbers.",
     "tooLongError": "The input is too long",
@@ -25,9 +25,9 @@
     },
     "levels": {
       "title": "Level",
+      "debut": "Debut",
       "beginners": "Beginners",
-      "intermediate": "Intermediate",
-      "risingStar": "Rising star (beginners + intermediate)",
+      "semi-pro": "Semi professionals",
       "professionals": "Professionals",
       "openLevel": "Open level"
     },
