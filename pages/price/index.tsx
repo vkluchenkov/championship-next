@@ -15,6 +15,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { motionVariants } from '@/src/ulis/constants';
 
+console.log(textStyles);
 const Price: NextPage = () => {
   const { t, lang } = useTranslation('price');
 
