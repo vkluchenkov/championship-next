@@ -10,9 +10,10 @@ import { motionVariants } from '@/src/ulis/constants';
 interface LayoutProps {
   children: any;
   title?: string;
+  className?: string;
 }
 
-export const Layout: React.FC<LayoutProps> = ({ children, title }) => {
+export const Layout: React.FC<LayoutProps> = ({ children, title, className }) => {
   // Handle viewport changes on mobile (and not)
   useEffect(() => {
     const handleVh = () => {
@@ -48,7 +49,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, title }) => {
   );
 
   return (
-    <>
+    <div className={className ? className : ''}>
       <Head>
         <title>
           {title
@@ -73,6 +74,6 @@ export const Layout: React.FC<LayoutProps> = ({ children, title }) => {
       </Head>
       <Header />
       {Main}
-    </>
+    </div>
   );
 };

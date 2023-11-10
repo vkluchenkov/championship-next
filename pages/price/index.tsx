@@ -15,7 +15,6 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { motionVariants } from '@/src/ulis/constants';
 
-console.log(textStyles);
 const Price: NextPage = () => {
   const { t, lang } = useTranslation('price');
 
@@ -214,7 +213,7 @@ const Price: NextPage = () => {
   );
 
   return (
-    <Layout title={t('pageTitle')}>
+    <Layout title={t('pageTitle')} className={styles.root}>
       <h1 className={textStyles.h1}>{t('pageTitle')}</h1>
       {content}
     </Layout>
