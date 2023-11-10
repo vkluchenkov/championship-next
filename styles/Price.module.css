@@ -1,5 +1,4 @@
 .root {
-  display: block;
 }
 
 .section {
@@ -17,7 +16,7 @@
   margin: 0 auto;
 }
 
-.root .period {
+.period {
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -61,7 +60,7 @@
   text-align: center;
 }
 
-.period__fullPass {
+.root .period__fullPass {
   font-size: 20px;
   text-align: center;
   color: var(--accent-text-color);
