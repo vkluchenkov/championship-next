@@ -1,11 +1,5 @@
-import clsx from 'clsx';
 import styles from './partners.module.css';
 import useTranslation from 'next-translate/useTranslation';
-import Image, { StaticImageData } from 'next/image';
-import aliah from '@/public/images/partners/Aliah.png';
-import cpk from '@/public/images/partners/cpk.png';
-import dww from '@/public/images/partners/DWW.png';
-import btv from '@/public/images/partners/BTV.png';
 import Link from 'next/link';
 
 interface PartnersList {
@@ -16,22 +10,22 @@ interface PartnersList {
 const partnersList: PartnersList[] = [
   {
     image: '/images/partners/DWW.png',
-    description: 'Dance Weekend in Warsaw festival',
+    description: 'Dance Weekend in Warsaw festival logo',
     url: 'https://danceweekend.art',
   },
   {
     image: '/images/partners/Aliah.png',
-    description: 'Aliah',
+    description: 'Aliah logo',
     url: 'https://aliah.dance',
   },
   {
     image: '/images/partners/BTV.png',
-    description: 'Bellystream.TV',
+    description: 'Bellystream.TV logo',
     url: 'https://bellystream.tv',
   },
   {
     image: '/images/partners/cpk.png',
-    description: '',
+    description: 'Centrum Promocji Kultury w Dzielnicy Praga-Południe m. st. Warszawy',
     url: 'https://cpk.art.pl',
   },
 ];
