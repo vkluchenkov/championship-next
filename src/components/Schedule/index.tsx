@@ -1,8 +1,10 @@
 import useTranslation from 'next-translate/useTranslation';
 import styles from './schedule.module.css';
+import textStyles from '@/styles/Text.module.css';
 import { schedule } from '@/src/ulis/schedule';
 import { useMemo } from 'react';
 import { SupportedLangs } from '@/src/types';
+import clsx from 'clsx';
 
 export const Schedule: React.FC = () => {
   const { t, lang } = useTranslation();
@@ -43,7 +45,6 @@ export const Schedule: React.FC = () => {
 
   return (
     <>
-      <h2 className={styles.schedule__title}>{t('common:schedule')}</h2>
       <ul className={styles.schedule__days}>{days}</ul>
     </>
   );

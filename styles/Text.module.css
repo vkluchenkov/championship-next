@@ -49,6 +49,14 @@
   text-align: center;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
+.glow {
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.25);
+}
+
 .p,
 .list {
   font-style: normal;

@@ -1,6 +1,7 @@
 import { Layout } from '@/src/components/Layout';
 import { NextPage } from 'next';
 import styles from '@/styles/Faq.module.css';
+import textStyles from '@/styles/Text.module.css';
 import useTranslation from 'next-translate/useTranslation';
 import { Schedule } from '@/src/components/Schedule';
 
@@ -9,7 +10,7 @@ const SchedulePage: NextPage = () => {
 
   return (
     <Layout title={t('pageTitle')}>
-      {/* <h1 className={textStyles.h1}>{t('pageTitle')}</h1> */}
+      <h1 className={textStyles.h1}>{t('pageTitle')}</h1>
       <section className={styles.section}>
         <Schedule />
       </section>
