@@ -44,6 +44,7 @@ export const FormMusic: React.FC<FormMusicProps> = ({
   const levels = watch('levels');
   const level = watch('level');
   const type = watch('type');
+  const file = watch('file');
 
   const ageGroupOptions = useMemo(() => {
     const filtered = ageGroups.filter((group) => {
@@ -296,7 +297,7 @@ export const FormMusic: React.FC<FormMusicProps> = ({
         size='large'
         disableElevation
         fullWidth
-        disabled={!isDurationCorrect && audioLength > 0}
+        disabled={(!isDurationCorrect && audioLength > 0) || !file}
       >
         {t('form.submit')}
       </Button>
