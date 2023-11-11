@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Trans from 'next-translate/Trans';
 import useTranslation from 'next-translate/useTranslation';
 import { Schedule } from '@/src/components/Schedule';
+import socialPoster from 'public/images/teachers.png';
 
 export default function Home() {
   const { t } = useTranslation();
@@ -28,6 +29,9 @@ export default function Home() {
         <Cta />
         <section className={styles.content}>
           <h1 className={styles.content__title}>{welcomeTitle}</h1>
+          <div className={styles.teachersContainer}>
+            <Image src={socialPoster} alt={t('home:coverImageAlt')} fill priority />
+          </div>
           {welcomeText}
         </section>
         <section className={styles.schedule}>
