@@ -35,11 +35,11 @@ export const senderEmail = 'danceweekend@aliah.dance';
 export const senderName = 'Open Bellydance Championship of Poland';
 
 // telegram
-export const telegramUrl = 'https://t.me/+isxRvGCBaf9jMjQ0';
+export const telegramUrl = 'https://t.me/+eyMB-THBxdwyNDJk';
 
 // Social links
-export const facebookUrl = 'https://www.facebook.com/danceweekendwarsaw';
-export const instagramUrl = 'https://www.instagram.com/danceweekendwarsaw/';
+export const facebookUrl = 'https://www.facebook.com/championship.dance';
+export const instagramUrl = 'https://www.instagram.com/championship.dance';
 export const emailUrl = 'mailto:danceweekend@aliah.dance';
 
 // map links
