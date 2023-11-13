@@ -47,6 +47,9 @@ export const schedule: Day[] = [
       ru: {
         dayTitle: '19.01 Пятница',
       },
+      pl: {
+        dayTitle: '19.01 Пятница',
+      },
     },
     dayEvents: [
       {
@@ -62,6 +65,10 @@ export const schedule: Day[] = [
             title: 'Гала шоу',
             description: 'с открытой сценой',
           },
+          pl: {
+            title: 'Гала шоу',
+            description: 'с открытой сценой',
+          },
         },
       },
     ],
@@ -72,6 +79,9 @@ export const schedule: Day[] = [
         dayTitle: '20.01 Saturday',
       },
       ru: {
+        dayTitle: '20.01 Суббота',
+      },
+      pl: {
         dayTitle: '20.01 Суббота',
       },
     },
@@ -87,6 +97,9 @@ export const schedule: Day[] = [
           ru: {
             title: 'Конкурс',
           },
+          pl: {
+            title: 'Конкурс',
+          },
         },
       },
     ],
@@ -99,73 +112,92 @@ export const schedule: Day[] = [
       ru: {
         dayTitle: '21.01 Воскресенье',
       },
+      pl: {
+        dayTitle: '21.01 Воскресенье',
+      },
     },
     dayEvents: [
       {
         id: 3,
-        start: '9:00',
-        end: '11:00',
+        start: '10:00',
+        end: '12:00',
         type: 'workshop',
         teachersPriceGroup: 'group1',
         translations: {
           en: {
-            title: 'Leandro Ferreyra',
-            description: 'Classical oriental choreography',
+            title: 'Ramile',
+            description: 'Pop song choreography',
           },
           ru: {
-            title: 'Leandro Ferreyra',
-            description: 'Хореография Classical oriental',
+            title: 'Ramile',
+            description: 'Хореография Pop song',
+          },
+          pl: {
+            title: 'Ramile',
+            description: 'Хореография',
           },
         },
       },
       {
         id: 4,
-        start: '11:15',
-        end: '13:45',
+        start: '12:15',
+        end: '14:15',
         type: 'workshop',
-        teachersPriceGroup: 'group1',
+        teachersPriceGroup: 'group2',
         translations: {
           en: {
-            title: 'Diana Gnatchenko',
-            description: 'Pop song choreography',
+            title: 'Pablo Acosta',
+            description: 'Mejance choreography',
           },
           ru: {
-            title: 'Диана Гнатченко',
-            description: 'Хореография Pop song',
+            title: 'Pablo Acosta',
+            description: 'Хореография Mejance',
+          },
+          pl: {
+            title: 'Pablo Acosta',
+            description: 'Хореография',
           },
         },
       },
       {
         id: 5,
-        start: '14:00',
-        end: '16:00',
+        start: '14:30',
+        end: '16:30',
         type: 'workshop',
-        teachersPriceGroup: 'group2',
+        teachersPriceGroup: 'group1',
         translations: {
           en: {
-            title: 'Levana',
-            description: 'Shaaby choreography',
+            title: 'Suraiya',
+            description: 'Tarab choreography',
           },
           ru: {
-            title: 'Levana',
-            description: 'Хореография Shaaby',
+            title: 'Suraiya',
+            description: 'Хореография Tarab',
+          },
+          pl: {
+            title: 'Suraiya',
+            description: 'Хореография',
           },
         },
       },
       {
         id: 6,
-        start: '16:15',
-        end: '18:15',
+        start: '16:45',
+        end: '18:45',
         type: 'workshop',
         teachersPriceGroup: 'group1',
         translations: {
           en: {
-            title: 'Pablo Acosta',
-            description: 'Fusion tango oriental choreography',
+            title: 'Polina Ostrovska',
+            description: 'Drum solo choreography',
           },
           ru: {
-            title: 'Pablo Acosta',
-            description: 'Хореография Fusion tango oriental',
+            title: 'Полина Островская',
+            description: 'Хореография табла соло',
+          },
+          pl: {
+            title: 'Polina Ostrovska',
+            description: 'Хореография',
           },
         },
       },

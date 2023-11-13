@@ -33,6 +33,13 @@ const ThankYou: NextPage = () => {
     <Trans i18nKey='thank-you:iban' components={[<span className={textStyles.accent} key={1} />]} />
   );
 
+  const accountPln = (
+    <Trans
+      i18nKey='thank-you:accountPln'
+      components={[<span className={textStyles.accent} key={1} />]}
+    />
+  );
+
   const revolut = (
     <Trans
       i18nKey='thank-you:revolutText'
@@ -91,10 +98,19 @@ const ThankYou: NextPage = () => {
           {iban}
         </p>
 
+        <h3 className={textStyles.h3}>{t('bank2')}</h3>
+        <p className={textStyles.p}>
+          {beneficiary}
+          <br />
+          {bankName}
+          <br />
+          {accountPln}
+        </p>
+
         <h2 className={clsx(textStyles.h2, textStyles.accent)}>{t('musicTitle')}</h2>
         <p className={textStyles.p}>{music}</p>
-        <h2 className={clsx(textStyles.h2, textStyles.accent)}>{t('photoTitle')}</h2>
-        <p className={textStyles.p}>{photo}</p>
+        {/* <h2 className={clsx(textStyles.h2, textStyles.accent)}>{t('photoTitle')}</h2>
+        <p className={textStyles.p}>{photo}</p> */}
       </section>
     </Layout>
   );

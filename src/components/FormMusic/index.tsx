@@ -42,7 +42,9 @@ export const FormMusic: React.FC<FormMusicProps> = ({
   const categories = watch('categories');
   const category = watch('category');
   const levels = watch('levels');
+  const level = watch('level');
   const type = watch('type');
+  const file = watch('file');
 
   const ageGroupOptions = useMemo(() => {
     const filtered = ageGroups.filter((group) => {
@@ -91,6 +93,26 @@ export const FormMusic: React.FC<FormMusicProps> = ({
     const sec = Math.round(time % 60);
     return `${min}:${sec < 10 ? '0' + sec : sec}`;
   };
+
+  const showFileField = useMemo(() => {
+    if (type && type === 'solo') {
+      if (event === 'worldShow') {
+        return true;
+      } else {
+        if (ageGroup === 'baby') return true;
+        else if (ageGroup && level && category) {
+          return true;
+        } else return false;
+      }
+    } else if (type) {
+      if (event === 'worldShow') return true;
+      else if (ageGroup && category) {
+        return true;
+      }
+      return false;
+    }
+    return false;
+  }, [type, event, ageGroup, level, category]);
 
   return (
     <>
@@ -237,10 +259,7 @@ export const FormMusic: React.FC<FormMusicProps> = ({
       </Collapse>
 
       {/* File */}
-      <Collapse
-        in={(event === 'worldShow' && type != undefined) || !!category || ageGroup === 'baby'}
-        unmountOnExit
-      >
+      <Collapse in={showFileField} unmountOnExit>
         <div className={styles.form}>
           <Controller
             control={control}
@@ -278,7 +297,7 @@ export const FormMusic: React.FC<FormMusicProps> = ({
         size='large'
         disableElevation
         fullWidth
-        disabled={!isDurationCorrect && audioLength > 0}
+        disabled={(!isDurationCorrect && audioLength > 0) || !file}
       >
         {t('form.submit')}
       </Button>

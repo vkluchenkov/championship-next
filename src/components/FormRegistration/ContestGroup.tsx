@@ -30,8 +30,6 @@ export const ContestGroup: React.FC<ContestGroupProps> = ({ field, onDelete, cat
     formState: { errors },
   } = methods;
 
-  const version = watch('version');
-
   const fieldErrors = errors.groupContest?.[field.index];
 
   const [changed, setChanged] = useState(false);
@@ -54,9 +52,9 @@ export const ContestGroup: React.FC<ContestGroupProps> = ({ field, onDelete, cat
 
   // Calculate selection price
   useEffect(() => {
-    const price = field.qty * contestGroupPrice[version];
+    const price = field.qty * contestGroupPrice;
     setValue(`groupContest.${field.index}.price`, price);
-  }, [setValue, field.qty, field.index, version]);
+  }, [setValue, field.qty, field.index]);
 
   return (
     <div className={clsx(styles.form)}>
@@ -140,7 +138,7 @@ export const ContestGroup: React.FC<ContestGroupProps> = ({ field, onDelete, cat
       />
 
       <p className={textStyles.p}>
-        {t('form.contest.groups.price')}: <span className={textStyles.accent}>{field.price}€</span>
+        {t('form.contest.groups.price')}: <span className={textStyles.accent}>{field.price}zł</span>
       </p>
     </div>
   );

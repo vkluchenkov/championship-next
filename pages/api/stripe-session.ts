@@ -15,7 +15,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   const item = {
     price_data: {
-      currency: 'eur',
+      currency: 'pln',
       product_data: {
         name,
       },

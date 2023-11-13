@@ -19,13 +19,14 @@ export interface WorldShowGroup {
 export type WorkshopsField = (Workshop & { selected: boolean; day: string })[];
 export type SoloContestField = (Style & { selected: boolean; id: string; price: number })[];
 
-export type WorkshopsType = 'fullPass' | 'single';
+export type WorkshopsType = 'fullPass' | 'single' | '';
 
-export type FullPassDiscount = 'group' | '30%' | '50%' | 'free' | 'none';
+export type FullPassDiscount = '30%' | '50%' | 'free' | 'none';
 
 export interface FormFields {
-  version: Version;
   isFullPass: boolean;
+  fullPassDiscount: FullPassDiscount;
+  fullPassDiscountSource: string;
   name: string;
   surname: string;
   stageName: string;
@@ -35,15 +36,12 @@ export interface FormFields {
   country: string;
   city: string;
   tel: string;
+  isWorkshops: boolean;
   workshops: WorkshopsField;
   workshopsType: WorkshopsType;
-  fullPassDiscount: FullPassDiscount;
-  fullPassDiscountSource: string;
-  fullPassGroupName: string;
   ageGroup: AgeGroup | null;
   isSoloContest: boolean;
   contestAgeGroup: AgeGroup | null;
-  isSoloPass: boolean;
   contestLevels: Level[];
   contestLevel: Level;
   soloContest: SoloContestField;
@@ -53,8 +51,6 @@ export interface FormFields {
   isWorldShowGroup: boolean;
   worldShowGroup: WorldShowGroup | null;
   rulesAccepted: boolean;
-  isInstallments: boolean;
-
   currentStep: StepId;
 }
 
@@ -63,7 +59,7 @@ export type StepId =
   | 'workshops'
   | 'contestSolo'
   | 'contestGroups'
-  | 'worldShow'
+  | 'show'
   | 'summary';
 
 export interface Step {
@@ -86,13 +82,10 @@ export type WorkshopsStepProps = StepProps & {
 
 export type ContestSoloStepProps = StepProps & {
   setStepTotal: (total: number) => void;
-  isEligible: boolean;
-  soloPassPrice: number;
   setIsNextDisabled: (state: boolean) => void;
 };
 
 export type ContestGroupStepProps = StepProps & {
-  isEligible: boolean;
   setStepTotal: (total: number) => void;
   lastDirection: 'prev' | 'next' | null;
   onStepSubmit: (direction: 'next' | 'prev') => void;
@@ -101,11 +94,12 @@ export type ContestGroupStepProps = StepProps & {
 export type WorldShowStepProps = StepProps & {
   isEligible: boolean;
   setStepTotal: (total: number) => void;
+  setIsNextDisabled: (state: boolean) => void;
+  isNextDisabled: boolean;
 };
 
 export type SummaryStepProps = StepProps & {
   fullPassPrice: number | undefined;
-  soloPassPrice: number;
   currentPricePeriod: PricePeriod | undefined;
   total: number;
   setIsNextDisabled: (state: boolean) => void;
@@ -115,6 +109,5 @@ export type OrderPayload = FormFields & {
   fullPassPrice: number | undefined;
   currentPricePeriod: PricePeriod | undefined;
   currentLang: SupportedLangs;
-  soloPassPrice: number;
   total: number;
 };

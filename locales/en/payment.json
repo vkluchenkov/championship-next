@@ -8,9 +8,10 @@
     "method": "Payment method",
     "paypal": "PayPal",
     "stripe": "Credit / debit card",
-    "qtyMinError": "Minimum payment amount is 10€",
+    "qtyMinError": "Minimum payment amount is 40zł",
     "stripeBtn": "Pay with card",
-    "error": "Oops. Something went wrong. Please try again later or contact us to resolve the issue."
+    "error": "Oops. Something went wrong. Please try again later or contact us to resolve the issue.",
+    "patternError": "This field can contain only Latin characters and numbers."
   },
   "thanks": {
     "pageTitle": "Thank you!",
@@ -19,6 +20,6 @@
   "email": {
     "title": "New payment from",
     "subtitle": "Payment details",
-    "copyright": "©Dance Weekend in Warsaw"
+    "copyright": "©Open Bellydance Championship of Poland"
   }
 }

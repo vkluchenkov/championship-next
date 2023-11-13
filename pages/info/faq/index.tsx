@@ -11,13 +11,6 @@ import Link from 'next/link';
 const FAQ: NextPage = () => {
   const { t, lang } = useTranslation('faq');
 
-  const a1 = (
-    <Trans
-      i18nKey='faq:a1'
-      components={[<Link href='https://www.fhotel.pl/' target='_blank' key={1} />]}
-    />
-  );
-
   const a2 = (
     <Trans
       i18nKey='faq:a2'
@@ -26,7 +19,10 @@ const FAQ: NextPage = () => {
   );
 
   const a3 = (
-    <Trans i18nKey='faq:a3' components={[<Link href='/price/' target='_blank' key={1} />]} />
+    <Trans
+      i18nKey='faq:a3'
+      components={[<Link href='/info/contacts/' target='_blank' key={1} />]}
+    />
   );
 
   return (
@@ -35,13 +31,11 @@ const FAQ: NextPage = () => {
       <section className={styles.section}>
         <p className={textStyles.p}>{t('description')}</p>
 
-        <StyledAccordeon summary={t('q1')} details={<p className={textStyles.p}>{a1}</p>} />
+        <StyledAccordeon summary={t('q1')} details={<p className={textStyles.p}>{t('a1')}</p>} />
         <StyledAccordeon summary={t('q2')} details={<p className={textStyles.p}>{a2}</p>} />
         <StyledAccordeon summary={t('q3')} details={<p className={textStyles.p}>{a3}</p>} />
         <StyledAccordeon summary={t('q4')} details={<p className={textStyles.p}>{t('a4')}</p>} />
       </section>
-
-      {/* <h2 className={clsx(textStyles.h2, textStyles.accent)}>{t('judgingSystem')}</h2> */}
     </Layout>
   );
 };

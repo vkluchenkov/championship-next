@@ -4,7 +4,7 @@ import { montserrat } from '@/src/ulis/font';
 // Age groups
 export const babyMinAge = 4;
 export const babyMaxAge = 6;
-export const kidsMinAge = 5;
+export const kidsMinAge = 7;
 export const kidsMaxAge = 11;
 export const juniorsMinAge = 12;
 export const juniorsMaxAge = 15;
@@ -28,22 +28,26 @@ export const margin = 1.1; //percent
 export const photoFileSizeLimit = 10485760;
 
 // Default website url
-export const defaultUrl = 'https://danceweekend.art';
+export const defaultUrl = 'https://championship.dance';
 
 // emails
 export const senderEmail = 'danceweekend@aliah.dance';
-export const senderName = 'Dance Weekend in Warsaw festival';
+export const senderName = 'Open Bellydance Championship of Poland';
 
 // telegram
-export const telegramUrl = 'https://t.me/+isxRvGCBaf9jMjQ0';
+export const telegramUrl = 'https://t.me/+eyMB-THBxdwyNDJk';
 
 // Social links
-export const facebookUrl = 'https://www.facebook.com/danceweekendwarsaw';
-export const instagramUrl = 'https://www.instagram.com/danceweekendwarsaw/';
+export const facebookUrl = 'https://www.facebook.com/championship.dance';
+export const instagramUrl = 'https://www.instagram.com/championship.dance';
 export const emailUrl = 'mailto:danceweekend@aliah.dance';
 
+// map links
+export const cpkUrl = 'https://goo.gl/maps/SnjPT318FQs6SeTW8';
+export const atlasUrl = 'https://maps.app.goo.gl/ZMpBgh8sb3sPhiEe6';
+
 // Revolut payment link
-export const revolutUrl = 'https://revolut.me/aliahbellydance/eur/';
+export const revolutUrl = 'https://revolut.me/aliahbellydance/pln/';
 
 // Animation preset for all transitions
 export const motionVariants = {

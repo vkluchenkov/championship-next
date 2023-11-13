@@ -25,7 +25,7 @@ const url = process.env.DEPLOY_URL || defaultUrl;
 export const paymentAdminEmail = (props: registrationUserEmailProps) => {
   const { form, t } = props;
 
-  const accentColor = '#eec571!important';
+  const accentColor = '#f9b12a!important';
 
   const payment = ['name', 'email', 'qty', 'method'].map((i) => ({
     key: i,
@@ -53,7 +53,7 @@ export const paymentAdminEmail = (props: registrationUserEmailProps) => {
     if (i.key === 'qty')
       return (
         <li key={i.key}>
-          {t(`form.${i.key}`)}: <span style={{ color: accentColor }}>{value.trim()}€</span>
+          {t(`form.${i.key}`)}: <span style={{ color: accentColor }}>{value.trim()}zł</span>
         </li>
       );
 
@@ -147,7 +147,7 @@ export const paymentAdminEmail = (props: registrationUserEmailProps) => {
         <MjmlSection padding='10px' />
 
         {/* Main section */}
-        <MjmlSection background-color='#231d2f' padding='20px 30px 30px' border-radius='15px'>
+        <MjmlSection background-color='#1f0b15' padding='20px 30px 30px' border-radius='15px'>
           <MjmlColumn>
             {/* Title */}
             <MjmlText mj-class='h1 accent'>
@@ -168,7 +168,7 @@ export const paymentAdminEmail = (props: registrationUserEmailProps) => {
         <MjmlSection padding='10px' />
 
         {/* Footer */}
-        <MjmlSection background-color='#231d2f' padding='20px 10px' border-radius='15px'>
+        <MjmlSection background-color='#1f0b15' padding='20px 10px' border-radius='15px'>
           <MjmlColumn>
             <MjmlText mj-class='copyright'>{t('email.copyright')}</MjmlText>
           </MjmlColumn>

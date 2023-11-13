@@ -14,7 +14,6 @@ import { FormInputCheckbox } from '@/src/ui-kit/input';
 
 export const ContestGroups: React.FC<ContestGroupStepProps> = ({
   setStepTotal,
-  isEligible,
   lastDirection,
   onStepSubmit,
 }) => {
@@ -32,7 +31,6 @@ export const ContestGroups: React.FC<ContestGroupStepProps> = ({
   const groupContest = watch('groupContest');
   const contestAgeGroup = watch('contestAgeGroup');
   const isGroupContest = watch('isGroupContest');
-  const version = watch('version');
 
   const defaultGroup: GroupContest = useMemo(() => {
     return {
@@ -41,9 +39,9 @@ export const ContestGroups: React.FC<ContestGroupStepProps> = ({
       style: '',
       qty: 2,
       name: '',
-      price: contestGroupPrice[version] * 2, //qty
+      price: contestGroupPrice * 2, //qty
     };
-  }, [version]);
+  }, []);
 
   const controlledFields = fields.map((field, index) => {
     return {
@@ -53,17 +51,10 @@ export const ContestGroups: React.FC<ContestGroupStepProps> = ({
     };
   });
 
-  // Skip step for seniors age group or if not enough workshops
   // Clean contest group competition state if not empty
-  useEffect(() => {
-    if (contestAgeGroup === 'seniors' || !isEligible) {
-      if (groupContest.length > 0) {
-        setValue('isGroupContest', false);
-        setValue('groupContest', []);
-      }
-      if (lastDirection) onStepSubmit(lastDirection);
-    }
-  });
+  // useEffect(() => {
+  //   if (lastDirection) onStepSubmit(lastDirection);
+  // });
 
   // Set first group fields and clear all group fields and errors on checkbox change
   useEffect(() => {
@@ -110,13 +101,11 @@ export const ContestGroups: React.FC<ContestGroupStepProps> = ({
         cat.isGroupCategory === isGroupType
     );
 
-    const catStyles = contestCategory?.categories.filter((style) => style.types.includes(version));
-
     return (
       <ContestGroup
         field={field}
         key={field.id}
-        catStyles={catStyles}
+        catStyles={contestCategory?.categories}
         onDelete={() => handleDelete(field.id)}
       />
     );
@@ -125,34 +114,31 @@ export const ContestGroups: React.FC<ContestGroupStepProps> = ({
   return (
     <div className={styles.form}>
       <h2 className={textStyles.h2}>{t('form.contest.groups.title')}</h2>
-      {!isEligible && <p>{t('form.contest.oops')}</p>}
 
-      {isEligible && (
-        <>
-          <FormInputCheckbox
-            name='isGroupContest'
-            control={control}
-            label={<p className={textStyles.p}>{t('form.contest.groups.checkboxLabel')}</p>}
-          />
+      <>
+        <FormInputCheckbox
+          name='isGroupContest'
+          control={control}
+          label={<p className={textStyles.p}>{t('form.contest.groups.checkboxLabel')}</p>}
+        />
 
-          <Collapse in={isGroupContest} unmountOnExit>
-            <div className={styles.form}>{groups}</div>
+        <Collapse in={isGroupContest} unmountOnExit>
+          <div className={styles.form}>{groups}</div>
 
-            {groupContest.length && groupContest.length < maxGroups && (
-              <Button
-                type='button'
-                variant='outlined'
-                fullWidth
-                size='large'
-                disableElevation
-                onClick={handleMore}
-              >
-                {t('form.contest.groups.add')}
-              </Button>
-            )}
-          </Collapse>
-        </>
-      )}
+          {groupContest.length && groupContest.length < maxGroups && (
+            <Button
+              type='button'
+              variant='outlined'
+              fullWidth
+              size='large'
+              disableElevation
+              onClick={handleMore}
+            >
+              {t('form.contest.groups.add')}
+            </Button>
+          )}
+        </Collapse>
+      </>
     </div>
   );
 };

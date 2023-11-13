@@ -26,6 +26,10 @@ export const PersonalData: React.FC<StepProps> = () => {
           control={control}
           rules={{
             required: t('form.common.required'),
+            pattern: {
+              value: /^[a-zA-ZÀ-ÖØ-ÝżźćńółęąśŻŹĆĄŚĘŁÓŃ0-9\s\-]+$/,
+              message: t('form.common.patternError'),
+            },
           }}
           error={!!errors.name}
           helperText={errors?.name?.message as string | undefined}
@@ -37,6 +41,10 @@ export const PersonalData: React.FC<StepProps> = () => {
           control={control}
           rules={{
             required: t('form.common.required'),
+            pattern: {
+              value: /^[a-zA-ZÀ-ÖØ-ÝżźćńółęąśŻŹĆĄŚĘŁÓŃ0-9\s\-]+$/,
+              message: t('form.common.patternError'),
+            },
           }}
           error={!!errors.surname}
           helperText={errors?.surname?.message as string | undefined}

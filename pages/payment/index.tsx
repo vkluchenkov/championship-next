@@ -77,7 +77,7 @@ const Payment: NextPage = () => {
       <h1 className={textStyles.h1}>{t('pageTitle')}</h1>
 
       <section className={styles.section}>
-        <PayPalScriptProvider options={{ 'client-id': paypalClientId, currency: 'EUR' }}>
+        <PayPalScriptProvider options={{ clientId: paypalClientId, currency: 'PLN' }}>
           <ThemeProvider theme={darkTheme}>
             <FormProvider {...methods}>
               <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -86,6 +86,10 @@ const Payment: NextPage = () => {
                   control={control}
                   rules={{
                     required: t('form.required'),
+                    pattern: {
+                      value: /^[a-zA-ZÀ-ÖØ-ÝżźćńółęąśŻŹĆĄŚĘŁÓŃ0-9\s\-]+$/,
+                      message: t('form.patternError'),
+                    },
                   }}
                   label={t('form.name')}
                   error={!!errors.name}
@@ -111,7 +115,7 @@ const Payment: NextPage = () => {
                   rules={{
                     required: t('form.required'),
                     min: {
-                      value: 10,
+                      value: 40,
                       message: t('form.qtyMinError'),
                     },
                   }}
@@ -119,7 +123,7 @@ const Payment: NextPage = () => {
                   error={!!errors.qty}
                   helperText={errors.qty?.message as string | undefined}
                   InputProps={{
-                    startAdornment: <InputAdornment position='start'>€</InputAdornment>,
+                    startAdornment: <InputAdornment position='start'>zł</InputAdornment>,
                   }}
                 />
 

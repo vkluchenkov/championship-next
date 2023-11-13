@@ -13,10 +13,10 @@ import {
 } from '@mui/material';
 import { FormFields, WorkshopsField, WorkshopsStepProps, WorkshopsType } from './types';
 import { WorkshopsList } from './WorkshopsList';
-import { FormInputField, FormInputSelect } from '@/src/ui-kit/input';
+import { FormInputCheckbox, FormInputField, FormInputSelect } from '@/src/ui-kit/input';
 import { schedule } from '@/src/ulis/schedule';
 import { SupportedLangs } from '@/src/types';
-import { isFullPassSoldOut, isOnlineFullPassSoldOut } from '@/src/ulis/price';
+import { isFullPassSoldOut } from '@/src/ulis/price';
 
 export const Workshops: React.FC<WorkshopsStepProps> = ({
   setStepTotal,
@@ -39,18 +39,16 @@ export const Workshops: React.FC<WorkshopsStepProps> = ({
   } = methods;
 
   const [isDiscount, setIsDiscount] = useState(false);
-  const [isGroup, setIsGroup] = useState(false);
 
   const isFullPass = watch('isFullPass');
   const isFullPassDiscount = watch('fullPassDiscount');
   const workshopsType = watch('workshopsType');
-  const isWorkshops = watch('workshops');
-  const version = watch('version');
+  const workshops = watch('workshops');
+  const isWorkshops = watch('isWorkshops');
 
-  const isSoldOut =
-    (isFullPassSoldOut && version === 'live') || (isOnlineFullPassSoldOut && version === 'online');
+  const isSoldOut = isFullPassSoldOut;
 
-  const selectedWorkshops = isWorkshops.filter((ws) => ws.selected);
+  const selectedWorkshops = workshops.filter((ws) => ws.selected);
 
   // Handle Full Pass sold out
   useEffect(() => {
@@ -58,26 +56,45 @@ export const Workshops: React.FC<WorkshopsStepProps> = ({
     else resetField('workshopsType');
   }, [setValue, resetField, isSoldOut]);
 
-  // Handle group discounts and discounts
+  // Disable next if no selection made after checking initial checkbox
   useEffect(() => {
-    if (isFullPass || selectedWorkshops.length) setIsNextDisabled(false);
-    else setIsNextDisabled(true);
+    if (isWorkshops) {
+      if (isFullPass || selectedWorkshops.length) setIsNextDisabled(false);
+      else setIsNextDisabled(true);
+    } else setIsNextDisabled(false);
   });
 
   useEffect(() => {
-    if (isFullPassDiscount != 'none' && isFullPassDiscount != 'group') {
+    if (isFullPassDiscount != 'none') {
       setIsDiscount(true);
-      setIsGroup(false);
-    }
-    if (isFullPassDiscount === 'group') {
-      setIsDiscount(false);
-      setIsGroup(true);
     }
     if (isFullPassDiscount === 'none' || !isFullPassDiscount) {
       setIsDiscount(false);
-      setIsGroup(false);
     }
   }, [isFullPassDiscount]);
+
+  // Clear all selection if isWorkshops unchecked
+  useEffect(() => {
+    if (!isWorkshops) {
+      const newWorkshops: WorkshopsField = [];
+      schedule.forEach((day) => {
+        day.dayEvents.forEach((event) => {
+          event.type === 'workshop' &&
+            newWorkshops.push({
+              ...event,
+              selected: false,
+              day: day.translations[currentLang].dayTitle,
+            });
+        });
+      });
+      setValue('workshops', newWorkshops);
+
+      setValue('isFullPass', false);
+      setValue('workshopsType', '');
+      setValue('fullPassDiscount', 'none');
+      setValue('fullPassDiscountSource', '');
+    }
+  }, [isWorkshops, resetField, setValue, currentLang]);
 
   // Set step total
   useEffect(() => {
@@ -86,12 +103,12 @@ export const Workshops: React.FC<WorkshopsStepProps> = ({
     else {
       const wsPrice = selectedWorkshops.reduce((prev, current) => {
         const price: number | undefined =
-          currentPricePeriod?.price[version][`${current.teachersPriceGroup!}Price`];
+          currentPricePeriod?.price[`${current.teachersPriceGroup!}Price`];
         return prev + price!;
       }, 0);
       setStepTotal(wsPrice);
     }
-  }, [selectedWorkshops, isFullPass, currentPricePeriod, fullPassPrice, setStepTotal, version]);
+  }, [selectedWorkshops, isFullPass, currentPricePeriod, fullPassPrice, setStepTotal]);
 
   const handleFullPass = (event: React.ChangeEvent<HTMLInputElement>, value: WorkshopsType) => {
     setValue('isFullPass', value === 'fullPass', { shouldTouch: true });
@@ -110,7 +127,6 @@ export const Workshops: React.FC<WorkshopsStepProps> = ({
     } else {
       setValue('fullPassDiscount', 'none', { shouldTouch: true });
       setValue('fullPassDiscountSource', '');
-      setValue('fullPassGroupName', '');
     }
   };
 
@@ -121,7 +137,6 @@ export const Workshops: React.FC<WorkshopsStepProps> = ({
   ) : (
     <>
       <p className={textStyles.p}>{t('form.workshops.fullPassDescription1')}</p>
-      <p className={textStyles.p}>{t('form.workshops.fullPassDescription2')}</p>
     </>
   );
 
@@ -130,92 +145,83 @@ export const Workshops: React.FC<WorkshopsStepProps> = ({
       <h2 className={textStyles.h2}>{t('form.workshops.title')}</h2>
       {workshopsDescription}
 
-      {!isSoldOut && (
-        <FormControl component='fieldset'>
-          <h4 className={textStyles.h4}>{t('form.workshops.selectTitle')}</h4>
-          <RadioGroup
-            row
-            name='workshops-selection'
-            value={workshopsType || ''}
-            onChange={(event, value) => handleFullPass(event, value as WorkshopsType)}
-          >
-            <FormControlLabel
-              value='fullPass'
-              control={<Radio />}
-              label={
-                <p className={textStyles.p}>
-                  {t('form.workshops.fullPass')}{' '}
-                  <span className={textStyles.accent}>
-                    {fullPassPrice ? fullPassPrice + ' €' : ''}
-                  </span>
-                </p>
-              }
-            />
-            <FormControlLabel
-              disabled={version === 'live'} //temp
-              value='single'
-              control={<Radio />}
-              label={<p className={textStyles.p}>{t('form.workshops.singleWs')}</p>}
-            />
-          </RadioGroup>
-        </FormControl>
-      )}
+      <FormInputCheckbox
+        control={control}
+        name='isWorkshops'
+        label={<p className={textStyles.p}>{t('form.workshops.checkboxLabel')}</p>}
+      />
 
-      <Collapse in={workshopsType === 'single'} unmountOnExit>
-        <WorkshopsList currentPricePeriod={currentPricePeriod} />
-      </Collapse>
-
-      <Collapse in={workshopsType === 'fullPass'} unmountOnExit>
-        <div className={styles.form}>
-          <FormInputSelect
-            name='fullPassDiscount'
-            control={control}
-            label={t('form.workshops.discounts.title')}
-            rules={{
-              required: t('form.common.required'),
-            }}
-            error={!!errors.fullPassDiscount}
-            helperText={errors?.fullPassDiscount?.message as string | undefined}
-          >
-            {fullPassDiscountList.map((i) => (
-              <MenuItem key={i} value={i}>
-                {t(`form.workshops.discounts.${i}`)}
-              </MenuItem>
-            ))}
-          </FormInputSelect>
-
-          <Collapse in={isDiscount} unmountOnExit>
-            <div className={styles.form}>
-              <p className={textStyles.p}>{t('form.workshops.discounts.detailsDescription')}</p>
-              <FormInputField
-                name='fullPassDiscountSource'
-                label={t('form.workshops.discounts.details')}
-                control={control}
-                rules={{
-                  required: t('form.common.required'),
-                }}
-                error={!!errors.fullPassDiscountSource}
-                helperText={errors?.fullPassDiscountSource?.message as string | undefined}
+      <Collapse in={isWorkshops} unmountOnExit>
+        {!isSoldOut && (
+          <FormControl component='fieldset'>
+            <h4 className={textStyles.h4}>{t('form.workshops.selectTitle')}</h4>
+            <RadioGroup
+              row
+              name='workshops-selection'
+              value={workshopsType || ''}
+              onChange={(event, value) => handleFullPass(event, value as WorkshopsType)}
+            >
+              <FormControlLabel
+                value='fullPass'
+                control={<Radio />}
+                label={
+                  <p className={textStyles.p}>
+                    {t('form.workshops.fullPass')}{' '}
+                    <span className={textStyles.accent}>
+                      {fullPassPrice ? fullPassPrice + 'zł' : ''}
+                    </span>
+                  </p>
+                }
               />
-            </div>
-          </Collapse>
-
-          <Collapse in={isGroup} unmountOnExit>
-            <div className={styles.form}>
-              <p className={textStyles.p}>{t('form.workshops.discounts.groupDescription')}</p>
-              <FormInputField
-                name='fullPassGroupName'
-                label={t('form.workshops.discounts.groupName')}
-                control={control}
-                rules={{
-                  required: t('form.common.required'),
-                }}
-                error={!!errors.fullPassDiscountSource}
-                helperText={errors?.fullPassDiscountSource?.message as string | undefined}
+              <FormControlLabel
+                value='single'
+                control={<Radio />}
+                label={<p className={textStyles.p}>{t('form.workshops.singleWs')}</p>}
               />
-            </div>
-          </Collapse>
-        </div>
+            </RadioGroup>
+          </FormControl>
+        )}
+
+        <Collapse in={workshopsType === 'single'} unmountOnExit>
+          <WorkshopsList currentPricePeriod={currentPricePeriod} />
+        </Collapse>
+
+        <Collapse in={workshopsType === 'fullPass'} unmountOnExit>
+          <div className={styles.form}>
+            <FormInputSelect
+              name='fullPassDiscount'
+              control={control}
+              label={t('form.workshops.discounts.title')}
+              rules={{
+                required: t('form.common.required'),
+              }}
+              error={!!errors.fullPassDiscount}
+              helperText={errors?.fullPassDiscount?.message as string | undefined}
+            >
+              {fullPassDiscountList.map((i) => (
+                <MenuItem key={i} value={i}>
+                  {t(`form.workshops.discounts.${i}`)}
+                </MenuItem>
+              ))}
+            </FormInputSelect>
+
+            <Collapse in={isDiscount} unmountOnExit>
+              <div className={styles.form}>
+                <p className={textStyles.p}>{t('form.workshops.discounts.detailsDescription')}</p>
+                <FormInputField
+                  name='fullPassDiscountSource'
+                  label={t('form.workshops.discounts.details')}
+                  control={control}
+                  rules={{
+                    required: t('form.common.required'),
+                  }}
+                  error={!!errors.fullPassDiscountSource}
+                  helperText={errors?.fullPassDiscountSource?.message as string | undefined}
+                />
+              </div>
+            </Collapse>
+          </div>
+        </Collapse>
       </Collapse>
     </div>
   );

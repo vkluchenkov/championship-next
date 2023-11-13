@@ -33,13 +33,8 @@ export const Footer: React.FC = () => {
       </div>
       <div className={styles.footer__copyrightWrapper}>
         <p className={styles.footer__text}>
-          {t('common:footerAddress')}:{' '}
-          <Link
-            href='https://goo.gl/maps/SnjPT318FQs6SeTW8'
-            target='_blank'
-            className={styles.footer__link}
-          >
-            Podskarbińska 2, Warszawa
+          <Link href='/info/contacts' target='_blank' className={styles.footer__link}>
+            {t('common:footerAddress')}
           </Link>
         </p>
         <p className={styles.footer__copyright}>

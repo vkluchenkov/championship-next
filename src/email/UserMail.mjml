@@ -12,7 +12,7 @@
       />
 
       <!-- Classes -->
-      <mj-class name="accent" color="#eec571" />
+      <mj-class name="accent" color="#f9b12a" />
       <mj-class name="divider" border-width="1px" padding="25px 0 25px" border-color="white" />
 
       <mj-class name="h1" font-size="24px" line-height="1.2" font-weight="600" align="center" />
@@ -56,7 +56,7 @@
     <mj-section padding="10px"></mj-section>
 
     <!-- Main section -->
-    <mj-section background-color="#231d2f" padding="20px 30px 30px" border-radius="15px">
+    <mj-section background-color="#1f0b15" padding="20px 30px 30px" border-radius="15px">
       <mj-column>
         <!-- Title -->
         <mj-text mj-class="h1 accent">We received your registration!</mj-text>

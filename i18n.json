@@ -1,5 +1,5 @@
 {
-  "locales": ["en", "ru", "pl"],
+  "locales": ["en", "ru"],
   "defaultLocale": "en",
   "defaultNS": "en",
   "pages": {
@@ -11,15 +11,15 @@
     "/info/photo-video": ["photoVideo"],
     "/info/bazaar": ["bazaar"],
     "/info/faq": ["faq"],
+    "/info/schedule": ["schedule"],
+    "/info/contacts": ["contacts"],
     "/music": ["music"],
     "/price": ["price"],
     "/payment": ["payment"],
     "/payment/thank-you": ["payment"],
     "/registration": ["registration"],
-    "/h3s5d4r5dff": ["registration"],
     "/registration/photo": ["photoForm"],
-    "/shows/arabic-dreams": ["arabicDreams"],
-    "/shows/world-show": ["worldShow"],
+    "/gala": ["gala"],
     "/thank-you": ["thank-you"]
   }
 }

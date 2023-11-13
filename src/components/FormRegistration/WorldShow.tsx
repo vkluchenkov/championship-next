@@ -9,7 +9,12 @@ import { WorldShowStepProps, FormFields } from './types';
 import { worldShowPrice } from '@/src/ulis/price';
 import { FormInputCheckbox, FormInputField } from '@/src/ui-kit/input';
 
-export const WorldShow: React.FC<WorldShowStepProps> = ({ setStepTotal, isEligible }) => {
+export const WorldShow: React.FC<WorldShowStepProps> = ({
+  setStepTotal,
+  isEligible,
+  setIsNextDisabled,
+  isNextDisabled,
+}) => {
   const { t } = useTranslation('registration');
 
   const methods = useFormContext<FormFields>();
@@ -22,14 +27,16 @@ export const WorldShow: React.FC<WorldShowStepProps> = ({ setStepTotal, isEligib
     formState: { errors },
   } = methods;
 
-  const isFullPass = watch('isFullPass');
   const isWorldShowSolo = watch('isWorldShowSolo');
   const isWorldShowGroup = watch('isWorldShowGroup');
   const worldShowGroup = watch('worldShowGroup');
 
-  const soloPrice = useMemo(() => {
-    return isFullPass ? worldShowPrice.soloPriceDicounted : worldShowPrice.soloPriceNormal;
-  }, [isFullPass]);
+  const soloPrice = worldShowPrice.soloPriceNormal;
+
+  // Disable Next if not eligable (nothing selected before)
+  useEffect(() => {
+    !isEligible && !isNextDisabled && setIsNextDisabled(true);
+  }, [isEligible, setIsNextDisabled, isNextDisabled]);
 
   // Calculate group price
   useEffect(() => {
@@ -71,7 +78,7 @@ export const WorldShow: React.FC<WorldShowStepProps> = ({ setStepTotal, isEligib
             name='isWorldShowSolo'
             label={
               <p className={textStyles.p}>
-                {t('form.worldShow.solo')}: <span className={textStyles.accent}>{soloPrice}€</span>
+                {t('form.worldShow.solo')}: <span className={textStyles.accent}>{soloPrice}zł</span>
               </p>
             }
           />
@@ -83,7 +90,7 @@ export const WorldShow: React.FC<WorldShowStepProps> = ({ setStepTotal, isEligib
               <p className={textStyles.p}>
                 {t('form.worldShow.group')}:{' '}
                 <span className={textStyles.accent}>
-                  {worldShowPrice.groups}€ / {t('form.worldShow.perPerson')}
+                  {worldShowPrice.groups}zł / {t('form.worldShow.perPerson')}
                 </span>
               </p>
             }
@@ -120,7 +127,7 @@ export const WorldShow: React.FC<WorldShowStepProps> = ({ setStepTotal, isEligib
 
               <p className={textStyles.p}>
                 {t('form.contest.groups.price')}:{' '}
-                <span className={textStyles.accent}>{worldShowGroup?.price}€</span>
+                <span className={textStyles.accent}>{worldShowGroup?.price}zł</span>
               </p>
             </div>
           </Collapse>
