@@ -5,7 +5,7 @@
   "paymentDescription": "For your registration to be accepted you need to make a payment using one of the following ways:",
   "online": "You may pay with PayPal or credit/debit cards",
   "online2": "Click here to make the payment",
-  "bank": "You can send bank transfer in EURO to the following account (exchange rate is 1EUR = 4.5PLN):",
+  "bank": "You can send bank transfer in EURO to the following account (exchange rate is 1EUR = 4PLN):",
   "beneficiary": "Beneficiary: <0>Alla Kluchenkova</0>",
   "bankName": "Bank name: <0>Santander Bank Polska S.A.</0>",
   "bic": "BIC / Swift: <0>WBKPPLPP</0>",
