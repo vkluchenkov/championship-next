@@ -1,10 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import formidable, { File } from 'formidable';
 import path from 'path';
-import { promises as fs } from 'fs';
 import { FormFields, FormData } from '@/src/types/music.types';
 import * as ftp from 'basic-ftp';
 import sanitize from 'sanitize-filename';
+import getT from 'next-translate/getT';
+import { musicAdminEmail } from '@/src/email/musicAdminEmal';
+import { senderEmail, senderName } from '@/src/ulis/constants';
+import { sendMail } from '@/src/email/sendMail';
 
 export const config = {
   api: {
@@ -16,6 +19,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   let status = 200,
     resultBody = { status: 'ok', message: 'Files were uploaded successfully' };
 
+  const t = await getT('en', 'music');
+
   const form = new formidable.IncomingForm();
 
   const formData = await new Promise<FormData | undefined>((resolve, reject) => {
@@ -25,6 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       event: 'contest',
       type: 'solo',
       audioLength: 0,
+      email: '',
     };
 
     form.on('file', (field, formFile) => {
@@ -54,33 +60,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { event, name, surname, type, groupName, ageGroup, level, category, audioLength } =
       formData.fields;
 
-    /* Create directory for uploads */
-    // const uploadDir = () => {
-    //   if (event === 'worldShow') {
-    //     if (type === 'solo') return path.join(process.cwd(), `/uploads/World Show/solo/`);
-    //     else return path.join(process.cwd(), `/uploads/World Show/Groups and Duos/`);
-    //   }
-
-    //   if (event === 'contest') {
-    //     const isCategory = !!category;
-    //     const safeCategory = category!.replace('/', '_');
-    //     return path.join(
-    //       process.cwd(),
-    //       `/uploads/Contest/`,
-    //       ageGroup! + '/',
-    //       level != undefined ? level + '/' : '',
-    //       isCategory ? safeCategory + '/' : ''
-    //     );
-    //   }
-    //   return '';
-    // };
-
-    // try {
-    //   await fs.access(uploadDir());
-    // } catch (e) {
-    //   await fs.mkdir(uploadDir(), { recursive: true });
-    // }
-
     const tempPath = formData.file.filepath;
     const extName = path.extname(formData.file.originalFilename!);
     const fileName = () => {
@@ -97,9 +76,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           extName
         );
     };
-
-    /* Move uploaded file to directory */
-    // await fs.rename(tempPath, uploadDir() + fileName());
 
     // FTP
     const ftpClient = new ftp.Client();
@@ -137,6 +113,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       await ftpClient.ensureDir(ftpDir + ftpUploadDir());
       await ftpClient.uploadFrom(tempPath, fileName());
+
+      // Emails
+      const adminEmailContent = musicAdminEmail({ form: formData.fields, t: t }).html;
+      const adminEmailErrors = musicAdminEmail({ form: formData.fields, t: t }).errors;
+
+      const adminMailPayload = {
+        senderEmail: senderEmail,
+        senderName: senderName,
+        recipientEmail: senderEmail,
+        recipientName: senderName,
+        recipientSubj: t('email.title') + ' ' + name + ' ' + surname,
+        mailContent: adminEmailContent,
+      };
+
+      sendMail(adminMailPayload);
     } catch (error) {
       console.log(error);
       status = 500;

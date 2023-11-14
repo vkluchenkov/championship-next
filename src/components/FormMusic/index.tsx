@@ -100,7 +100,7 @@ export const FormMusic: React.FC<FormMusicProps> = ({
         return true;
       } else {
         if (ageGroup === 'baby') return true;
-        else if (ageGroup && level && category) {
+        else if (ageGroup && category) {
           return true;
         } else return false;
       }
@@ -112,11 +112,28 @@ export const FormMusic: React.FC<FormMusicProps> = ({
       return false;
     }
     return false;
-  }, [type, event, ageGroup, level, category]);
+  }, [type, event, ageGroup, category]);
 
   return (
     <>
       {/* Select group or solo */}
+      <FormInputField
+        name='email'
+        type='email'
+        placeholder='user@example.com'
+        control={control}
+        rules={{
+          required: t('form.required'),
+          pattern: {
+            value:
+              /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+            message: t('form.emailError'),
+          },
+        }}
+        label={t('form.email')}
+        error={!!errors.email}
+        helperText={errors.email?.message as string | undefined}
+      />
       <FormInputSelect
         name='type'
         control={control}

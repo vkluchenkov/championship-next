@@ -2,6 +2,8 @@
   "pageTitle": "Music upload",
   "form": {
     "required": "This field is required",
+    "email": "Email",
+    "emailError": "Email is not valid",
     "name": "Participant name",
     "surname": "Participant surname",
     "groupName": "Group / duo name",
@@ -42,5 +44,11 @@
     },
     "audio1": "Your audio duration: ",
     "audio2": " exceeds the limit of "
+  },
+  "email": {
+    "title": "New music uploaded by",
+    "subtitle": "Music details:",
+    "audioLength": "Audio length (sec.)",
+    "copyright": "Open Bellydance Championship of Poland"
   }
 }
