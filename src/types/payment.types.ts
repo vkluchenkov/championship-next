@@ -11,8 +11,5 @@ export interface PaymentConfirmFields {
   name: string;
   email: string;
   password: string;
+  lang: SupportedLangs;
 }
-
-export type PaymentConfirmPayload = PaymentConfirmFields & {
-  currentLang: SupportedLangs;
-};

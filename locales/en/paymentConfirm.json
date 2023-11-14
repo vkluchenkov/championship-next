@@ -5,6 +5,9 @@
     "name": "Name",
     "email": "Email",
     "password": "Password",
+    "lang": "Language",
+    "en": "English",
+    "ru": "Русский",
     "submit": "Send",
     "error": "Oops. Something went wrong. Please try again later or contact us to resolve the issue.",
     "success": "Confirmation sent!"

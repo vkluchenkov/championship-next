@@ -4,22 +4,19 @@ import { NextPage } from 'next';
 import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/Registration.module.css';
 import useTranslation from 'next-translate/useTranslation';
-import { FormInputField } from '@/src/ui-kit/input';
+import { FormInputField, FormInputSelect } from '@/src/ui-kit/input';
 import { FormProvider, useForm } from 'react-hook-form';
-import { ThemeProvider, Snackbar, Alert } from '@mui/material';
+import { ThemeProvider, Snackbar, Alert, MenuItem } from '@mui/material';
 import axios from 'axios';
 import Button from '@mui/material/Button';
 import { useRouter } from 'next/router';
 import { Loader } from '@/src/components/Loader';
 import { darkTheme } from '@/src/ulis/constants';
-import { PaymentConfirmFields, PaymentConfirmPayload } from '@/src/types/payment.types';
+import { PaymentConfirmFields } from '@/src/types/payment.types';
 import { SupportedLangs } from '@/src/types';
 
 const PaymentConfirm: NextPage = () => {
-  const { t, lang } = useTranslation('paymentConfirm');
-  const currentLang = lang as SupportedLangs;
-
-  const router = useRouter();
+  const { t } = useTranslation('paymentConfirm');
 
   const methods = useForm<PaymentConfirmFields>({
     mode: 'onChange',
@@ -48,8 +45,7 @@ const PaymentConfirm: NextPage = () => {
     async (data: PaymentConfirmFields) => {
       setIsLoading(true);
       try {
-        const payload: PaymentConfirmPayload = { ...data, currentLang: currentLang };
-        await axios.post('/api/payment-confirm', payload);
+        await axios.post('/api/payment-confirm', data);
         setIsSuccess(true);
         reset();
       } catch (error) {
@@ -59,7 +55,7 @@ const PaymentConfirm: NextPage = () => {
         setIsLoading(false);
       }
     },
-    [reset, currentLang]
+    [reset]
   );
 
   return (
@@ -92,6 +88,20 @@ const PaymentConfirm: NextPage = () => {
                 error={!!errors.email}
                 helperText={errors.email?.message as string | undefined}
               />
+
+              <FormInputSelect
+                name='lang'
+                control={control}
+                label={t('form.lang')}
+                rules={{
+                  required: t('form.required'),
+                }}
+                error={!!errors.lang}
+                helperText={errors?.lang?.message as string | undefined}
+              >
+                <MenuItem value='en'>{t('form.en')}</MenuItem>
+                <MenuItem value='ru'>{t('form.ru')}</MenuItem>
+              </FormInputSelect>
 
               <FormInputField
                 name='password'
