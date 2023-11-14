@@ -1,0 +1,19 @@
+{
+  "pageTitle": "Сonfirmation",
+  "form": {
+    "required": "This field is required",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Send",
+    "error": "Oops. Something went wrong. Please try again later or contact us to resolve the issue.",
+    "success": "Confirmation sent!"
+  },
+  "email": {
+    "subj": "Your payment and registration has been confirmed!",
+    "title": "Hi ",
+    "subtitle": "Great news!",
+    "text": "Your payment and registration has been confirmed! Welcome to Open Bellydance Championship of Poland. See you soon in Warsaw!",
+    "copyright": "©Open Bellydance Championship of Poland"
+  }
+}
