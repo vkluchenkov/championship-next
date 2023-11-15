@@ -29,7 +29,7 @@
     },
     "workshops": {
       "title": "Workshops",
-      "checkboxLabel": "I want to take part in workshops",
+      "checkboxLabel": "I want to take workshops",
       "selectTitle": "Full Pass or one by one?",
       "fullPass": "Full Pass",
       "fullPassDescription1": "It’s possible to buy workshops as a package — Full Pass or single workshops of your choice. ",
