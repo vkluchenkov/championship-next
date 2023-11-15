@@ -125,15 +125,15 @@ export const schedule: Day[] = [
         teachersPriceGroup: 'group1',
         translations: {
           en: {
-            title: 'Ramile',
-            description: 'Pop song choreography',
+            title: 'Margarita Kamjaka',
+            description: 'Baladi choreography',
           },
           ru: {
-            title: 'Ramile',
-            description: 'Хореография Pop song',
+            title: 'Маргарита Камяк',
+            description: 'Хореография Baladi',
           },
           pl: {
-            title: 'Ramile',
+            title: 'Margarita Kamjaka',
             description: 'Хореография',
           },
         },
