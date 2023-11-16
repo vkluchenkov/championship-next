@@ -17,5 +17,7 @@
   "musicTitle": "Music upload",
   "photoTitle": "Personal poster",
   "musicDescription": "You can upload music for your performances by filling out <0>this form</0>.",
-  "photoDescription": "If you wish to have your individual poster, please send us your photo by filling out <0>this form</0>."
+  "photoDescription": "If you wish to have your individual poster, please send us your photo by filling out <0>this form</0>.",
+  "telegramTitle": "Telegram group",
+  "telegram": "Join our telegram group for participants to follow all the news and announcements by following <0>this link.</0>"
 }

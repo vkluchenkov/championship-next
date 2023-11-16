@@ -121,7 +121,7 @@ export const registrationAdminEmail = (props: registrationUserEmailProps) => {
             </span>
           </li>
 
-          {form.fullPassDiscount != 'none' && (
+          {form.fullPassDiscount !== 'none' && (
             <li>
               {t('form.workshops.discounts.details')}:{' '}
               <span style={{ color: accentColor }}>{form.fullPassDiscountSource}</span>

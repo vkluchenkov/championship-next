@@ -56,11 +56,11 @@ const ThankYou: NextPage = () => {
     />
   );
 
-  const photo = (
+  const telegram = (
     <Trans
-      i18nKey='thank-you:photoDescription'
+      i18nKey='thank-you:telegram'
       components={[
-        <Link href='/registration/photo' target='_blank' className={textStyles.accent} key={1} />,
+        <Link href={telegramUrl} target='_blank' className={textStyles.accent} key={1} />,
       ]}
     />
   );
@@ -71,6 +71,9 @@ const ThankYou: NextPage = () => {
 
       <section className={styles.section}>
         <p className={textStyles.p}>{t('intro')}</p>
+
+        <h2 className={clsx(textStyles.h2, textStyles.accent)}>{t('telegramTitle')}</h2>
+        <p className={textStyles.p}>{telegram}</p>
 
         <h2 className={clsx(textStyles.h2, textStyles.accent)}>{t('paymentTitle')}</h2>
         <p className={textStyles.p}>{t('paymentDescription')}</p>
