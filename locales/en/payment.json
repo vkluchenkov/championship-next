@@ -15,7 +15,9 @@
   },
   "thanks": {
     "pageTitle": "Thank you!",
-    "subtitle": "Your payment has been received and being processed"
+    "subtitle": "Your payment has been received and being processed",
+    "telegramTitle": "Telegram group",
+    "telegram": "Join our telegram group for participants to follow all the news and announcements by following <0>this link.</0>"
   },
   "email": {
     "title": "New payment from",
