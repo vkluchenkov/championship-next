@@ -15,11 +15,11 @@ export const Footer: React.FC = () => {
         <Divider />
       </div>
       <div className={styles.footer__social}>
-        <Link
+        {/* <Link
           href={facebookUrl}
           target='_blank'
           className={clsx(styles.social__button, styles.social__button_fb)}
-        />
+        /> */}
         <Link
           href={instagramUrl}
           target='_blank'
