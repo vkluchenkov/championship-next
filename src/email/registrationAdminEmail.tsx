@@ -109,39 +109,54 @@ export const registrationAdminEmail = (props: registrationUserEmailProps) => {
     if (isFullPass) {
       return (
         <>
-          <li>
-            {t('form.workshops.fullPass')}:{' '}
-            <span style={{ color: accentColor }}>{form.fullPassPrice}zł</span>
-          </li>
+          <MjmlText mj-class='h3'>{t('form.workshops.title')}</MjmlText>
+          <MjmlText mj-class='text'>
+            <ul style={{ listStyle: 'none', padding: 0, lineHeight: 1.5 }}>
+              <li>
+                {t('form.workshops.fullPass')}:{' '}
+                <span style={{ color: accentColor }}>{form.fullPassPrice}zł</span>
+              </li>
 
-          <li>
-            {t('form.workshops.discounts.title')}:{' '}
-            <span style={{ color: accentColor }}>
-              {t(`form.workshops.discounts.${form.fullPassDiscount}`)}
-            </span>
-          </li>
-
-          {form.fullPassDiscount != 'none' && (
-            <li>
-              {t('form.workshops.discounts.details')}:{' '}
-              <span style={{ color: accentColor }}>{form.fullPassDiscountSource}</span>
-            </li>
-          )}
+              <li>
+                {t('form.workshops.discounts.title')}:{' '}
+                <span style={{ color: accentColor }}>
+                  {t(`form.workshops.discounts.${form.fullPassDiscount}`)}
+                </span>
+              </li>
+              {form.fullPassDiscount !== 'none' && (
+                <li>
+                  {t('form.workshops.discounts.details')}:{' '}
+                  <span style={{ color: accentColor }}>{form.fullPassDiscountSource}</span>
+                </li>
+              )}
+            </ul>
+          </MjmlText>
         </>
       );
     }
-    return workshops.map((ws) => {
-      const price = form.currentPricePeriod?.price[`${ws.teachersPriceGroup!}Price`];
+    if (workshops.length) {
+      const wsList = workshops.map((ws) => {
+        const price = form.currentPricePeriod?.price[`${ws.teachersPriceGroup!}Price`];
+        return (
+          <li key={ws.id}>
+            <span style={{ color: accentColor }}>{ws.translations[form.currentLang].title}</span>
+            <br />
+            {ws.translations[form.currentLang].description}
+            <br />
+            <span style={{ color: accentColor }}>{price}zł</span>
+          </li>
+        );
+      });
+
       return (
-        <li key={ws.id}>
-          <span style={{ color: accentColor }}>{ws.translations[form.currentLang].title}</span>
-          <br />
-          {ws.translations[form.currentLang].description}
-          <br />
-          <span style={{ color: accentColor }}>{price}zł</span>
-        </li>
+        <>
+          <MjmlText mj-class='h3'>{t('form.workshops.title')}</MjmlText>
+          <MjmlText mj-class='text'>
+            <ul style={{ listStyle: 'none', padding: 0, lineHeight: 1.5 }}>{wsList}</ul>
+          </MjmlText>
+        </>
       );
-    });
+    }
   };
 
   // Contest solo
@@ -392,10 +407,7 @@ export const registrationAdminEmail = (props: registrationUserEmailProps) => {
             </MjmlText>
 
             {/* Workshops data*/}
-            <MjmlText mj-class='h3'>{t('form.workshops.title')}</MjmlText>
-            <MjmlText mj-class='text'>
-              <ul style={{ listStyle: 'none', padding: 0, lineHeight: 1.5 }}>{workshopsData()}</ul>
-            </MjmlText>
+            {workshopsData()}
 
             {/* Competition solo */}
             {contestSoloData()}

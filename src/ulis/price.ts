@@ -6,7 +6,7 @@ export const isFullPassSoldOut = false;
 
 //Translation keys for Price page
 export const teachersWsGroups = {
-  group1: ['polina', 'ramile', 'suraiya'],
+  group1: ['polina', 'margarita', 'suraiya'],
   group2: ['pablo'],
 };
 

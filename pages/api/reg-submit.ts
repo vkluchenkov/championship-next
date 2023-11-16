@@ -35,9 +35,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       recipientSubj: t('email.adminSubj') + ' ' + orderPayload.name + ' ' + orderPayload.surname,
       mailContent: adminEmailContent,
     };
-    // console.log(userEmailErrors);
-    // console.log(adminEmailErrors);
-    // console.log(userEmailContent);
     sendMail(userMailPayload);
     sendMail(adminMailPayload);
 

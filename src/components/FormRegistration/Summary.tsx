@@ -80,43 +80,56 @@ export const Summary: React.FC<SummaryStepProps> = ({
   // Workshops
   const isFullPass = form.isFullPass;
   const workshops = form.workshops.filter((ws) => ws.selected);
+
   const workshopsData = useMemo(() => {
     if (isFullPass) {
       return (
         <>
-          <li>
-            {t('form.workshops.fullPass')}:{' '}
-            <span className={textStyles.accent}>{fullPassPrice}zł</span>
-          </li>
-
-          <li>
-            {t('form.workshops.discounts.title')}:{' '}
-            <span className={textStyles.accent}>
-              {t(`form.workshops.discounts.${form.fullPassDiscount}`)}
-            </span>
-          </li>
-
-          {form.fullPassDiscount != 'none' && (
+          <h3 className={clsx(textStyles.h3, textStyles.centered)}>{t('form.workshops.title')}</h3>
+          <ul className={clsx(textStyles.list, textStyles.list_summary)}>
             <li>
-              {t('form.workshops.discounts.details')}:{' '}
-              <span className={textStyles.accent}>{form.fullPassDiscountSource}</span>
+              {t('form.workshops.fullPass')}:{' '}
+              <span className={textStyles.accent}>{fullPassPrice}zł</span>
             </li>
-          )}
+
+            <li>
+              {t('form.workshops.discounts.title')}:{' '}
+              <span className={textStyles.accent}>
+                {t(`form.workshops.discounts.${form.fullPassDiscount}`)}
+              </span>
+            </li>
+
+            {form.fullPassDiscount != 'none' && (
+              <li>
+                {t('form.workshops.discounts.details')}:{' '}
+                <span className={textStyles.accent}>{form.fullPassDiscountSource}</span>
+              </li>
+            )}
+          </ul>
         </>
       );
     }
-    return workshops.map((ws) => {
-      const price = currentPricePeriod?.price[`${ws.teachersPriceGroup!}Price`];
+    if (workshops.length) {
+      const wsList = workshops.map((ws) => {
+        const price = currentPricePeriod?.price[`${ws.teachersPriceGroup!}Price`];
+        return (
+          <li key={ws.id} className={styles.summary__group}>
+            <span className={textStyles.accent}>{ws.translations[currentLang].title}</span>
+            <br />
+            {ws.translations[currentLang].description}
+            <br />
+            <span className={textStyles.accent}>{price}zł</span>
+          </li>
+        );
+      });
+
       return (
-        <li key={ws.id} className={styles.summary__group}>
-          <span className={textStyles.accent}>{ws.translations[currentLang].title}</span>
-          <br />
-          {ws.translations[currentLang].description}
-          <br />
-          <span className={textStyles.accent}>{price}zł</span>
-        </li>
+        <>
+          <h3 className={clsx(textStyles.h3, textStyles.centered)}>{t('form.workshops.title')}</h3>
+          <ul className={clsx(textStyles.list, textStyles.list_summary)}>{wsList}</ul>
+        </>
       );
-    });
+    }
   }, [fullPassPrice, isFullPass, t, workshops, currentLang, currentPricePeriod, form]);
 
   // Contest solo
@@ -290,8 +303,7 @@ export const Summary: React.FC<SummaryStepProps> = ({
       <ul className={clsx(textStyles.list, textStyles.list_summary)}>{contactsData}</ul>
 
       {/* Workshops */}
-      <h3 className={clsx(textStyles.h3, textStyles.centered)}>{t('form.workshops.title')}</h3>
-      <ul className={clsx(textStyles.list, textStyles.list_summary)}>{workshopsData}</ul>
+      {workshopsData}
 
       {/* Competition solo */}
       {contestSoloData}

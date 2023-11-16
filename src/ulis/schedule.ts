@@ -42,13 +42,13 @@ export const schedule: Day[] = [
   {
     translations: {
       en: {
-        dayTitle: '19.01 Friday',
+        dayTitle: '2.02 Friday',
       },
       ru: {
-        dayTitle: '19.01 Пятница',
+        dayTitle: '2.02 Пятница',
       },
       pl: {
-        dayTitle: '19.01 Пятница',
+        dayTitle: '2.02 Пятница',
       },
     },
     dayEvents: [
@@ -76,13 +76,13 @@ export const schedule: Day[] = [
   {
     translations: {
       en: {
-        dayTitle: '20.01 Saturday',
+        dayTitle: '3.02 Saturday',
       },
       ru: {
-        dayTitle: '20.01 Суббота',
+        dayTitle: '3.02 Суббота',
       },
       pl: {
-        dayTitle: '20.01 Суббота',
+        dayTitle: '3.02 Суббота',
       },
     },
     dayEvents: [
@@ -107,13 +107,13 @@ export const schedule: Day[] = [
   {
     translations: {
       en: {
-        dayTitle: '21.01 Sunday',
+        dayTitle: '4.02 Sunday',
       },
       ru: {
-        dayTitle: '21.01 Воскресенье',
+        dayTitle: '4.02 Воскресенье',
       },
       pl: {
-        dayTitle: '21.01 Воскресенье',
+        dayTitle: '4.02 Воскресенье',
       },
     },
     dayEvents: [
@@ -125,15 +125,15 @@ export const schedule: Day[] = [
         teachersPriceGroup: 'group1',
         translations: {
           en: {
-            title: 'Ramile',
-            description: 'Pop song choreography',
+            title: 'Margarita Kamjaka',
+            description: 'Baladi choreography',
           },
           ru: {
-            title: 'Ramile',
-            description: 'Хореография Pop song',
+            title: 'Маргарита Камяк',
+            description: 'Хореография Baladi',
           },
           pl: {
-            title: 'Ramile',
+            title: 'Margarita Kamjaka',
             description: 'Хореография',
           },
         },

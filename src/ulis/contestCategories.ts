@@ -9,6 +9,7 @@ export interface Style {
     };
   };
   isSolo?: boolean;
+  isChampionship?: boolean;
   isImprovisation?: boolean;
 }
 
@@ -31,6 +32,7 @@ export interface ContestCategory {
 const mainSoloSet: Style[] = [
   {
     isSolo: true,
+    isChampionship: true,
     translations: {
       en: {
         categoryTitle: 'Classic',
@@ -45,6 +47,7 @@ const mainSoloSet: Style[] = [
   },
   {
     isSolo: true,
+    isChampionship: true,
     translations: {
       en: {
         categoryTitle: 'Folklore',
@@ -59,6 +62,7 @@ const mainSoloSet: Style[] = [
   },
   {
     isSolo: true,
+    isChampionship: true,
     translations: {
       en: {
         categoryTitle: 'Tabla solo CD',
@@ -74,6 +78,7 @@ const mainSoloSet: Style[] = [
   {
     isSolo: true,
     isImprovisation: true,
+    isChampionship: true,
     translations: {
       en: {
         categoryTitle: 'Improvisation mejance + tabla solo',

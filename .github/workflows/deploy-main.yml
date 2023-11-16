@@ -28,6 +28,7 @@ jobs:
           envkey_FTP_USER: ${{ secrets.FTP_USER_DEV }}
           envkey_FTP_PASSWORD: ${{ secrets.FTP_PASSWORD_DEV }}
           envkey_FTP_DIR: ${{ secrets.FTP_DIR_LIVE }}
+          envkey_ADMIN_PIN: ${{ secrets.ADMIN_PIN_LIVE }}
           # envkey_FTP_PHOTO_DIR: ${{ secrets.FTP_PHOTO_DIR }}
 
       - name: Build Docker image

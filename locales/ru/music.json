@@ -3,6 +3,8 @@
   "form": {
     "required": "Это поле обязательно",
     "name": "Имя участницы (латиницей)",
+    "email": "Email",
+    "emailError": "Введен некорректный email",
     "surname": "Фамилия участницы (латиницей)",
     "groupName": "Название группы / дуэта",
     "event": "Мероприятие",
@@ -42,5 +44,10 @@
     },
     "audio1": "Длительность вашей музыки: ",
     "audio2": " превышает лимит "
+  },
+  "email": {
+    "title": "New music uploaded by",
+    "subtitle": "Form details:",
+    "copyright": "Open Bellydance Championship of Poland"
   }
 }

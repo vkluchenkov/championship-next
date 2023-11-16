@@ -29,7 +29,7 @@
     },
     "workshops": {
       "title": "Workshops",
-      "checkboxLabel": "I want to take part in workshops",
+      "checkboxLabel": "I want to take workshops",
       "selectTitle": "Full Pass or one by one?",
       "fullPass": "Full Pass",
       "fullPassDescription1": "It’s possible to buy workshops as a package — Full Pass or single workshops of your choice. ",
@@ -66,6 +66,9 @@
       },
       "stylesTitle": "Styles",
       "free": "free",
+      "championTitle": "Championship styles",
+      "restTitle": "Rest styles",
+      "championText": "The contestants, who take part in 4 categories at Professionals level (Classic, Folklore, Tabla solo and Improvisation) automatically take part in the Championship battle. To be able to compete for the Champion's title it is mandatory to dance in all 4 of those categories mentioned. The criteria for judging improvisation and overall Champion choosing process are described on <0>Judging</0> page.",
       "groups": {
         "title": "Competition duos and groups",
         "checkboxLabel": "I want to register a duo or a group",
@@ -83,7 +86,7 @@
     },
     "worldShow": {
       "title": "Gala show",
-      "description": "You have a unique opportunity to perform on stage with our teachers and judges during the Gala Show, which will take place on 19.01.2024!",
+      "description": "You have a unique opportunity to perform on stage with our teachers and judges during the Gala Show, which will take place on 2.02.2024!",
       "oops": "In order to take part in the Gala Show all the participants are required to have at least one workshop, Full pass or participate in at least one competition category.",
       "solo": "I want to perform solo",
       "group": "I want to add duo or group",
@@ -106,15 +109,16 @@
   },
   "email": {
     "title": "We received your registration!",
-    "intro": "Thank you for your registration to Open Bellydance Chapmionsip of Poland! We will contact you with payment confirmation and additional info as soon as we process your payment.",
+    "intro": "Thank you for your registration to Open Bellydance Championship of Poland! We will contact you with payment confirmation and additional info as soon as we process your payment.",
     "orderTitle": "Here is what you sent us",
     "paymentNote1": "For your registration to be accepted you need to make a payment on",
     "paymentNote2": "this page.",
-    "copyright": "Open Bellydance Chapmionsip of Poland",
-    "userSubj": "Welcome to Open Bellydance Chapmionsip of Poland!",
+    "copyright": "Open Bellydance Championship of Poland",
+    "userSubj": "Welcome to Open Bellydance Championship of Poland!",
     "adminSubj": "New registration from",
     "adminTitle": "New registration from",
     "adminOrderTitle": "Registration detials",
+    "telegramTitle": "Telegram group",
     "telegram1": "Join our telegram group for participants to follow all the news and announcements by following ",
     "telegram2": "this link."
   }

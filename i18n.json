@@ -17,6 +17,7 @@
     "/price": ["price"],
     "/payment": ["payment"],
     "/payment/thank-you": ["payment"],
+    "/payment/confirm": ["paymentConfirm"],
     "/registration": ["registration"],
     "/registration/photo": ["photoForm"],
     "/gala": ["gala"],
