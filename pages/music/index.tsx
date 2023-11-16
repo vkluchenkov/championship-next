@@ -98,15 +98,16 @@ const Music: NextPage = () => {
         if (type === 'group') return cat.isGroupCategory;
       });
 
-      // Fill categories from filtered
+      // Fill categories from filtered, excluding improvisation
       filteredByType.forEach((cat, index) => {
         if ((level && cat.levels.includes(level)) || cat.levels.includes('openLevel')) {
           cat.categories.forEach((style) => {
-            styles.push({
-              ...style,
-              isDuo: !!cat.isDuoCategory,
-              isGroup: !!cat.isGroupCategory,
-            });
+            !style.isImprovisation &&
+              styles.push({
+                ...style,
+                isDuo: !!cat.isDuoCategory,
+                isGroup: !!cat.isGroupCategory,
+              });
           });
         }
         cat.levels.forEach((level) => {
