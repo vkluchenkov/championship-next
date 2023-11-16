@@ -81,6 +81,7 @@ const ContestRules: NextPage = () => {
 
       <h2 className={clsx(textStyles.h2, textStyles.accent)}>5. {t('prizesTitle')}</h2>
       <p className={textStyles.p}>{t('prizesMain')}</p>
+      <p className={textStyles.p}>{t('prizesMain2')}</p>
       <p className={textStyles.p}>{t('prizesSolo')}</p>
       <p className={textStyles.p}>{t('prizesGroups')}</p>
       <p className={textStyles.p}>{t('prizesAdditional')}</p>
