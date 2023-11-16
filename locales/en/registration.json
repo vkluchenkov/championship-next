@@ -66,6 +66,9 @@
       },
       "stylesTitle": "Styles",
       "free": "free",
+      "championTitle": "Championship styles",
+      "restTitle": "Rest styles",
+      "championText": "Contestants, who take part in 4 categories at Professionals level (Classic, Folklore, Tabla solo and Improvisation) are automatically taking part in the Championship battle. To be able to fight for the Champion title it is mandatory to dance in all 4 of those categories. The criteria for judging improvisation and overall Champion choosing process are described on <0>Judging</0> page.",
       "groups": {
         "title": "Competition duos and groups",
         "checkboxLabel": "I want to register a duo or a group",
