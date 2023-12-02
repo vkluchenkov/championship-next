@@ -1,0 +1,22 @@
+{
+  "pageTitle": "Подтверждение",
+  "form": {
+    "required": "Это поле обязательно",
+    "name": "Имя",
+    "email": "Email",
+    "password": "Пароль",
+    "lang": "Язык письма",
+    "en": "English",
+    "ru": "Русский",
+    "submit": "Отправить",
+    "error": "Упс. Поломалася. Зови Вову.",
+    "success": "Письмо отправлено!"
+  },
+  "email": {
+    "subj": "Państwa opłata oraz rejestracja są potwierdzone.",
+    "title": "Cześć ",
+    "subtitle": "Dobra wiadomość",
+    "text": "Państwa opłata oraz rejestracja są potwierdzone. Witamy na Otwartych Międzynarodowych Mistrzostwach Polski w Tańcu Brzucha. Do zobaczenia wkrótce w Warszawie!",
+    "copyright": "©Open Bellydance Championship of Poland"
+  }
+}

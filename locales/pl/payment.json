@@ -1,0 +1,27 @@
+{
+  "pageTitle": "Formularz opłaty",
+  "form": {
+    "required": "Pole obowiązkowe",
+    "name": "Imię uczestnika (takie jak podczas rejestracji)",
+    "email": "Email",
+    "qty": "Kwota",
+    "method": "Sposób płatności",
+    "paypal": "PayPal",
+    "stripe": "Karta kredytowa/debetowa",
+    "qtyMinError": "Minimalna kwota - 40 zł",
+    "stripeBtn": "Zapłać kartą",
+    "error": "Oops... Coś poszło nie tak. Proszę spróbuj później lub skontaktuj się z nami w celu rozwiązania problemu.",
+    "patternError": "Pole może zawierać tylko znaki łacińskie oraz cyfry."
+  },
+  "thanks": {
+    "pageTitle": "Dziękujemy!",
+    "subtitle": "Opłata wpłynęła i trwa księgowanie",
+    "telegramTitle": "Grupa w Telelgram",
+    "telegram": "Dołącz do naszej grupy dla uczestników w Telegram, aby być na bieżąco ze wszystkimi ogłoszeniami pod <0>tym linkiem.</0>"
+  },
+  "email": {
+    "title": "Новый платеж от",
+    "subtitle": "Детали платежа",
+    "copyright": "©Open Bellydance Championship of Poland"
+  }
+}

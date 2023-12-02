@@ -21,7 +21,7 @@ export const menu: MenuItem[] = [
         title: 'Регистрация',
       },
       pl: {
-        title: 'Регистрация',
+        title: 'Rejestracja',
       },
     },
   },
@@ -35,7 +35,7 @@ export const menu: MenuItem[] = [
         title: 'Цены',
       },
       pl: {
-        title: 'Цены',
+        title: 'Ceny',
       },
     },
   },
@@ -49,7 +49,7 @@ export const menu: MenuItem[] = [
         title: 'Конкурс',
       },
       pl: {
-        title: 'Конкурс',
+        title: 'Konkurs',
       },
     },
     subItems: [
@@ -63,7 +63,7 @@ export const menu: MenuItem[] = [
             title: 'Положение конкурса',
           },
           pl: {
-            title: 'Положение конкурса',
+            title: 'Zasady',
           },
         },
       },
@@ -77,7 +77,7 @@ export const menu: MenuItem[] = [
             title: 'Судейство',
           },
           pl: {
-            title: 'Судейство',
+            title: 'Ocenianie',
           },
         },
       },
@@ -93,7 +93,7 @@ export const menu: MenuItem[] = [
         title: 'Гала Шоу',
       },
       pl: {
-        title: 'Гала Шоу',
+        title: 'Gala',
       },
     },
   },
@@ -107,7 +107,7 @@ export const menu: MenuItem[] = [
         title: 'Информация',
       },
       pl: {
-        title: 'Информация',
+        title: 'Informacje',
       },
     },
     subItems: [
@@ -121,7 +121,7 @@ export const menu: MenuItem[] = [
             title: 'Расписание',
           },
           pl: {
-            title: 'Schedule',
+            title: 'Harmonogram',
           },
         },
       },
@@ -135,7 +135,7 @@ export const menu: MenuItem[] = [
             title: 'Фото и видео съемка',
           },
           pl: {
-            title: 'Фото и видео съемка',
+            title: 'Zdjęcia i filmy',
           },
         },
       },
@@ -149,7 +149,7 @@ export const menu: MenuItem[] = [
             title: 'Базар',
           },
           pl: {
-            title: 'Базар',
+            title: 'Bazaar',
           },
         },
       },
@@ -177,7 +177,7 @@ export const menu: MenuItem[] = [
             title: 'Контакты',
           },
           pl: {
-            title: 'Контакты',
+            title: 'Kontakt',
           },
         },
       },

@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Prześlij zdjęcie na plakat ",
+  "form": {
+    "required": "Pole obowiązkowe",
+    "name": "Imię uczestnika na plakacie",
+    "file": "Plik*",
+    "submit": "Prześlij ",
+    "patternError": "To pole może zawierać tylko znaki łacińskie oraz cyfry ",
+    "error": "Oops... Coś poszło nie tak. Proszę spróbuj później lub skontaktuj się z nami w celu rozwiązania problemu.",
+    "success": "Gratulacje! Plik został przesłany.",
+    "sizeError": "Wybrany plik przewyższa limit 10Mb"
+  }
+}

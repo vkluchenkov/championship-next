@@ -48,7 +48,7 @@ export const schedule: Day[] = [
         dayTitle: '2.02 Пятница',
       },
       pl: {
-        dayTitle: '2.02 Пятница',
+        dayTitle: '2.02 Piątek',
       },
     },
     dayEvents: [
@@ -66,8 +66,8 @@ export const schedule: Day[] = [
             description: 'с открытой сценой',
           },
           pl: {
-            title: 'Гала шоу',
-            description: 'с открытой сценой',
+            title: 'Gala',
+            description: 'z otwartą sceną',
           },
         },
       },
@@ -82,7 +82,7 @@ export const schedule: Day[] = [
         dayTitle: '3.02 Суббота',
       },
       pl: {
-        dayTitle: '3.02 Суббота',
+        dayTitle: '3.02 Sobota',
       },
     },
     dayEvents: [
@@ -98,7 +98,7 @@ export const schedule: Day[] = [
             title: 'Конкурс',
           },
           pl: {
-            title: 'Конкурс',
+            title: 'Konkurs',
           },
         },
       },
@@ -113,7 +113,7 @@ export const schedule: Day[] = [
         dayTitle: '4.02 Воскресенье',
       },
       pl: {
-        dayTitle: '4.02 Воскресенье',
+        dayTitle: '4.02 Niedziela',
       },
     },
     dayEvents: [
@@ -134,7 +134,7 @@ export const schedule: Day[] = [
           },
           pl: {
             title: 'Margarita Kamjaka',
-            description: 'Хореография',
+            description: 'Baladi choreografia',
           },
         },
       },
@@ -155,7 +155,7 @@ export const schedule: Day[] = [
           },
           pl: {
             title: 'Pablo Acosta',
-            description: 'Хореография',
+            description: 'Mejance choreografia',
           },
         },
       },
@@ -176,7 +176,7 @@ export const schedule: Day[] = [
           },
           pl: {
             title: 'Suraiya',
-            description: 'Хореография',
+            description: 'Tarab choreografia',
           },
         },
       },
@@ -197,7 +197,7 @@ export const schedule: Day[] = [
           },
           pl: {
             title: 'Polina Ostrovska',
-            description: 'Хореография',
+            description: 'Drum solo choreografia',
           },
         },
       },

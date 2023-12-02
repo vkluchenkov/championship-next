@@ -11,21 +11,21 @@ export const LangSwitcher: React.FC = () => {
         className={clsx(styles.lang, lang === 'en' && styles.langActive)}
         onClick={async () => await setLanguage('en')}
       >
-        ENGLISH
+        EN
       </button>
 
-      {/* <button
+      <button
         className={clsx(styles.lang, lang === 'pl' && styles.langActive)}
         onClick={async () => await setLanguage('pl')}
       >
         PL
-      </button> */}
+      </button>
 
       <button
         className={clsx(styles.lang, lang === 'ru' && styles.langActive)}
         onClick={async () => await setLanguage('ru')}
       >
-        РУССКИЙ
+        РУ
       </button>
     </div>
   );
