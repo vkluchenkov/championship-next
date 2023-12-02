@@ -53,6 +53,7 @@ export const WorkshopsList: React.FC<WorkshopsSingleProps> = ({ currentPricePeri
       if (ws.day === day)
         return (
           <FormControlLabel
+            style={{ width: '100%' }}
             key={ws.id}
             control={
               <InputCheckbox checked={ws.selected} onChange={handleChange.bind(null, ws.id)} />
