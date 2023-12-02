@@ -17,11 +17,11 @@ const Contacts: NextPage = () => {
       <h2 className={clsx(textStyles.h2, textStyles.accent)}>{t('contactsTitle')}</h2>
       <section className={styles.section}>
         <div className={styles.contacts__social}>
-          {/* <Link
+          <Link
             href={facebookUrl}
             target='_blank'
             className={clsx(styles.social__button, styles.social__button_fb)}
-          /> */}
+          />
           <Link
             href={instagramUrl}
             target='_blank'
