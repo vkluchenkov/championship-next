@@ -41,7 +41,7 @@ const mainSoloSet: Style[] = [
         categoryTitle: 'Классика',
       },
       pl: {
-        categoryTitle: 'Классика',
+        categoryTitle: 'Klasyka',
       },
     },
   },
@@ -56,7 +56,7 @@ const mainSoloSet: Style[] = [
         categoryTitle: 'Фольклор',
       },
       pl: {
-        categoryTitle: 'Фольклор',
+        categoryTitle: 'Folklor',
       },
     },
   },
@@ -71,7 +71,7 @@ const mainSoloSet: Style[] = [
         categoryTitle: 'Табла соло CD',
       },
       pl: {
-        categoryTitle: 'Табла соло CD',
+        categoryTitle: 'Tabla solo CD',
       },
     },
   },
@@ -87,7 +87,7 @@ const mainSoloSet: Style[] = [
         categoryTitle: 'Импровизация mejance + табла соло',
       },
       pl: {
-        categoryTitle: 'Импровизация mejance + табла соло',
+        categoryTitle: 'Improwizacja mejance + tabla solo',
       },
     },
   },
@@ -101,7 +101,7 @@ const mainSoloSet: Style[] = [
         categoryTitle: 'Шоу/фьюжн',
       },
       pl: {
-        categoryTitle: 'Шоу/фьюжн',
+        categoryTitle: 'Show/fusia',
       },
     },
   },
@@ -115,7 +115,7 @@ const mainSoloSet: Style[] = [
         categoryTitle: 'Эстрадная песня',
       },
       pl: {
-        categoryTitle: 'Эстрадная песня',
+        categoryTitle: 'Pop song',
       },
     },
   },
@@ -129,7 +129,7 @@ const mainSoloSet: Style[] = [
         categoryTitle: 'Болливуд',
       },
       pl: {
-        categoryTitle: 'Болливуд',
+        categoryTitle: 'Bollywood',
       },
     },
   },
@@ -143,7 +143,7 @@ const mainSoloSet: Style[] = [
         categoryTitle: 'Трайбл',
       },
       pl: {
-        categoryTitle: 'Трайбл',
+        categoryTitle: 'Tribal',
       },
     },
   },
@@ -160,7 +160,7 @@ const babySoloSet: Style[] = [
         categoryTitle: 'Классика',
       },
       pl: {
-        categoryTitle: 'Классика',
+        categoryTitle: 'Klasyka',
       },
     },
   },
@@ -174,7 +174,7 @@ const babySoloSet: Style[] = [
         categoryTitle: 'Фольклор',
       },
       pl: {
-        categoryTitle: 'Фольклор',
+        categoryTitle: 'Folklor',
       },
     },
   },
@@ -188,7 +188,7 @@ const babySoloSet: Style[] = [
         categoryTitle: 'Табла соло CD',
       },
       pl: {
-        categoryTitle: 'Табла соло CD',
+        categoryTitle: 'Tabla solo CD',
       },
     },
   },
@@ -202,7 +202,7 @@ const babySoloSet: Style[] = [
         categoryTitle: 'Шоу/фьюжн',
       },
       pl: {
-        categoryTitle: 'Шоу/фьюжн',
+        categoryTitle: 'Show/fusia',
       },
     },
   },
@@ -216,7 +216,7 @@ const babySoloSet: Style[] = [
         categoryTitle: 'Болливуд',
       },
       pl: {
-        categoryTitle: 'Болливуд',
+        categoryTitle: 'Bollywood',
       },
     },
   },
@@ -226,13 +226,13 @@ const mainGroupSet: Style[] = [
   {
     translations: {
       en: {
-        categoryTitle: 'Oriental',
+        categoryTitle: 'Classic',
       },
       ru: {
-        categoryTitle: 'Ориентал',
+        categoryTitle: 'Классика',
       },
       pl: {
-        categoryTitle: 'Ориентал',
+        categoryTitle: 'Klasyka',
       },
     },
   },
@@ -245,7 +245,7 @@ const mainGroupSet: Style[] = [
         categoryTitle: 'Фольклор',
       },
       pl: {
-        categoryTitle: 'Фольклор',
+        categoryTitle: 'Folklor',
       },
     },
   },
@@ -258,7 +258,7 @@ const mainGroupSet: Style[] = [
         categoryTitle: 'Табла соло CD',
       },
       pl: {
-        categoryTitle: 'Табла соло CD',
+        categoryTitle: 'Tabla solo CD',
       },
     },
   },
@@ -271,7 +271,7 @@ const mainGroupSet: Style[] = [
         categoryTitle: 'Шоу/фьюжн',
       },
       pl: {
-        categoryTitle: 'Шоу/фьюжн',
+        categoryTitle: 'Show/fusia',
       },
     },
   },
@@ -284,7 +284,7 @@ const mainGroupSet: Style[] = [
         categoryTitle: 'Болливуд',
       },
       pl: {
-        categoryTitle: 'Болливуд',
+        categoryTitle: 'Bollywood',
       },
     },
   },
@@ -297,7 +297,7 @@ const mainGroupSet: Style[] = [
         categoryTitle: 'Трайбл',
       },
       pl: {
-        categoryTitle: 'Трайбл',
+        categoryTitle: 'Tribal',
       },
     },
   },
@@ -306,13 +306,13 @@ const babyGroupSet: Style[] = [
   {
     translations: {
       en: {
-        categoryTitle: 'Oriental',
+        categoryTitle: 'Classic',
       },
       ru: {
-        categoryTitle: 'Ориентал',
+        categoryTitle: 'Классика',
       },
       pl: {
-        categoryTitle: 'Ориентал',
+        categoryTitle: 'Klasyka',
       },
     },
   },
@@ -325,7 +325,7 @@ const babyGroupSet: Style[] = [
         categoryTitle: 'Фольклор',
       },
       pl: {
-        categoryTitle: 'Фольклор',
+        categoryTitle: 'Folklor',
       },
     },
   },
@@ -338,7 +338,7 @@ const babyGroupSet: Style[] = [
         categoryTitle: 'Табла соло CD',
       },
       pl: {
-        categoryTitle: 'Табла соло CD',
+        categoryTitle: 'Tabla solo CD',
       },
     },
   },
@@ -351,7 +351,7 @@ const babyGroupSet: Style[] = [
         categoryTitle: 'Шоу/фьюжн',
       },
       pl: {
-        categoryTitle: 'Шоу/фьюжн',
+        categoryTitle: 'Show/fusia',
       },
     },
   },
@@ -364,7 +364,7 @@ const babyGroupSet: Style[] = [
         categoryTitle: 'Болливуд',
       },
       pl: {
-        categoryTitle: 'Болливуд',
+        categoryTitle: 'Bollywood',
       },
     },
   },
@@ -380,7 +380,7 @@ const allStyles: Style[] = [
         categoryTitle: 'Все стили',
       },
       pl: {
-        categoryTitle: 'Все стили',
+        categoryTitle: 'All styles',
       },
     },
   },
@@ -399,7 +399,7 @@ export const contestCategories: ContestCategory[] = [
         title: 'Беби соло',
       },
       pl: {
-        title: 'Беби соло',
+        title: 'Baby solo',
       },
     },
     categories: babySoloSet,
@@ -417,7 +417,7 @@ export const contestCategories: ContestCategory[] = [
         title: 'Беби группы',
       },
       pl: {
-        title: 'Беби группы',
+        title: 'Baby grupy',
       },
     },
     categories: babyGroupSet,
@@ -435,7 +435,7 @@ export const contestCategories: ContestCategory[] = [
         title: 'Беби дуэты',
       },
       pl: {
-        title: 'Беби дуэты',
+        title: 'Baby duety',
       },
     },
     categories: babyGroupSet,
@@ -453,7 +453,7 @@ export const contestCategories: ContestCategory[] = [
         title: 'Дети соло',
       },
       pl: {
-        title: 'Дети соло',
+        title: 'Kids solo',
       },
     },
     categories: allStyles,
@@ -470,7 +470,7 @@ export const contestCategories: ContestCategory[] = [
         title: 'Дети соло',
       },
       pl: {
-        title: 'Дети соло',
+        title: 'Kids solo',
       },
     },
     categories: mainSoloSet,
@@ -480,7 +480,7 @@ export const contestCategories: ContestCategory[] = [
     age: '7-11',
     ageGroup: 'kids',
     isDuoCategory: true,
-    levels: ['semi-pro', 'professionals'],
+    levels: ['beginners', 'semi-pro'],
     translations: {
       en: {
         title: 'Kids duos',
@@ -489,7 +489,7 @@ export const contestCategories: ContestCategory[] = [
         title: 'Дети дуэты',
       },
       pl: {
-        title: 'Дети дуэты',
+        title: 'Kids duety',
       },
     },
     categories: mainGroupSet,
@@ -499,7 +499,7 @@ export const contestCategories: ContestCategory[] = [
     age: '7-11',
     ageGroup: 'kids',
     isGroupCategory: true,
-    levels: ['semi-pro', 'professionals'],
+    levels: ['beginners', 'semi-pro'],
     translations: {
       en: {
         title: 'Kids groups',
@@ -508,7 +508,7 @@ export const contestCategories: ContestCategory[] = [
         title: 'Дети группы',
       },
       pl: {
-        title: 'Дети группы',
+        title: 'Kids grupy',
       },
     },
     categories: mainGroupSet,
@@ -526,7 +526,7 @@ export const contestCategories: ContestCategory[] = [
         title: 'Юниоры',
       },
       pl: {
-        title: 'Юниоры',
+        title: 'Juniors',
       },
     },
     categories: allStyles,
@@ -544,7 +544,7 @@ export const contestCategories: ContestCategory[] = [
         title: 'Юниоры',
       },
       pl: {
-        title: 'Юниоры',
+        title: 'Juniors',
       },
     },
     categories: mainSoloSet,
@@ -562,7 +562,7 @@ export const contestCategories: ContestCategory[] = [
         title: 'Юниоры дуэты',
       },
       pl: {
-        title: 'Юниоры дуэты',
+        title: 'Juniors duety',
       },
     },
     categories: mainGroupSet,
@@ -580,7 +580,7 @@ export const contestCategories: ContestCategory[] = [
         title: 'Юниоры группы',
       },
       pl: {
-        title: 'Юниоры группы',
+        title: 'Juniors grupy',
       },
     },
     categories: mainGroupSet,
@@ -597,7 +597,7 @@ export const contestCategories: ContestCategory[] = [
         title: 'Взрослые',
       },
       pl: {
-        title: 'Взрослые',
+        title: 'Adults',
       },
     },
     categories: allStyles,
@@ -614,7 +614,7 @@ export const contestCategories: ContestCategory[] = [
         title: 'Взрослые',
       },
       pl: {
-        title: 'Взрослые',
+        title: 'Adults',
       },
     },
     categories: mainSoloSet,
@@ -632,7 +632,7 @@ export const contestCategories: ContestCategory[] = [
         title: 'Взрослые дуэты',
       },
       pl: {
-        title: 'Взрослые дуэты',
+        title: 'Adults duety',
       },
     },
     categories: mainGroupSet,
@@ -650,7 +650,7 @@ export const contestCategories: ContestCategory[] = [
         title: 'Взрослые группы',
       },
       pl: {
-        title: 'Взрослые группы',
+        title: 'Adults grupy',
       },
     },
     categories: mainGroupSet,
@@ -669,7 +669,7 @@ export const contestCategories: ContestCategory[] = [
         title: 'Сеньоры',
       },
       pl: {
-        title: 'Сеньоры',
+        title: 'Seniors',
       },
     },
     categories: mainSoloSet,
@@ -687,7 +687,7 @@ export const contestCategories: ContestCategory[] = [
         title: 'Сеньоры дуэты',
       },
       pl: {
-        title: 'Сеньоры дуэты',
+        title: 'Seniors duety',
       },
     },
     categories: mainGroupSet,
@@ -705,7 +705,7 @@ export const contestCategories: ContestCategory[] = [
         title: 'Сеньоры группы',
       },
       pl: {
-        title: 'Сеньоры группы',
+        title: 'Seniors grupy',
       },
     },
     categories: mainGroupSet,

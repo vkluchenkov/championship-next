@@ -101,6 +101,7 @@ const PaymentConfirm: NextPage = () => {
               >
                 <MenuItem value='en'>{t('form.en')}</MenuItem>
                 <MenuItem value='ru'>{t('form.ru')}</MenuItem>
+                <MenuItem value='pl'>{t('form.pl')}</MenuItem>
               </FormInputSelect>
 
               <FormInputField

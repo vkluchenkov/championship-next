@@ -1,0 +1,23 @@
+{
+  "pageTitle": "Dziękujemy",
+  "intro": "za rejestrację w Otwartych Mistrzostwach Polski w Tańcu Brzucha. Po zakończeniu rejestracji wysłana zostanie do Ciebie wiadomość e-mail zawierająca wszystkie szczegóły rejestracji.",
+  "paymentTitle": "Płatności",
+  "paymentDescription": "Aby rejestracja została zaakceptowana należy dokonać płatności w jeden z poniższych sposobów:",
+  "online": "Możesz zapłacić za pomocą PayPal lub kart kredytowych/debetowych",
+  "online2": "Kliknij tutaj, aby dokonać płatności",
+  "bank": "Przelew bankowy w walucie EURO możesz wysłać na poniższy rachunek (kurs 1EUR = 4PLN):",
+  "beneficiary": "Beneficjent: <0>Alla Kluchenkova</0>",
+  "bankName": "Bank: <0>Santander Bank Polska S.A.</0>",
+  "bic": "BIC / Swift: <0>WBKPPLPP</0>",
+  "iban": "IBAN: <0>PL72 1090 1030 0000 0001 3166 3893</0>",
+  "bank2": "Przelew bankowy w PLN (tylko z Polski) możesz wysłać na konto:",
+  "accountPln": "Konto: <0>95 1090 1030 0000 0001 3166 3867</0>",
+  "revolutTitle": "Revolut",
+  "revolutText": "Alternatywnie do płatności kartą możesz wysłać przelew na nasze konto Revolut za pomocą <0>tego linku do płatności</0>, używając dowolnej karty lub bezpośrednio do użytkownika @aliahbellydance z aplikacji Revolut.",
+  "musicTitle": "Przesyłanie muzyki",
+  "musicDescription": "Możesz przesłać muzykę do swoich występów, wypełniając <0>ten formularz</0>.",
+  "photoTitle": "Indywidualny plakat",
+  "photoDescription": "Jeśli chcesz otrzymać swój indywidualny plakat, prześlij nam swoje zdjęcie, wypełniając <0>ten formularz</0>.",
+  "telegramTitle": "Grupa w Telegram",
+  "telegram": "Dołącz do naszej grupy dla uczestników w Telegram, żeby być na bieżąco ze wszystkimi ogłoszeniami pod <0>tym linkiem.</0>"
+}

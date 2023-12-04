@@ -1,0 +1,55 @@
+{
+  "pageTitle": "Ceny i warunki",
+  "workshops": {
+    "title": "Warsztaty",
+    "singleTitle": "Pojedyncze warsztaty",
+    "description": "Istnieje możliwość wykupienia warsztatów w pakiecie – FULL PASS, który daje możliwość wejścia na wszystkie warsztaty lub pojedyncze warsztaty według własnego wyboru.",
+    "fullPass": "Full Pass",
+    "teachers": {
+      "pablo": "Pablo Acosta",
+      "polina": "Polina Ostrovska",
+      "margarita": "Margarita Kamjaka",
+      "suraiya": "Suraiya"
+    }
+  },
+  "competition": {
+    "title": "Cena udziału w konkursie",
+    "categoryTitle": "Kategoria",
+    "kids": "Kids i baby solo",
+    "juniors+": "Juniors i Adults solo",
+    "allLevels": "Wszystkie poziomy",
+    "notPro": "Debiut, początkujący, semi-pro",
+    "professionals": "Profesjonaliści",
+    "groups": "Grupy i duety",
+    "perPerson": "za osobę",
+    "price": "Cena"
+  },
+  "show": {
+    "title": "Gala",
+    "soloNormal": "Solo",
+    "groups": "Grupy i duety",
+    "perPerson": "za osobę"
+  },
+  "payment": {
+    "title": "Warunki i opcje płatności",
+    "conditionsTitle": "Warunki",
+    "conditionsText": "Wszelkie wpłaty za udział w Mistrzostwach nie podlegają zwrotowi w żadnym przypadku, za wyjątkiem odwołania imprezy. W przypadku braku możliwości przybycia na Mistrzostwa istnieje możliwość przekazania pakietu innej osobie po obowiązkowym powiadomieniu organizatorów. W takim przypadku istnieje możliwość zmiany kategorii konkursowych na inne w ramach zakupionego pakietu. Dodawanie nowych kategorii do tej rejestracji jest możliwe tylko w przypadku wolnych miejsc.",
+    "optionsTitle": "Opcje płatności",
+    "optionsDescription": "Szczegóły dotyczące wybranych opcji płatności zostaną podane po rejestracji.",
+    "optionsCards": "Karty kredytowe/debetowe",
+    "optionsPayPal": "PayPal",
+    "optionsBank": "Przelew bankowy (SWIFT) do polskiego banku",
+    "ImmediateArrival": "natychmiastowe księgowanie",
+    "bankeArrival": "księgowanie w ciągu 3-10 dni roboczych",
+    "termsTitle": "Zasady płatności",
+    "term1": "Płatność powinna zostać zrealizowana w ciągu 5 dni roboczych. W przeciwnym razie Twoja rejestracja zostanie anulowana.",
+    "term2": "Dzień roboczy – to dzień, w którym w Twoim kraju działają banki i inne instytucje finansowe.",
+    "term3": "Zalecamy zapisanie i przesłanie nam potwierdzenia płatności. Może to być paragon bankowy, wyciąg z banku internetowego lub zrzut ekranu\u00A0itp."
+  },
+  "privacyPolicy": {
+    "title": "Polityka prywatności i dane osobowe",
+    "p1": "Twoje dane osobowe podane podczas rejestracji wykorzystujemy WYŁĄCZNIE w celach związanych z Twoim udziałem w Mistrzostwach. Nie udostępniamy tych danych osobom trzecim w żadnym celu.",
+    "p2": "Dokonując rejestracji na Mistrzostwa, potwierdzasz i wyrażasz zgodę na filmowanie i fotografowanie dla celów marketingowych wydarzenia oraz w celu umożliwienia każdemu uczestnikowi zakupu zdjęć i filmów z jego występów.",
+    "p3": "Dokonując rejestracji na Mistrzostwa wyrażasz także zgodę na otrzymywanie e-maili informacyjnych od naszego zespołu. Nie będziemy wysyłać do Ciebie żadnych listów marketingowych ani e-maili niezwiązanych z Mistrzostwami. Możesz zrezygnować z subskrypcji w dowolnym momencie. Pamiętaj, że w takim przypadku możesz nie otrzymać ważnych informacji, takich jak zmiany w harmonogramie, informacje o zawodach i inne."
+  }
+}

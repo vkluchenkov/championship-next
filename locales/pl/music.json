@@ -1,0 +1,53 @@
+{
+  "pageTitle": "Prześlij utwór",
+  "form": {
+    "required": "Pole obowiązkowe",
+    "name": "Imię uczestnika",
+    "email": "Email",
+    "emailError": "Nieprawidłowy adres e-mail ",
+    "surname": "Nazwisko uczestnika",
+    "groupName": "Nazwa zespołu/duetu",
+    "event": "Wydarzenie",
+    "file": "Plik dźwiękowy",
+    "contest": "Konkurs",
+    "worldShow": "Gala",
+    "submit": "Prześlij",
+    "patternError": "Pole może zawierać tylko łacińskie znaki oraz cyfry",
+    "tooLongError": "Zbyt krótkie",
+    "tooShortError": "Zbyt długie",
+    "error": "Oops... Coś poszło nie tak. Proszę spróbuj później lub skontaktuj się z nami w celu rozwiązania problemu.",
+    "success": "Gratulacje! Plik został przesłany.",
+    "ageGroups": {
+      "title": "Grupa wiekowa w konkursie ",
+      "baby": "Baby",
+      "kids": "Kids",
+      "juniors": "Juniors",
+      "adults": "Adults",
+      "seniors": "Seniors"
+    },
+    "levels": {
+      "title": "Poziom",
+      "debut": "Debiut",
+      "beginners": "Początkujący",
+      "semi-pro": "Semi-pro",
+      "professionals": "Profesjonaliści",
+      "openLevel": "Poziom open"
+    },
+    "stylesTitle": "Styl",
+    "duo": "Grupy",
+    "group": "Duety",
+    "solo": "Solo",
+    "type": {
+      "title": "Rodzaj występu",
+      "group": "Grupa",
+      "duo": "Duet"
+    },
+    "audio1": "Czas trwania utworu: ",
+    "audio2": " przewyższa limit "
+  },
+  "email": {
+    "title": "New music uploaded by",
+    "subtitle": "Form details:",
+    "copyright": "Open Bellydance Championship of Poland"
+  }
+}
