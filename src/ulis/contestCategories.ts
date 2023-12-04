@@ -480,7 +480,7 @@ export const contestCategories: ContestCategory[] = [
     age: '7-11',
     ageGroup: 'kids',
     isDuoCategory: true,
-    levels: ['semi-pro', 'professionals'],
+    levels: ['beginners', 'semi-pro'],
     translations: {
       en: {
         title: 'Kids duos',
@@ -499,7 +499,7 @@ export const contestCategories: ContestCategory[] = [
     age: '7-11',
     ageGroup: 'kids',
     isGroupCategory: true,
-    levels: ['semi-pro', 'professionals'],
+    levels: ['beginners', 'semi-pro'],
     translations: {
       en: {
         title: 'Kids groups',
