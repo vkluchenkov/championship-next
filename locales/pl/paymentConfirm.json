@@ -14,10 +14,10 @@
     "success": "Письмо отправлено!"
   },
   "email": {
-    "subj": "Państwa opłata oraz rejestracja są potwierdzone.",
+    "subj": "Twoja opłata oraz rejestracja są potwierdzone.",
     "title": "Cześć ",
     "subtitle": "Dobra wiadomość",
-    "text": "Państwa opłata oraz rejestracja są potwierdzone. Witamy na Otwartych Międzynarodowych Mistrzostwach Polski w Tańcu Brzucha. Do zobaczenia wkrótce w Warszawie!",
+    "text": "Twoja opłata oraz rejestracja są potwierdzone. Witamy na Otwartych Międzynarodowych Mistrzostwach Polski w Tańcu Brzucha. Do zobaczenia wkrótce w Warszawie!",
     "copyright": "©Open Bellydance Championship of Poland"
   }
 }
