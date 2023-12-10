@@ -4,13 +4,14 @@ import { useFieldArray, useFormContext } from 'react-hook-form';
 import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/Registration.module.css';
 import { useCallback, useEffect } from 'react';
-import { Button, Collapse } from '@mui/material';
+import { Button, Collapse, MenuItem } from '@mui/material';
 import { ContestGroupStepProps, FormFields, GroupContest } from './types';
 import { ContestGroup } from './ContestGroup';
 import { contestGroupPrice } from '@/src/ulis/price';
 import { maxGroups } from '@/src/ulis/constants';
 import { contestCategories } from '@/src/ulis/contestCategories';
-import { FormInputCheckbox } from '@/src/ui-kit/input';
+import { FormInputCheckbox, FormInputSelect } from '@/src/ui-kit/input';
+import { getContestAgeGroupsList } from './helpers';
 
 export const ContestGroups: React.FC<ContestGroupStepProps> = ({
   setStepTotal,
@@ -20,7 +21,14 @@ export const ContestGroups: React.FC<ContestGroupStepProps> = ({
   const { t } = useTranslation('registration');
 
   const methods = useFormContext<FormFields>();
-  const { control, watch, trigger, setValue, clearErrors } = methods;
+  const {
+    control,
+    watch,
+    trigger,
+    setValue,
+    clearErrors,
+    formState: { errors },
+  } = methods;
 
   const { fields } = useFieldArray({
     control,
@@ -29,8 +37,10 @@ export const ContestGroups: React.FC<ContestGroupStepProps> = ({
   });
 
   const groupContest = watch('groupContest');
+  const ageGroup = watch('ageGroup');
   const contestAgeGroup = watch('contestAgeGroup');
   const isGroupContest = watch('isGroupContest');
+  const isSoloContest = watch('isSoloContest');
 
   const defaultGroup: GroupContest = useMemo(() => {
     return {
@@ -111,6 +121,8 @@ export const ContestGroups: React.FC<ContestGroupStepProps> = ({
     );
   });
 
+  const ageGroupList = getContestAgeGroupsList(ageGroup);
+
   return (
     <div className={styles.form}>
       <h2 className={textStyles.h2}>{t('form.contest.groups.title')}</h2>
@@ -123,7 +135,31 @@ export const ContestGroups: React.FC<ContestGroupStepProps> = ({
         />
 
         <Collapse in={isGroupContest} unmountOnExit>
-          <div className={styles.form}>{groups}</div>
+          <div className={styles.form}>
+            <Collapse in={!isSoloContest} unmountOnExit>
+              <div className={styles.form}>
+                {ageGroupList.length > 1 && (
+                  <FormInputSelect
+                    name='contestAgeGroup'
+                    control={control}
+                    label={t('form.contest.ageGroups.title')}
+                    rules={{
+                      required: t('form.common.required'),
+                    }}
+                    error={!!errors?.contestAgeGroup}
+                    helperText={errors?.contestAgeGroup?.message as string | undefined}
+                  >
+                    {ageGroupList.map((group) => (
+                      <MenuItem key={group} value={group}>
+                        {t(`form.contest.ageGroups.${group}`)}
+                      </MenuItem>
+                    ))}
+                  </FormInputSelect>
+                )}
+              </div>
+            </Collapse>
+            {groups}
+          </div>
 
           {groupContest.length && groupContest.length < maxGroups && (
             <Button
