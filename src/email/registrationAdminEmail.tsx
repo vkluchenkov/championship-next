@@ -220,6 +220,14 @@ export const registrationAdminEmail = (props: registrationUserEmailProps) => {
 
           <MjmlText mj-class='text'>
             <ul style={{ listStyle: 'none', padding: 0, lineHeight: 1.5 }}>
+              {!form.isSoloContest && (
+                <li>
+                  {t('form.contest.ageGroups.title')}:{' '}
+                  <span style={{ color: accentColor }}>
+                    {t(`form.contest.ageGroups.${form.contestAgeGroup}`)}
+                  </span>
+                </li>
+              )}
               {form.groupContest.map((group, index) => {
                 // Category style translation
                 const isDuoType = group.type === 'duo';
