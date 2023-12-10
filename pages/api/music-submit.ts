@@ -122,12 +122,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const adminEmailContent = musicAdminEmail({ form: formData.fields, t: t }).html;
       const adminEmailErrors = musicAdminEmail({ form: formData.fields, t: t }).errors;
 
+      const getSubj = () => {
+        if (name && surname) return t('email.title') + ' ' + name + ' ' + surname;
+        if (groupName) return t('email.title') + ' ' + groupName;
+        return t('email.title');
+      };
+
       const adminMailPayload = {
         senderEmail: senderEmail,
         senderName: senderName,
         recipientEmail: senderEmail,
         recipientName: senderName,
-        recipientSubj: t('email.title') + ' ' + name + ' ' + surname,
+        recipientSubj: getSubj(),
         mailContent: adminEmailContent,
       };
 
