@@ -97,11 +97,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           ageGroup! +
           '/' +
           (level != undefined ? level + '/' : '') +
+          (type === 'duo' ? 'Duos/' : '') +
+          (type === 'group' ? 'Groups/' : '') +
           (isCategory ? safeCategory + '/' : '')
         );
       }
       return '';
     };
+
+    // console.log(ftpUploadDir());
 
     try {
       await ftpClient.access({
