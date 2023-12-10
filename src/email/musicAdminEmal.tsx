@@ -18,12 +18,13 @@ import { FormFields, MusicFormFields } from '../types/music.types';
 interface musicAdminEmailProps {
   form: FormFields;
   t: Translate;
+  subj: string;
 }
 
 const url = process.env.DEPLOY_URL || defaultUrl;
 
 export const musicAdminEmail = (props: musicAdminEmailProps) => {
-  const { form, t } = props;
+  const { form, t, subj } = props;
 
   const accentColor = '#f9b12a!important';
 
@@ -185,9 +186,7 @@ export const musicAdminEmail = (props: musicAdminEmailProps) => {
         <MjmlSection background-color='#1f0b15' padding='20px 30px 30px' border-radius='15px'>
           <MjmlColumn>
             {/* Title */}
-            <MjmlText mj-class='h1 accent'>
-              {t('email.title')} {form.name + ' ' + form.surname}
-            </MjmlText>
+            <MjmlText mj-class='h1 accent'>{subj}</MjmlText>
 
             {/* Order title */}
             <MjmlText mj-class='h2'>{t('email.subtitle')}</MjmlText>
