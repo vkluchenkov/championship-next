@@ -199,6 +199,14 @@ export const Summary: React.FC<SummaryStepProps> = ({
           </h3>
 
           <ul className={clsx(textStyles.list, textStyles.list_summary)}>
+            {!form.isSoloContest && (
+              <li>
+                {t('form.contest.ageGroups.title')}:{' '}
+                <span className={textStyles.accent}>
+                  {t(`form.contest.ageGroups.${form.contestAgeGroup}`)}
+                </span>
+              </li>
+            )}
             {form.groupContest.map((group, index) => {
               // Category style translation
               const isDuoType = group.type === 'duo';
