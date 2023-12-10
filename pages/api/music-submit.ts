@@ -119,14 +119,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       await ftpClient.uploadFrom(tempPath, fileName());
 
       // Emails
-      const adminEmailContent = musicAdminEmail({ form: formData.fields, t: t }).html;
-      const adminEmailErrors = musicAdminEmail({ form: formData.fields, t: t }).errors;
-
       const getSubj = () => {
         if (name && surname) return t('email.title') + ' ' + name + ' ' + surname;
         if (groupName) return t('email.title') + ' ' + groupName;
         return t('email.title');
       };
+
+      const adminEmailContent = musicAdminEmail({
+        form: formData.fields,
+        t: t,
+        subj: getSubj(),
+      }).html;
+      const adminEmailErrors = musicAdminEmail({
+        form: formData.fields,
+        t: t,
+        subj: getSubj(),
+      }).errors;
 
       const adminMailPayload = {
         senderEmail: senderEmail,
