@@ -88,7 +88,7 @@ export const schedule: Day[] = [
     dayEvents: [
       {
         id: 2,
-        start: '9:00',
+        start: '11:00',
         type: 'contest',
         translations: {
           en: {
