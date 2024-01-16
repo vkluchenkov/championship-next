@@ -13,10 +13,10 @@
 
 @media screen and (min-width: 768px) {
   .contentWrapper {
-    width: 100%;
+    /* width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 25px;
+    column-gap: 25px; */
     padding: 15px 0 0;
   }
 
