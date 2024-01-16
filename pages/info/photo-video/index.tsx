@@ -13,25 +13,10 @@ import clsx from 'clsx';
 const PhotoVideo: NextPage = () => {
   const { t, lang } = useTranslation('photoVideo');
 
-  // Translations with HTML
-  const photographerText = (
-    <Trans
-      i18nKey='photoVideo:photographerText'
-      components={[<Link href='http://www.andre-elbing.de' target='_blank' key={1} />]}
-    />
-  );
-
   const videographerText = (
     <Trans
       i18nKey='photoVideo:videographerText'
       components={[<Link href='https://www.bestpicture.pro' target='_blank' key={1} />]}
-    />
-  );
-
-  const photoshootBooking = (
-    <Trans
-      i18nKey='photoVideo:photoshootBooking'
-      components={[<Link href='https://facebook.com/andre.elbing' target='_blank' key={1} />]}
     />
   );
 
@@ -42,12 +27,10 @@ const PhotoVideo: NextPage = () => {
         <p className={textStyles.p}>{videographerText}</p>
         <h3 className={clsx(textStyles.h3, textStyles.accent)}>{t('price')}:</h3>
         <ul className={textStyles.list}>
+          <li>{t('photoPack')}</li>
           <li>{t('videoPrice')}</li>
+          <li>{t('offer')}</li>
         </ul>
-      </section>
-      <section className={styles.section}>
-        <Hero name={t('tba')} title={t('photographer')} image={tba} />
-        {/* <p className={textStyles.p}>{photographerText}</p> */}
       </section>
     </div>
   );
