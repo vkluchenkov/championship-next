@@ -4,14 +4,13 @@ import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/PhotoVideo.module.css';
 import useTranslation from 'next-translate/useTranslation';
 import { Hero } from '@/src/ui-kit/Hero';
-import tba from '/public/images/tba.png';
 import vladimir from '/public/images/vladimir.jpg';
 import Trans from 'next-translate/Trans';
 import Link from 'next/link';
 import clsx from 'clsx';
 
 const PhotoVideo: NextPage = () => {
-  const { t, lang } = useTranslation('photoVideo');
+  const { t } = useTranslation('photoVideo');
 
   const videographerText = (
     <Trans

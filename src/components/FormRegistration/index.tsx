@@ -40,26 +40,26 @@ const liveSteps: Step[] = [
   {
     id: 'workshops',
     prev: 'personal',
-    next: 'contestSolo',
-  },
-  {
-    id: 'contestSolo',
-    prev: 'workshops',
-    next: 'contestGroups',
-  },
-  {
-    id: 'contestGroups',
-    prev: 'contestSolo',
-    next: 'show',
-  },
-  {
-    id: 'show',
-    prev: 'contestGroups',
     next: 'summary',
   },
+  // {
+  //   id: 'contestSolo',
+  //   prev: 'workshops',
+  //   next: 'contestGroups',
+  // },
+  // {
+  //   id: 'contestGroups',
+  //   prev: 'contestSolo',
+  //   next: 'show',
+  // },
+  // {
+  //   id: 'show',
+  //   prev: 'contestGroups',
+  //   next: 'summary',
+  // },
   {
     id: 'summary',
-    prev: 'show',
+    prev: 'workshops',
     next: null,
   },
 ];
@@ -67,6 +67,7 @@ const liveSteps: Step[] = [
 const defaultValues: Partial<FormFields> = {
   isFullPass: false,
   fullPassDiscount: 'none',
+  isWorkshops: true, //tmp to force workshops to be shown as the only choice
   workshops: [],
   isSoloContest: false,
   soloContest: [],

@@ -145,11 +145,11 @@ export const Workshops: React.FC<WorkshopsStepProps> = ({
       <h2 className={textStyles.h2}>{t('form.workshops.title')}</h2>
       {workshopsDescription}
 
-      <FormInputCheckbox
+      {/* <FormInputCheckbox
         control={control}
         name='isWorkshops'
         label={<p className={textStyles.p}>{t('form.workshops.checkboxLabel')}</p>}
-      />
+      /> */}
 
       <Collapse in={isWorkshops} unmountOnExit>
         <div className={styles.form}>
