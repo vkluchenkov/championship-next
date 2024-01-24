@@ -21,7 +21,7 @@ export const workshopsPrice: PricePeriod[] = [
       group2Price: 235,
     },
     startDate: new Date('2023-11-05T00:00:00+01:00'), //Must start immediately after previous
-    endDate: new Date('2024-01-20T23:59:59+01:00'),
+    endDate: new Date('2024-01-31T23:59:59+01:00'),
   },
 ];
 
