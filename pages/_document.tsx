@@ -1,13 +1,18 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { SupportedLangs } from '@/src/types';
+import useTranslation from 'next-translate/useTranslation';
+import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
+  const { lang } = useTranslation();
+  const currentLang = lang as SupportedLangs;
+
   return (
-    <Html lang="en">
+    <Html lang={currentLang}>
       <Head />
       <body>
         <Main />
         <NextScript />
       </body>
     </Html>
-  )
+  );
 }
