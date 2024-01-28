@@ -287,7 +287,7 @@ export const FormMusic: React.FC<FormMusicProps> = ({
                   <label>{t('form.file')}</label>
                   <input
                     type='file'
-                    accept='.mp3, .wav, .mp4a'
+                    accept='.mp3, .wav, .m4a'
                     onChange={(event) => {
                       onChange(event.target.files?.[0]);
                     }}
