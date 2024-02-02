@@ -1,7 +1,6 @@
 {
   "pageTitle": "Rejestracja",
-  "liveClosed": "Регистрация на live фестиваль закрыта, все распродано. Увидимся в следующем году!",
-  "allClosed": "Регистрация на фестиваль закрыта, все распродано. Увидимся в следующем году!",
+  "allClosed": "Rejestracja została zakończona. Do zobaczenia w następnym roku!",
   "form": {
     "common": {
       "required": "Pole wymagane",
