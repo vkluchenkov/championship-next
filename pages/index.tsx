@@ -1,15 +1,34 @@
-import styles from '@/styles/Home.module.css';
-import textStyles from '@/styles/Text.module.css';
-import { Layout } from '@/src/components/Layout';
-import { Divider } from '@/src/ui-kit/Divider';
-import { Cta } from '@/src/components/CTA';
 import Image from 'next/image';
 import Trans from 'next-translate/Trans';
 import useTranslation from 'next-translate/useTranslation';
+import clsx from 'clsx';
+import { dehydrate, QueryClient } from '@tanstack/react-query';
+import { GetStaticProps } from 'next';
+
+import styles from '@/styles/Home.module.css';
+import textStyles from '@/styles/Text.module.css';
+import { Layout } from '@/src/components/Layout';
+import { Cta } from '@/src/components/CTA';
 import { Schedule } from '@/src/components/Schedule';
 import socialPoster from 'public/images/teachers.png';
-import clsx from 'clsx';
 import { Partners } from '@/src/components/Partners';
+import { WordpressApi } from '@/src/api/wordpressApi';
+
+export const getStaticProps: GetStaticProps = async () => {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: ['cta'],
+    queryFn: () => WordpressApi.getCta(),
+  });
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+    revalidate: 60,
+  };
+};
 
 export default function Home() {
   const { t } = useTranslation('home');

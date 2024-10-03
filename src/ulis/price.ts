@@ -13,17 +13,10 @@ export const teachersWsGroups = {
 export const kidsDiscount = 1; //Coefficient
 export const kidsMaxAge = 11;
 
-export const workshopsPrice: PricePeriod[] = [
-  {
-    price: {
-      fullPassPrice: 600,
-      group1Price: 190,
-      group2Price: 235,
-    },
-    startDate: new Date('2023-11-05T00:00:00+01:00'), //Must start immediately after previous
-    endDate: new Date('2024-01-31T23:59:59+01:00'),
-  },
-];
+export const singleWsPrice = {
+  live: 65,
+  online: 45,
+};
 
 export const contestSoloPrice: Record<SoloPriceCats, ContestSoloPrice> = {
   kids: {

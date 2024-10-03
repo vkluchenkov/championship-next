@@ -127,6 +127,15 @@
   .root .period__fullPass {
     font-size: 24px;
   }
+
+  .workshopsContainer {
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
