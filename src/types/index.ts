@@ -1,5 +1,5 @@
 export type Version = 'live' | 'online';
-export type SupportedLangs = 'ru' | 'en' | 'pl';
+export type SupportedLangs = 'ru' | 'en';
 
 export interface PricePeriod {
   price: {
