@@ -47,7 +47,7 @@ export const cpkUrl = 'https://goo.gl/maps/SnjPT318FQs6SeTW8';
 export const atlasUrl = 'https://maps.app.goo.gl/ZMpBgh8sb3sPhiEe6';
 
 // Revolut payment link
-export const revolutUrl = 'https://revolut.me/aliahbellydance/pln/';
+export const revolutUrl = 'https://revolut.me/aliahbellydance/eur/';
 
 // Animation preset for all transitions
 export const motionVariants = {

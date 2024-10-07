@@ -1,18 +1,19 @@
+import axios from 'axios';
+import { useRouter } from 'next/router';
 import { useState, useCallback } from 'react';
-import { Layout } from '@/src/components/Layout';
 import { NextPage } from 'next';
-import textStyles from '@/styles/Text.module.css';
-import styles from '@/styles/Registration.module.css';
 import useTranslation from 'next-translate/useTranslation';
-import { FormInputField, FormInputSelect } from '@/src/ui-kit/input';
 import { FormProvider, useForm } from 'react-hook-form';
-import { PaymentFormFields } from '@/src/types/payment.types';
 import { ThemeProvider, MenuItem, InputAdornment, Collapse, Snackbar, Alert } from '@mui/material';
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
 import { loadStripe } from '@stripe/stripe-js';
-import axios from 'axios';
 import Button from '@mui/material/Button';
-import { useRouter } from 'next/router';
+
+import { Layout } from '@/src/components/Layout';
+import styles from '@/styles/Registration.module.css';
+import textStyles from '@/styles/Text.module.css';
+import { FormInputField, FormInputSelect } from '@/src/ui-kit/input';
+import { PaymentFormFields } from '@/src/types/payment.types';
 import { Loader } from '@/src/components/Loader';
 import { darkTheme } from '@/src/ulis/constants';
 
@@ -77,7 +78,7 @@ const Payment: NextPage = () => {
       <h1 className={textStyles.h1}>{t('pageTitle')}</h1>
 
       <section className={styles.section}>
-        <PayPalScriptProvider options={{ clientId: paypalClientId, currency: 'PLN' }}>
+        <PayPalScriptProvider options={{ clientId: paypalClientId, currency: 'EUR' }}>
           <ThemeProvider theme={darkTheme}>
             <FormProvider {...methods}>
               <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -153,10 +154,11 @@ const Payment: NextPage = () => {
                         return actions.order.create({
                           purchase_units: [
                             {
-                              amount: { value: value },
+                              amount: { currency_code: 'EUR', value: value },
                               description: 'Registration payment for ' + name,
                             },
                           ],
+                          intent: 'CAPTURE',
                           application_context: {},
                         });
                       else return '';

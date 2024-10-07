@@ -1,11 +1,10 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import axios from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
-import { PaymentFormFields } from '@/src/types/payment.types';
 
-//@ts-ignore
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: null });
+import { PaymentFormFields } from '@/src/types/payment.types';
+import { config } from '@/src/config';
+
+const stripe = new Stripe(config.stripe.stripeSecretKey, { apiVersion: undefined });
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const orderPayload: PaymentFormFields = req.body;
@@ -15,7 +14,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   const item = {
     price_data: {
-      currency: 'pln',
+      currency: 'eur',
       product_data: {
         name,
       },
