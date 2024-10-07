@@ -1,26 +1,42 @@
 query getSettings {
   page(id: "settings-championship", idType: URI) {
     title
-    settingsDww {
+    settingsChampionship {
       price {
         promoPeriod {
           isLivePromo
-          isOnlinePromo
           ru
           en
           price {
             live
-            online
+          }
+          singlews {
+            group1 {
+              names
+              price
+            }
+            group2 {
+              names
+              price
+            }
           }
         }
         promoPeriodDev {
           isLivePromo
-          isOnlinePromo
           ru
           en
           price {
             live
-            online
+          }
+          singlews {
+            group1 {
+              names
+              price
+            }
+            group2 {
+              names
+              price
+            }
           }
         }
         periods {
@@ -29,7 +45,16 @@ query getSettings {
             end
             price {
               live
-              online
+            }
+            singlews {
+              group1 {
+                names
+                price
+              }
+              group2 {
+                names
+                price
+              }
             }
           }
           pricePeriod2 {
@@ -37,7 +62,16 @@ query getSettings {
             end
             price {
               live
-              online
+            }
+            singlews {
+              group1 {
+                names
+                price
+              }
+              group2 {
+                names
+                price
+              }
             }
           }
           pricePeriod3 {
@@ -45,7 +79,16 @@ query getSettings {
             end
             price {
               live
-              online
+            }
+            singlews {
+              group1 {
+                names
+                price
+              }
+              group2 {
+                names
+                price
+              }
             }
           }
         }

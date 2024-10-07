@@ -4,13 +4,7 @@ export const ispromoPeriod = false;
 
 export const isFullPassSoldOut = false;
 
-//Translation keys for Price page
-export const teachersWsGroups = {
-  group1: ['polina', 'margarita', 'suraiya'],
-  group2: ['pablo'],
-};
-
-export const kidsDiscount = 1; //Coefficient
+export const kidsDiscount = 0.7; //Coefficient
 export const kidsMaxAge = 11;
 
 export const singleWsPrice = {
