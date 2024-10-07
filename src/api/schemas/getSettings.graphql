@@ -102,6 +102,8 @@ query getSettings {
             soloPassProfessionals
           }
           contestGroupPrice
+          from
+          version
         }
         worldShow {
           groups

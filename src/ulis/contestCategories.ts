@@ -9,7 +9,7 @@ export interface Style {
     };
   };
   isSolo?: boolean;
-  isChampionship?: boolean;
+  isForWin?: boolean;
   isImprovisation?: boolean;
 }
 
@@ -32,7 +32,7 @@ export interface ContestCategory {
 const mainSoloSet: Style[] = [
   {
     isSolo: true,
-    isChampionship: true,
+    isForWin: true,
     translations: {
       en: {
         categoryTitle: 'Classic',
@@ -40,14 +40,11 @@ const mainSoloSet: Style[] = [
       ru: {
         categoryTitle: 'Классика',
       },
-      pl: {
-        categoryTitle: 'Klasyka',
-      },
     },
   },
   {
     isSolo: true,
-    isChampionship: true,
+    isForWin: true,
     translations: {
       en: {
         categoryTitle: 'Folklore',
@@ -55,14 +52,11 @@ const mainSoloSet: Style[] = [
       ru: {
         categoryTitle: 'Фольклор',
       },
-      pl: {
-        categoryTitle: 'Folklor',
-      },
     },
   },
   {
     isSolo: true,
-    isChampionship: true,
+    isForWin: true,
     translations: {
       en: {
         categoryTitle: 'Tabla solo CD',
@@ -70,24 +64,18 @@ const mainSoloSet: Style[] = [
       ru: {
         categoryTitle: 'Табла соло CD',
       },
-      pl: {
-        categoryTitle: 'Tabla solo CD',
-      },
     },
   },
   {
     isSolo: true,
     isImprovisation: true,
-    isChampionship: true,
+    isForWin: true,
     translations: {
       en: {
-        categoryTitle: 'Improvisation mejance + tabla solo',
+        categoryTitle: 'Mejance + tabla solo improvisation',
       },
       ru: {
-        categoryTitle: 'Импровизация mejance + табла соло',
-      },
-      pl: {
-        categoryTitle: 'Improwizacja mejance + tabla solo',
+        categoryTitle: 'Импровизация Mejance + tabla solo',
       },
     },
   },
@@ -100,9 +88,6 @@ const mainSoloSet: Style[] = [
       ru: {
         categoryTitle: 'Шоу/фьюжн',
       },
-      pl: {
-        categoryTitle: 'Show/fusia',
-      },
     },
   },
   {
@@ -113,9 +98,6 @@ const mainSoloSet: Style[] = [
       },
       ru: {
         categoryTitle: 'Эстрадная песня',
-      },
-      pl: {
-        categoryTitle: 'Pop song',
       },
     },
   },
@@ -128,9 +110,6 @@ const mainSoloSet: Style[] = [
       ru: {
         categoryTitle: 'Болливуд',
       },
-      pl: {
-        categoryTitle: 'Bollywood',
-      },
     },
   },
   {
@@ -141,9 +120,6 @@ const mainSoloSet: Style[] = [
       },
       ru: {
         categoryTitle: 'Трайбл',
-      },
-      pl: {
-        categoryTitle: 'Tribal',
       },
     },
   },
@@ -159,9 +135,6 @@ const babySoloSet: Style[] = [
       ru: {
         categoryTitle: 'Классика',
       },
-      pl: {
-        categoryTitle: 'Klasyka',
-      },
     },
   },
   {
@@ -172,9 +145,6 @@ const babySoloSet: Style[] = [
       },
       ru: {
         categoryTitle: 'Фольклор',
-      },
-      pl: {
-        categoryTitle: 'Folklor',
       },
     },
   },
@@ -187,9 +157,6 @@ const babySoloSet: Style[] = [
       ru: {
         categoryTitle: 'Табла соло CD',
       },
-      pl: {
-        categoryTitle: 'Tabla solo CD',
-      },
     },
   },
   {
@@ -201,9 +168,6 @@ const babySoloSet: Style[] = [
       ru: {
         categoryTitle: 'Шоу/фьюжн',
       },
-      pl: {
-        categoryTitle: 'Show/fusia',
-      },
     },
   },
   {
@@ -214,9 +178,6 @@ const babySoloSet: Style[] = [
       },
       ru: {
         categoryTitle: 'Болливуд',
-      },
-      pl: {
-        categoryTitle: 'Bollywood',
       },
     },
   },
@@ -231,9 +192,6 @@ const mainGroupSet: Style[] = [
       ru: {
         categoryTitle: 'Классика',
       },
-      pl: {
-        categoryTitle: 'Klasyka',
-      },
     },
   },
   {
@@ -243,9 +201,6 @@ const mainGroupSet: Style[] = [
       },
       ru: {
         categoryTitle: 'Фольклор',
-      },
-      pl: {
-        categoryTitle: 'Folklor',
       },
     },
   },
@@ -257,9 +212,6 @@ const mainGroupSet: Style[] = [
       ru: {
         categoryTitle: 'Табла соло CD',
       },
-      pl: {
-        categoryTitle: 'Tabla solo CD',
-      },
     },
   },
   {
@@ -270,8 +222,15 @@ const mainGroupSet: Style[] = [
       ru: {
         categoryTitle: 'Шоу/фьюжн',
       },
-      pl: {
-        categoryTitle: 'Show/fusia',
+    },
+  },
+  {
+    translations: {
+      en: {
+        categoryTitle: 'Pop song',
+      },
+      ru: {
+        categoryTitle: 'Эстрадная песня',
       },
     },
   },
@@ -283,9 +242,6 @@ const mainGroupSet: Style[] = [
       ru: {
         categoryTitle: 'Болливуд',
       },
-      pl: {
-        categoryTitle: 'Bollywood',
-      },
     },
   },
   {
@@ -295,9 +251,6 @@ const mainGroupSet: Style[] = [
       },
       ru: {
         categoryTitle: 'Трайбл',
-      },
-      pl: {
-        categoryTitle: 'Tribal',
       },
     },
   },
@@ -311,9 +264,6 @@ const babyGroupSet: Style[] = [
       ru: {
         categoryTitle: 'Классика',
       },
-      pl: {
-        categoryTitle: 'Klasyka',
-      },
     },
   },
   {
@@ -323,9 +273,6 @@ const babyGroupSet: Style[] = [
       },
       ru: {
         categoryTitle: 'Фольклор',
-      },
-      pl: {
-        categoryTitle: 'Folklor',
       },
     },
   },
@@ -337,9 +284,6 @@ const babyGroupSet: Style[] = [
       ru: {
         categoryTitle: 'Табла соло CD',
       },
-      pl: {
-        categoryTitle: 'Tabla solo CD',
-      },
     },
   },
   {
@@ -350,9 +294,6 @@ const babyGroupSet: Style[] = [
       ru: {
         categoryTitle: 'Шоу/фьюжн',
       },
-      pl: {
-        categoryTitle: 'Show/fusia',
-      },
     },
   },
   {
@@ -362,9 +303,6 @@ const babyGroupSet: Style[] = [
       },
       ru: {
         categoryTitle: 'Болливуд',
-      },
-      pl: {
-        categoryTitle: 'Bollywood',
       },
     },
   },
@@ -378,9 +316,6 @@ const allStyles: Style[] = [
       },
       ru: {
         categoryTitle: 'Все стили',
-      },
-      pl: {
-        categoryTitle: 'All styles',
       },
     },
   },
@@ -398,9 +333,6 @@ export const contestCategories: ContestCategory[] = [
       ru: {
         title: 'Беби соло',
       },
-      pl: {
-        title: 'Baby solo',
-      },
     },
     categories: babySoloSet,
   },
@@ -415,9 +347,6 @@ export const contestCategories: ContestCategory[] = [
       },
       ru: {
         title: 'Беби группы',
-      },
-      pl: {
-        title: 'Baby grupy',
       },
     },
     categories: babyGroupSet,
@@ -434,9 +363,6 @@ export const contestCategories: ContestCategory[] = [
       ru: {
         title: 'Беби дуэты',
       },
-      pl: {
-        title: 'Baby duety',
-      },
     },
     categories: babyGroupSet,
   },
@@ -452,9 +378,6 @@ export const contestCategories: ContestCategory[] = [
       ru: {
         title: 'Дети соло',
       },
-      pl: {
-        title: 'Kids solo',
-      },
     },
     categories: allStyles,
   },
@@ -469,9 +392,6 @@ export const contestCategories: ContestCategory[] = [
       ru: {
         title: 'Дети соло',
       },
-      pl: {
-        title: 'Kids solo',
-      },
     },
     categories: mainSoloSet,
   },
@@ -480,16 +400,13 @@ export const contestCategories: ContestCategory[] = [
     age: '7-11',
     ageGroup: 'kids',
     isDuoCategory: true,
-    levels: ['beginners', 'semi-pro'],
+    levels: ['openLevel'],
     translations: {
       en: {
         title: 'Kids duos',
       },
       ru: {
         title: 'Дети дуэты',
-      },
-      pl: {
-        title: 'Kids duety',
       },
     },
     categories: mainGroupSet,
@@ -499,16 +416,13 @@ export const contestCategories: ContestCategory[] = [
     age: '7-11',
     ageGroup: 'kids',
     isGroupCategory: true,
-    levels: ['beginners', 'semi-pro'],
+    levels: ['openLevel'],
     translations: {
       en: {
         title: 'Kids groups',
       },
       ru: {
         title: 'Дети группы',
-      },
-      pl: {
-        title: 'Kids grupy',
       },
     },
     categories: mainGroupSet,
@@ -524,9 +438,6 @@ export const contestCategories: ContestCategory[] = [
       },
       ru: {
         title: 'Юниоры',
-      },
-      pl: {
-        title: 'Juniors',
       },
     },
     categories: allStyles,
@@ -543,9 +454,6 @@ export const contestCategories: ContestCategory[] = [
       ru: {
         title: 'Юниоры',
       },
-      pl: {
-        title: 'Juniors',
-      },
     },
     categories: mainSoloSet,
   },
@@ -553,16 +461,13 @@ export const contestCategories: ContestCategory[] = [
     age: '12-15',
     ageGroup: 'juniors',
     isDuoCategory: true,
-    levels: ['semi-pro', 'professionals'],
+    levels: ['openLevel'],
     translations: {
       en: {
         title: 'Juniors duos',
       },
       ru: {
         title: 'Юниоры дуэты',
-      },
-      pl: {
-        title: 'Juniors duety',
       },
     },
     categories: mainGroupSet,
@@ -571,16 +476,13 @@ export const contestCategories: ContestCategory[] = [
     age: '12-15',
     ageGroup: 'juniors',
     isGroupCategory: true,
-    levels: ['semi-pro', 'professionals'],
+    levels: ['openLevel'],
     translations: {
       en: {
         title: 'Juniors groups',
       },
       ru: {
         title: 'Юниоры группы',
-      },
-      pl: {
-        title: 'Juniors grupy',
       },
     },
     categories: mainGroupSet,
@@ -596,9 +498,6 @@ export const contestCategories: ContestCategory[] = [
       ru: {
         title: 'Взрослые',
       },
-      pl: {
-        title: 'Adults',
-      },
     },
     categories: allStyles,
   },
@@ -613,9 +512,6 @@ export const contestCategories: ContestCategory[] = [
       ru: {
         title: 'Взрослые',
       },
-      pl: {
-        title: 'Adults',
-      },
     },
     categories: mainSoloSet,
   },
@@ -623,16 +519,13 @@ export const contestCategories: ContestCategory[] = [
     age: '16+',
     ageGroup: 'adults',
     isDuoCategory: true,
-    levels: ['semi-pro', 'professionals'],
+    levels: ['openLevel'],
     translations: {
       en: {
         title: 'Adults duos',
       },
       ru: {
         title: 'Взрослые дуэты',
-      },
-      pl: {
-        title: 'Adults duety',
       },
     },
     categories: mainGroupSet,
@@ -641,16 +534,13 @@ export const contestCategories: ContestCategory[] = [
     age: '16+',
     ageGroup: 'adults',
     isGroupCategory: true,
-    levels: ['semi-pro', 'professionals'],
+    levels: ['openLevel'],
     translations: {
       en: {
         title: 'Adults groups',
       },
       ru: {
         title: 'Взрослые группы',
-      },
-      pl: {
-        title: 'Adults grupy',
       },
     },
     categories: mainGroupSet,
@@ -668,9 +558,6 @@ export const contestCategories: ContestCategory[] = [
       ru: {
         title: 'Сеньоры',
       },
-      pl: {
-        title: 'Seniors',
-      },
     },
     categories: mainSoloSet,
   },
@@ -686,9 +573,6 @@ export const contestCategories: ContestCategory[] = [
       ru: {
         title: 'Сеньоры дуэты',
       },
-      pl: {
-        title: 'Seniors duety',
-      },
     },
     categories: mainGroupSet,
   },
@@ -703,9 +587,6 @@ export const contestCategories: ContestCategory[] = [
       },
       ru: {
         title: 'Сеньоры группы',
-      },
-      pl: {
-        title: 'Seniors grupy',
       },
     },
     categories: mainGroupSet,
