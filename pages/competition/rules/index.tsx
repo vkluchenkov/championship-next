@@ -7,7 +7,12 @@ import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query';
 
-import { motionVariants } from '@/src/ulis/constants';
+import {
+  groupsLimit,
+  motionVariants,
+  soloLimit,
+  soloProfessionalsLimit,
+} from '@/src/ulis/constants';
 import { contestCategories } from '@/src/ulis/contestCategories';
 import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/Rules.module.css';
@@ -15,6 +20,7 @@ import { SupportedLangs } from '@/src/types';
 import { WordpressApi } from '@/src/api/wordpressApi';
 import { useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
+import { formatTime } from '@/src/ulis/formatTime';
 
 export const getStaticProps: GetStaticProps = async () => {
   const queryClient = new QueryClient();
@@ -42,6 +48,16 @@ const ContestRules: NextPage = () => {
     <Trans
       i18nKey='competitionRules:championRulesText'
       components={[<Link href='/competition/judging' key={1} />]}
+    />
+  );
+
+  const attentionText2 = (
+    <Trans
+      i18nKey='competitionRules:attentionText2'
+      components={[
+        <span className={textStyles.accent} key={1} />,
+        <Link href='/info/photo-video' key={2} />,
+      ]}
     />
   );
 
@@ -102,12 +118,23 @@ const ContestRules: NextPage = () => {
         {t('version', { version: contestSettings?.version, date: changeDate })}
       </p>
 
+      <h2 className={clsx(textStyles.h2, textStyles.accent)}>{t('attentionTitle')}</h2>
+      <p className={textStyles.p}>{t('attentionText')}</p>
+      <p className={textStyles.p}>{attentionText2}</p>
+
       <h2 className={clsx(textStyles.h2, textStyles.accent)}>1. {t('categoriesTitle')}</h2>
       {getCatsList()}
 
       <h2 className={clsx(textStyles.h2, textStyles.accent)}>2. {t('timingTitle')}</h2>
-      <p className={textStyles.p}>{t('timingSolo')}</p>
-      <p className={textStyles.p}>{t('timingGroups')}</p>
+      <p className={textStyles.p}>
+        {t('timingSolo')} {formatTime(soloLimit)}
+      </p>
+      <p className={textStyles.p}>
+        {t('timingProfessionals')} {formatTime(soloProfessionalsLimit)}
+      </p>
+      <p className={textStyles.p}>
+        {t('timingGroups')} {formatTime(groupsLimit)}
+      </p>
     </>
   );
 
