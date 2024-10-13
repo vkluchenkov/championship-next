@@ -82,6 +82,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // ftpClient.ftp.verbose = true;
 
     const ftpDir = process.env.FTP_DIR!;
+    console.log(ftpDir);
 
     const ftpUploadDir = () => {
       if (event === 'worldShow') {
@@ -115,8 +116,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         secure: false,
       });
 
-      await ftpClient.ensureDir(ftpDir + ftpUploadDir());
-      await ftpClient.uploadFrom(tempPath, fileName());
+      // await ftpClient.ensureDir(ftpDir + ftpUploadDir());
+      // await ftpClient.uploadFrom(tempPath, fileName());
 
       // Emails
       const getSubj = () => {
@@ -145,7 +146,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         mailContent: adminEmailContent,
       };
 
-      sendMail(adminMailPayload);
+      // sendMail(adminMailPayload);
     } catch (error) {
       console.log(error);
       status = 500;
