@@ -12,13 +12,13 @@ const Registration: NextPage = () => {
 
   return (
     <Layout title={t('pageTitle')}>
-      {/* <h1 className={textStyles.h1}>{t('pageTitle')}</h1> */}
-      <h1 className={textStyles.h1}>{t('allClosed')}</h1>
-      {/* <section className={styles.section}>
+      <h1 className={textStyles.h1}>{t('pageTitle')}</h1>
+      {/* <h1 className={textStyles.h1}>{t('allClosed')}</h1> */}
+      <section className={styles.section}>
         <ThemeProvider theme={darkTheme}>
           <FormRegistration />
         </ThemeProvider>
-      </section> */}
+      </section>
     </Layout>
   );
 };

@@ -40,23 +40,23 @@ const liveSteps: Step[] = [
   {
     id: 'workshops',
     prev: 'personal',
+    next: 'contestSolo',
+  },
+  {
+    id: 'contestSolo',
+    prev: 'workshops',
+    next: 'contestGroups',
+  },
+  {
+    id: 'contestGroups',
+    prev: 'contestSolo',
+    next: 'show',
+  },
+  {
+    id: 'show',
+    prev: 'contestGroups',
     next: 'summary',
   },
-  // {
-  //   id: 'contestSolo',
-  //   prev: 'workshops',
-  //   next: 'contestGroups',
-  // },
-  // {
-  //   id: 'contestGroups',
-  //   prev: 'contestSolo',
-  //   next: 'show',
-  // },
-  // {
-  //   id: 'show',
-  //   prev: 'contestGroups',
-  //   next: 'summary',
-  // },
   {
     id: 'summary',
     prev: 'workshops',
