@@ -1,17 +1,17 @@
 export type Version = 'live' | 'online';
 export type SupportedLangs = 'ru' | 'en';
 
-export interface PricePeriod {
-  price: {
-    fullPassPrice: number;
-    group1Price: number;
-    group2Price: number;
-  };
-  description?: string;
-  startDate?: Date;
-  endDate?: Date;
-  isPromo?: boolean;
-}
+// export interface PricePeriod {
+//   price: {
+//     fullPassPrice: number;
+//     group1Price: number;
+//     group2Price: number;
+//   };
+//   description?: string;
+//   startDate?: Date;
+//   endDate?: Date;
+//   isPromo?: boolean;
+// }
 
 export type SoloPriceCats = 'kids' | 'risingStar' | 'professionals';
 

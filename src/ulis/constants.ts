@@ -11,15 +11,16 @@ export const juniorsMaxAge = 15;
 export const adultsMinAge = 16;
 export const adultsMaxAge = 39;
 
-// Minimum numbers of workshops to be eligible for competition or World Show
+// Minimum numbers of workshops to be eligible for competition or Show
 export const minWsKids = 1;
-export const minWsAdults = 3;
+export const minWsAdults = 2;
 
 // Maximum number of groups to register for one person
 export const maxGroups = 3;
 
 // Music limits (sec)
 export const soloLimit = 180;
+export const soloProfessionalsLimit = 240;
 export const groupsLimit = 210;
 export const worldShowLimit = 240;
 export const margin = 1.1; //percent

@@ -1,16 +1,11 @@
-import { PricePeriod, SoloPriceCats, ContestSoloPrice } from '@/src/types';
+import { SoloPriceCats, ContestSoloPrice } from '@/src/types';
 
-export const ispromoPeriod = false;
+// export const ispromoPeriod = false;
 
 export const isFullPassSoldOut = false;
 
 export const kidsDiscount = 0.7; //Coefficient
 export const kidsMaxAge = 11;
-
-export const singleWsPrice = {
-  live: 65,
-  online: 45,
-};
 
 export const contestSoloPrice: Record<SoloPriceCats, ContestSoloPrice> = {
   kids: {
@@ -31,8 +26,3 @@ export const contestSoloPrice: Record<SoloPriceCats, ContestSoloPrice> = {
 };
 
 export const contestGroupPrice = 90;
-
-export const worldShowPrice = {
-  soloPriceNormal: 140,
-  groups: 90,
-};
