@@ -1,20 +1,20 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { GetStaticProps, NextPage } from 'next';
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 import useTranslation from 'next-translate/useTranslation';
+import Trans from 'next-translate/Trans';
 import clsx from 'clsx';
 import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query';
 import { DateTime } from 'luxon';
-import Trans from 'next-translate/Trans';
 
-import { WordpressApi } from '@/src/api/wordpressApi';
-import { Layout } from '@/src/components/Layout';
-import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/Price.module.css';
-import { worldShowPrice, isFullPassSoldOut, singleWsPrice } from '@/src/ulis/price';
+import textStyles from '@/styles/Text.module.css';
+import { Layout } from '@/src/components/Layout';
+import { WordpressApi } from '@/src/api/wordpressApi';
+import { isFullPassSoldOut } from '@/src/ulis/price';
 import { currencySymbol, defaultUrl, motionVariants } from '@/src/ulis/constants';
-import { useEffect, useState } from 'react';
 import { SupportedLangs, Version } from '@/src/types';
-import Link from 'next/link';
 
 export const getStaticProps: GetStaticProps = async () => {
   const queryClient = new QueryClient();
@@ -205,70 +205,6 @@ const Price: NextPage = () => {
       )}
     </>
   );
-
-  // const competitionContent = (
-  //   <>
-  //     <h2 className={clsx(textStyles.h2, textStyles.accent)}>{t('competition.title')}</h2>
-
-  //     {/* Price table */}
-  //     <div className={styles.table}>
-  //       <div className={styles.table__row}>
-  //         <h4 className={clsx(textStyles.h4, styles.table__header, styles.table__cell)}>
-  //           {t('competition.categoryTitle')}
-  //         </h4>
-  //         <h4 className={clsx(textStyles.h4, styles.table__header, styles.table__cell)}>
-  //           {t('competition.price')}
-  //         </h4>
-  //       </div>
-
-  //       <div className={styles.table__row}>
-  //         <h3 className={clsx(textStyles.h3, styles.table__cell, styles.table__cell_fullWidth)}>
-  //           {t('competition.kids')}
-  //         </h3>
-  //       </div>
-
-  //       <div className={styles.table__row}>
-  //         <p className={clsx(textStyles.p, styles.table__cell)}>{t('competition.allLevels')}</p>
-  //         <p className={clsx(textStyles.p, textStyles.accent, styles.table__cell)}>
-  //           {contestSoloPrice.kids.price.priceNormal}zł
-  //         </p>
-  //       </div>
-
-  //       <div className={styles.table__row}>
-  //         <h3 className={clsx(textStyles.h3, styles.table__cell, styles.table__cell_fullWidth)}>
-  //           {t('competition.juniors+')}
-  //         </h3>
-  //       </div>
-
-  //       <div className={styles.table__row}>
-  //         <p className={clsx(textStyles.p, styles.table__cell)}>{t('competition.notPro')}</p>
-  //         <p className={clsx(textStyles.p, textStyles.accent, styles.table__cell)}>
-  //           {contestSoloPrice.risingStar.price.priceNormal}zł
-  //         </p>
-  //       </div>
-
-  //       <div className={styles.table__row}>
-  //         <p className={clsx(textStyles.p, styles.table__cell)}>{t('competition.professionals')}</p>
-  //         <p className={clsx(textStyles.p, textStyles.accent, styles.table__cell)}>
-  //           {contestSoloPrice.professionals.price.priceNormal}zł
-  //         </p>
-  //       </div>
-
-  //       <div className={styles.table__row}>
-  //         <div className={clsx(styles.table__cell, styles.table__cell_fullWidth)}>
-  //           <h3 className={clsx(textStyles.h3)}>{t('competition.groups')}</h3>
-  //         </div>
-  //       </div>
-
-  //       <div className={styles.table__row}>
-  //         <p className={clsx(textStyles.p, styles.table__cell)}>{t('competition.perPerson')}</p>
-  //         <p className={clsx(textStyles.p, textStyles.accent, styles.table__cell)}>
-  //           {contestGroupPrice}zł
-  //         </p>
-  //       </div>
-  //     </div>
-  //   </>
-  // );
 
   const contestSoloPrice = price?.contest?.contestsoloprice;
 
