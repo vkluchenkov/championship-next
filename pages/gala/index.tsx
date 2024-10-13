@@ -4,10 +4,11 @@ import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/WorldShow.module.css';
 import useTranslation from 'next-translate/useTranslation';
 import clsx from 'clsx';
+import { useEffect, useState } from 'react';
+
 import { currencySymbol, worldShowLimit } from '@/src/ulis/constants';
 import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query';
 import { WordpressApi } from '@/src/api/wordpressApi';
-import { useEffect, useState } from 'react';
 import { formatTime } from '@/src/ulis/formatTime';
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -26,7 +27,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const WorldShow: NextPage = () => {
+const GalaShow: NextPage = () => {
   const { t, lang } = useTranslation('gala');
 
   const { data, isLoading, status, error } = useQuery({
@@ -78,7 +79,6 @@ const WorldShow: NextPage = () => {
       <p className={textStyles.p}>
         {t('conditionsGroup')}{' '}
         <span className={textStyles.accent}>
-          {' '}
           {worldShowPrice?.groups}
           {currencySymbol}
         </span>{' '}
@@ -101,4 +101,4 @@ const WorldShow: NextPage = () => {
   );
 };
 
-export default WorldShow;
+export default GalaShow;
