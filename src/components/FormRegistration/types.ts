@@ -78,7 +78,19 @@ export type PersonalStepProps = StepProps & {
   setIsNextDisabled: (state: boolean) => void;
 };
 
+export type WsPrices = {
+  group1: {
+    names: string;
+    price: number;
+  };
+  group2: {
+    names: string;
+    price: number;
+  };
+};
+
 export type WorkshopsStepProps = StepProps & {
+  wsPrices: WsPrices | undefined;
   fullPassPrice: number | undefined;
   setStepTotal: (total: number) => void;
   fullPassDiscountList: FullPassDiscount[];
