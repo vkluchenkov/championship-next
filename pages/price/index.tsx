@@ -404,6 +404,10 @@ const Price: NextPage = () => {
       <h3 className={clsx(textStyles.h3)}>{t('payment.conditionsTitle')}</h3>
       <p className={textStyles.p}>{t('payment.conditionsText')}</p>
 
+      <h3 className={clsx(textStyles.h3)}>{t('payment.installmentsTitle')}</h3>
+      <p className={textStyles.p}>{t('payment.installmentsText')}</p>
+      <p className={textStyles.p}>{t('payment.installmentsWarning')}</p>
+
       <h3 className={clsx(textStyles.h3)}>{t('payment.optionsTitle')}</h3>
       <ul className={textStyles.list}>
         <li>
