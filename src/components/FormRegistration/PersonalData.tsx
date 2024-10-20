@@ -36,6 +36,7 @@ export const PersonalData: React.FC<PersonalStepProps> = ({ setIsNextDisabled })
           }}
           error={!!errors.name}
           helperText={errors?.name?.message as string | undefined}
+          autoComplete='given-name'
         />
 
         <FormInputField
@@ -51,6 +52,7 @@ export const PersonalData: React.FC<PersonalStepProps> = ({ setIsNextDisabled })
           }}
           error={!!errors.surname}
           helperText={errors?.surname?.message as string | undefined}
+          autoComplete='family-name'
         />
 
         <FormInputField
@@ -128,6 +130,7 @@ export const PersonalData: React.FC<PersonalStepProps> = ({ setIsNextDisabled })
           }}
           error={!!errors.country}
           helperText={errors?.country?.message as string | undefined}
+          autoComplete='country-name'
         />
 
         <FormInputField
@@ -152,6 +155,7 @@ export const PersonalData: React.FC<PersonalStepProps> = ({ setIsNextDisabled })
           }}
           error={!!errors.tel}
           helperText={errors?.tel?.message as string | undefined}
+          autoComplete='tel'
         />
       </div>
     </>
