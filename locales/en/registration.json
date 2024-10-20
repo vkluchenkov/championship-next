@@ -94,8 +94,8 @@
     },
     "worldShow": {
       "title": "Gala show",
-      "description": "You have a unique opportunity to perform on stage with our teachers and judges during the Gala Show, which will take place on 2.02.2024!",
-      "oops": "In order to take part in the Gala Show all the participants are required to have at least one workshop, Full pass or participate in at least one competition category.",
+      "description": "You have a unique opportunity to perform on stage with our teachers and judges during the Gala Show, which will take place on 04.04.2025!",
+      "notEligible": "In order to take part in the Gala Show all the participants are required to have at least 2 workshops (1 for kids/baby) or Full pass.",
       "solo": "I want to perform solo",
       "group": "I want to add duo or group",
       "perPerson": "per person",
@@ -110,7 +110,10 @@
       "money": {
         "title": "Finances",
         "total": "Your registration total",
-        "amountNow": "Amount to pay now"
+        "installments": "I want to pay with 2 installments",
+        "installmentsDetails": "There is a possibility to pay for your package in 2 installments. The first 50% should be paid right after the registration, the other 50% any time before 1.03.2025. In case if the second payment is failed to be transferred in due time, you will be fined the amount of 100€, which must be paid with the second part before the festival begins.",
+        "amountNow": "Amount to pay now",
+        "amountAfter": "Amount to pay till 1.03.2025"
       }
     },
     "error": "Oops. Something went wrong. Please try again later or contact us to resolve the issue."
@@ -125,7 +128,7 @@
     "userSubj": "Welcome to Open Bellydance Championship of Poland!",
     "adminSubj": "New registration from",
     "adminTitle": "New registration from",
-    "adminOrderTitle": "Registration detials",
+    "adminOrderTitle": "Registration details",
     "telegramTitle": "Telegram group",
     "telegram1": "Join our Telegram group for participants to follow all the news and announcements by following ",
     "telegram2": "this link."
