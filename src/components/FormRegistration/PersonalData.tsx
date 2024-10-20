@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { FormInputField } from '@/src/ui-kit/input';
 import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/Registration.module.css';
-import { FormFields, PersonalStepProps, StepProps } from './types';
+import { FormFields, PersonalStepProps } from './types';
 
 export const PersonalData: React.FC<PersonalStepProps> = ({ setIsNextDisabled }) => {
   const { t } = useTranslation('registration');

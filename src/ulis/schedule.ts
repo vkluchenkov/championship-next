@@ -121,12 +121,12 @@ export const schedule: Day[] = [
         teachersPriceGroup: 'group2',
         translations: {
           en: {
-            title: 'Darya',
-            description: 'TBA',
+            title: 'Daryna Ilchysheva',
+            description: 'Baladi choreography',
           },
           ru: {
-            title: 'Дарья',
-            description: 'TBA',
+            title: 'Daryna Ilchysheva',
+            description: 'Хореография Baladi',
           },
         },
       },
@@ -204,15 +204,15 @@ export const schedule: Day[] = [
         start: '12:15',
         end: '14:15',
         type: 'workshop',
-        teachersPriceGroup: 'group2',
+        teachersPriceGroup: 'group1',
         translations: {
           en: {
-            title: 'TBA',
-            description: 'TBA',
+            title: 'Aliah',
+            description: 'Pop song choreography',
           },
           ru: {
-            title: 'TBA',
-            description: 'TBA',
+            title: 'Aliah',
+            description: 'Хореография Pop song',
           },
         },
       },
@@ -241,12 +241,12 @@ export const schedule: Day[] = [
         teachersPriceGroup: 'group2',
         translations: {
           en: {
-            title: 'TBA',
-            description: 'TBA',
+            title: 'Maryam',
+            description: 'Drum solo choreography',
           },
           ru: {
-            title: 'TBA',
-            description: 'TBA',
+            title: 'Maryam',
+            description: 'Хореография Drum solo',
           },
         },
       },
