@@ -51,6 +51,10 @@
     "contest": {
       "soloTitle": "Competition Solo",
       "checkboxLabel": "I want to take part in solo competition",
+      "soloPassLabel": "I want to buy Solo Pass",
+      "soloPassTitle": "Solo Pass",
+      "solosPassDescription": "With the Solo Pass you can dance unlimited times in all solo categories. You save, if you dance more than 3 times.",
+      "notEligible": "In order to take part in the competition all the participants are required to have at least 2 workshops (1 for baby/kids) or Full Pass.",
       "ageGroups": {
         "title": "Competition age group",
         "baby": "Baby",
@@ -69,12 +73,13 @@
       },
       "stylesTitle": "Styles",
       "free": "free",
-      "championTitle": "Championship styles",
+      "absoluteWinnerTitle": "Championship battle required styles",
       "restTitle": "Rest styles",
-      "championText": "The contestants, who take part in 4 categories at Professionals level (Classic, Folklore, Tabla solo and Improvisation) automatically take part in the Championship battle. To be able to compete for the Champion's title it is mandatory to dance in all 4 of those categories mentioned. The criteria for judging improvisation and overall Champion choosing process are described on <0>Judging</0> page.",
+      "absoluteWinnerText": "The contestants, who take part in 4 categories at Professionals level (Classic, Folklore, Tabla solo CD and Improvisation) automatically take part in the battle for the title of the Champion, who will get the main prizes, including the right to be a teacher for the next year. To be able to compete for the title it is mandatory to dance in all 4 of those categories mentioned. The criteria for judging improvisation and overall Champion choosing process are described on <0>Judging</0> page.",
       "groups": {
         "title": "Competition duos and groups",
         "checkboxLabel": "I want to register a duo or a group",
+        "ageGroupTitle": "Age group",
         "groupOrDuo": "Group or duo?",
         "style": "Style",
         "duo": "Duo",

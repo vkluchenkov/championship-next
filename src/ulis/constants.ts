@@ -15,6 +15,9 @@ export const adultsMaxAge = 39;
 export const minWsKids = 1;
 export const minWsAdults = 2;
 
+// Number of performances for solo pass to be profitable (blocks the form if less)
+export const minSoloPass = 4;
+
 // Maximum number of groups to register for one person
 export const maxGroups = 3;
 
