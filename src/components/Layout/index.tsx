@@ -52,21 +52,23 @@ export const Layout: React.FC<LayoutProps> = ({ children, title, className }) =>
     <div className={className ? className : ''}>
       <Head>
         <title>
-          {title
-            ? title + ' – Open Bellydance Championship of Poland'
-            : 'Open Bellydance Championship of Poland'}
+          {title ? title + ' – Open Bellydance Championship' : 'Open Bellydance Championship'}
         </title>
-        <meta name='description' content='International bellydance championship' />
+        <meta
+          name='description'
+          content='International annual bellydance championship taking place in Warsaw, Poland'
+        />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <meta
           name='og:title'
           content={
-            title
-              ? title + ' – Open Bellydance Championship of Poland'
-              : 'Open Bellydance Championship of Poland'
+            title ? title + ' – Open Bellydance Championship' : 'Open Bellydance Championship'
           }
         />
-        <meta name='og:description' content='International bellydance championship' />
+        <meta
+          name='og:description'
+          content='International annual bellydance championship taking place in Warsaw, Poland'
+        />
         <meta name='og:image' content='/images/social_poster.jpg' />
         <meta name='og:image:width' content='1500' />
         <meta name='og:image:height' content='1500' />
