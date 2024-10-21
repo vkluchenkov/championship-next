@@ -34,7 +34,6 @@ export default function Home() {
   const { t } = useTranslation('home');
 
   // Translations with HTML
-  const welcomeTitle = <Trans i18nKey='home:welcomeTitle' components={[<br key={1} />]} />;
   const welcomeText = (
     <Trans
       i18nKey='home:welcomeText'
@@ -50,7 +49,7 @@ export default function Home() {
       <div className={styles.contentWrapper}>
         <Cta />
         <section className={styles.content}>
-          <h1 className={styles.content__title}>{welcomeTitle}</h1>
+          <h1 className={styles.content__title}>{t('home:welcomeTitle')}</h1>
           <div className={styles.teachersContainer}>
             <Image src={socialPoster} alt={t('home:coverImageAlt')} fill priority />
           </div>
