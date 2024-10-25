@@ -15,7 +15,7 @@ import textStyles from '@/styles/Text.module.css';
 import { FormInputField, FormInputSelect } from '@/src/ui-kit/input';
 import { PaymentFormFields } from '@/src/types/payment.types';
 import { Loader } from '@/src/components/Loader';
-import { darkTheme } from '@/src/ulis/constants';
+import { currencySymbol, darkTheme } from '@/src/ulis/constants';
 
 const stripeKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!;
 const stripePromise = loadStripe(stripeKey);
@@ -124,7 +124,9 @@ const Payment: NextPage = () => {
                   error={!!errors.qty}
                   helperText={errors.qty?.message as string | undefined}
                   InputProps={{
-                    startAdornment: <InputAdornment position='start'>zł</InputAdornment>,
+                    startAdornment: (
+                      <InputAdornment position='start'>{currencySymbol}</InputAdornment>
+                    ),
                   }}
                 />
 
