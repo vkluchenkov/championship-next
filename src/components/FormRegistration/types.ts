@@ -119,6 +119,7 @@ export type WorldShowStepProps = StepProps & {
 
 export type SummaryStepProps = StepProps & {
   fullPassPrice: number | undefined;
+  wsPrices: WsPrices | undefined;
   soloPassPrice: number;
   total: number;
   setIsNextDisabled: (state: boolean) => void;

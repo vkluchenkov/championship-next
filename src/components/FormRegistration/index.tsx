@@ -444,6 +444,7 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ priceData })
             >
               <Summary
                 fullPassPrice={fullPassPrice}
+                wsPrices={wsPrices}
                 soloPassPrice={soloPassPrice}
                 total={total}
                 setIsNextDisabled={setIsNextDisabled}

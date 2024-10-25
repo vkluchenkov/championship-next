@@ -1,20 +1,21 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useFormContext } from 'react-hook-form';
+import Trans from 'next-translate/Trans';
+import clsx from 'clsx';
+import Link from 'next/link';
+
 import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/Registration.module.css';
 import { SummaryStepProps, FormFields } from './types';
-import clsx from 'clsx';
 import { SupportedLangs } from '@/src/types';
-import { worldShowPrice } from '@/src/ulis/price';
 import { FormInputCheckbox } from '@/src/ui-kit/input';
-import Trans from 'next-translate/Trans';
-import Link from 'next/link';
 import { contestCategories } from '@/src/ulis/contestCategories';
+import { currencySymbol } from '@/src/ulis/constants';
 
 export const Summary: React.FC<SummaryStepProps> = ({
   fullPassPrice,
-  currentPricePeriod,
+  wsPrices,
   total,
   setIsNextDisabled,
 }) => {
@@ -89,7 +90,10 @@ export const Summary: React.FC<SummaryStepProps> = ({
           <ul className={clsx(textStyles.list, textStyles.list_summary)}>
             <li>
               {t('form.workshops.fullPass')}:{' '}
-              <span className={textStyles.accent}>{fullPassPrice}zł</span>
+              <span className={textStyles.accent}>
+                {fullPassPrice}
+                {currencySymbol}
+              </span>
             </li>
 
             <li>
@@ -111,14 +115,17 @@ export const Summary: React.FC<SummaryStepProps> = ({
     }
     if (workshops.length) {
       const wsList = workshops.map((ws) => {
-        const price = currentPricePeriod?.price[`${ws.teachersPriceGroup!}Price`];
+        const price = wsPrices?.[ws.teachersPriceGroup].price;
         return (
           <li key={ws.id} className={styles.summary__group}>
             <span className={textStyles.accent}>{ws.translations[currentLang].title}</span>
             <br />
             {ws.translations[currentLang].description}
             <br />
-            <span className={textStyles.accent}>{price}zł</span>
+            <span className={textStyles.accent}>
+              {price}
+              {currencySymbol}
+            </span>
           </li>
         );
       });
@@ -130,7 +137,7 @@ export const Summary: React.FC<SummaryStepProps> = ({
         </>
       );
     }
-  }, [fullPassPrice, isFullPass, t, workshops, currentLang, currentPricePeriod, form]);
+  }, [fullPassPrice, isFullPass, t, workshops, currentLang, wsPrices, form]);
 
   // Contest solo
   const contestSoloData = useMemo(() => {
@@ -148,7 +155,11 @@ export const Summary: React.FC<SummaryStepProps> = ({
               {cat.translations[currentLang].categoryTitle}
               {cat.price > 0 && (
                 <>
-                  : <span className={textStyles.accent}>{cat.price}zł</span>
+                  :{' '}
+                  <span className={textStyles.accent}>
+                    {cat.price}
+                    {currencySymbol}
+                  </span>
                 </>
               )}
             </li>
@@ -224,7 +235,11 @@ export const Summary: React.FC<SummaryStepProps> = ({
                 <li key={group.name} className={styles.summary__group}>
                   <h4 className={clsx(textStyles.h4)}>
                     {t('form.contest.groups.group')}/{t('form.contest.groups.duo')} #{index + 1} :
-                    <span className={textStyles.accent}> {group.price}zł</span>
+                    <span className={textStyles.accent}>
+                      {' '}
+                      {group.price}
+                      {currencySymbol}
+                    </span>
                   </h4>
 
                   <ul className={clsx(textStyles.list, textStyles.list_summary)}>
@@ -265,7 +280,7 @@ export const Summary: React.FC<SummaryStepProps> = ({
 
   // gala show
   const galaShowData = useMemo(() => {
-    const soloPrice = worldShowPrice.soloPriceNormal;
+    const soloPrice = form.settings?.price.worldShow?.solo;
 
     if (form.isWorldShowSolo || form.isWorldShowGroup)
       return (
@@ -274,7 +289,11 @@ export const Summary: React.FC<SummaryStepProps> = ({
 
           {form.isWorldShowSolo && (
             <p className={textStyles.p}>
-              {t('form.worldShow.solo')}: <span className={textStyles.accent}>{soloPrice}zł</span>
+              {t('form.worldShow.solo')}:{' '}
+              <span className={textStyles.accent}>
+                {soloPrice}
+                {currencySymbol}
+              </span>
             </p>
           )}
 
@@ -282,7 +301,10 @@ export const Summary: React.FC<SummaryStepProps> = ({
             <>
               <p className={textStyles.p}>
                 {t('form.summary.worldShowGroup')}:{' '}
-                <span className={textStyles.accent}>{form.worldShowGroup?.price}zł</span>
+                <span className={textStyles.accent}>
+                  {form.worldShowGroup?.price}
+                  {currencySymbol}
+                </span>
                 <br />
                 {t('form.contest.groups.name')}:{' '}
                 <span className={textStyles.accent}>{form.worldShowGroup?.name}</span>
@@ -325,7 +347,11 @@ export const Summary: React.FC<SummaryStepProps> = ({
       {/* Finance options*/}
       <h3 className={clsx(textStyles.h3, textStyles.centered)}>{t('form.summary.money.title')}</h3>
       <h4 className={textStyles.h4}>
-        {t('form.summary.money.total')}: <span className={textStyles.accent}>{total}zł</span>
+        {t('form.summary.money.total')}:{' '}
+        <span className={textStyles.accent}>
+          {total}
+          {currencySymbol}
+        </span>
       </h4>
 
       {/* Rules */}
