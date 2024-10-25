@@ -1,7 +1,8 @@
 import { Client } from '@notionhq/client';
+import { Translate } from 'next-translate';
+
 import { OrderPayload } from '../components/FormRegistration/types';
 import { contestCategories } from '../ulis/contestCategories';
-import { Translate } from 'next-translate';
 import { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints';
 
 interface saveRegistrationToNotionProps {

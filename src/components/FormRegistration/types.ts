@@ -39,6 +39,7 @@ export interface FormFields {
   tel: string;
   workshops: WorkshopsField;
   workshopsType: WorkshopsType;
+  wsPrices: WsPrices | undefined;
   isFullPass: boolean;
   fullPassDiscount: FullPassDiscount;
   fullPassDiscountSource: string;

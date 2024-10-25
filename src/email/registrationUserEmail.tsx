@@ -12,12 +12,10 @@ import {
   MjmlDivider,
 } from '@faire/mjml-react';
 import { Translate } from 'next-translate';
-import Trans from 'next-translate/Trans';
+
 import { OrderPayload } from '../components/FormRegistration/types';
 import { currencySymbol, defaultUrl, telegramUrl } from '../ulis/constants';
 import { contestCategories } from '../ulis/contestCategories';
-import { worldShowPrice } from '../ulis/price';
-
 import { renderReactToMjml } from './renderReactToMjml';
 
 interface registrationUserEmailProps {
@@ -141,7 +139,7 @@ export const registrationUserEmail = (props: registrationUserEmailProps) => {
     }
     if (workshops.length) {
       const wsList = workshops.map((ws) => {
-        const price = form.currentPricePeriod?.price[`${ws.teachersPriceGroup!}Price`];
+        const price = form.wsPrices?.[ws.teachersPriceGroup].price;
         return (
           <li key={ws.id}>
             <span style={{ color: accentColor }}>{ws.translations[form.currentLang].title}</span>
@@ -304,7 +302,7 @@ export const registrationUserEmail = (props: registrationUserEmailProps) => {
 
   // WorldShow
   const worldShowData = () => {
-    const soloPrice = worldShowPrice.soloPriceNormal;
+    const soloPrice = form.settings?.price.worldShow?.solo;
 
     if (form.isWorldShowSolo || form.isWorldShowGroup)
       return (

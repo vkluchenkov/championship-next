@@ -198,6 +198,7 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ priceData })
       currentLang: currentLang,
       soloPassPrice: soloPassPrice,
       total: total,
+      wsPrices: wsPrices,
     };
 
     await axios
