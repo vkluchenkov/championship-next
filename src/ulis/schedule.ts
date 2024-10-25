@@ -51,7 +51,7 @@ export const schedule: Day[] = [
     dayEvents: [
       {
         id: 1,
-        start: '8:30',
+        start: '9:00',
         type: 'other',
         translations: {
           en: {
@@ -64,8 +64,8 @@ export const schedule: Day[] = [
       },
       {
         id: 2,
-        start: '9:00',
-        end: '11:00',
+        start: '9:30',
+        end: '11:30',
         type: 'workshop',
         teachersPriceGroup: 'group1',
         translations: {
@@ -81,8 +81,8 @@ export const schedule: Day[] = [
       },
       {
         id: 3,
-        start: '11:15',
-        end: '13:15',
+        start: '11:45',
+        end: '13:45',
         type: 'workshop',
         teachersPriceGroup: 'group1',
         translations: {
@@ -98,7 +98,7 @@ export const schedule: Day[] = [
       },
       {
         id: 4,
-        start: '13:30',
+        start: '14:00',
         end: '15:30',
         type: 'workshop',
         teachersPriceGroup: 'group2',
@@ -116,7 +116,7 @@ export const schedule: Day[] = [
       {
         id: 5,
         start: '15:45',
-        end: '17:45',
+        end: '17:15',
         type: 'workshop',
         teachersPriceGroup: 'group2',
         translations: {
@@ -219,24 +219,7 @@ export const schedule: Day[] = [
       {
         id: 10,
         start: '14:30',
-        end: '16:30',
-        type: 'workshop',
-        teachersPriceGroup: 'group1',
-        translations: {
-          en: {
-            title: 'Oscar Flores',
-            description: 'Oriental tango technique and choreography',
-          },
-          ru: {
-            title: 'Oscar Flores',
-            description: 'Oriental tango техника и хореография',
-          },
-        },
-      },
-      {
-        id: 11,
-        start: '16:45',
-        end: '18:45',
+        end: '16:00',
         type: 'workshop',
         teachersPriceGroup: 'group2',
         translations: {
@@ -247,6 +230,24 @@ export const schedule: Day[] = [
           ru: {
             title: 'Maryam',
             description: 'Хореография Drum solo',
+          },
+        },
+      },
+      {
+        id: 11,
+        start: '16:15',
+        end: '18:15',
+        type: 'workshop',
+
+        teachersPriceGroup: 'group1',
+        translations: {
+          en: {
+            title: 'Oscar Flores',
+            description: 'Oriental tango technique and choreography',
+          },
+          ru: {
+            title: 'Oscar Flores',
+            description: 'Oriental tango техника и хореография',
           },
         },
       },
