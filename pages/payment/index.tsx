@@ -15,7 +15,7 @@ import textStyles from '@/styles/Text.module.css';
 import { FormInputField, FormInputSelect } from '@/src/ui-kit/input';
 import { PaymentFormFields } from '@/src/types/payment.types';
 import { Loader } from '@/src/components/Loader';
-import { currencySymbol, darkTheme } from '@/src/ulis/constants';
+import { currencyCode, currencySymbol, darkTheme } from '@/src/ulis/constants';
 
 const stripeKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!;
 const stripePromise = loadStripe(stripeKey);
@@ -78,7 +78,7 @@ const Payment: NextPage = () => {
       <h1 className={textStyles.h1}>{t('pageTitle')}</h1>
 
       <section className={styles.section}>
-        <PayPalScriptProvider options={{ clientId: paypalClientId, currency: 'EUR' }}>
+        <PayPalScriptProvider options={{ clientId: paypalClientId, currency: currencyCode }}>
           <ThemeProvider theme={darkTheme}>
             <FormProvider {...methods}>
               <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -116,7 +116,7 @@ const Payment: NextPage = () => {
                   rules={{
                     required: t('form.required'),
                     min: {
-                      value: 40,
+                      value: 10,
                       message: t('form.qtyMinError'),
                     },
                   }}

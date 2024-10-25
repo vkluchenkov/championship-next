@@ -74,3 +74,6 @@ export const darkTheme = createTheme({
 });
 
 export const currencySymbol = '€';
+
+type CurrencyCodes = 'PLN' | 'EUR';
+export const currencyCode: CurrencyCodes = 'EUR';
