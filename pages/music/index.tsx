@@ -1,14 +1,22 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
-import { Layout } from '@/src/components/Layout';
 import { NextPage } from 'next';
-import textStyles from '@/styles/Text.module.css';
-import styles from '@/styles/Registration.module.css';
 import useTranslation from 'next-translate/useTranslation';
 import { FormProvider, useForm } from 'react-hook-form';
 import { ThemeProvider } from '@mui/material';
 import axios from 'axios';
+
+import { Layout } from '@/src/components/Layout';
+import textStyles from '@/styles/Text.module.css';
+import styles from '@/styles/Registration.module.css';
 import { Loader } from '@/src/components/Loader';
-import { darkTheme, groupsLimit, margin, soloLimit, worldShowLimit } from '@/src/ulis/constants';
+import {
+  darkTheme,
+  groupsLimit,
+  margin,
+  soloLimit,
+  soloProfessionalsLimit,
+  worldShowLimit,
+} from '@/src/ulis/constants';
 import { MusicFormFields } from '@/src/types/music.types';
 import { Style, Level, contestCategories } from '@/src/ulis/contestCategories';
 import { FormMusic } from '@/src/components/FormMusic';
@@ -29,9 +37,9 @@ const Music: NextPage = () => {
   const file = watch('file');
   const ageGroup = watch('ageGroup');
   const type = watch('type');
+  const level = watch('level');
   const audioLength = watch('audioLength');
   const event = watch('event');
-  const level = watch('level');
 
   // Get audio duration
   useEffect(() => {
@@ -44,41 +52,15 @@ const Music: NextPage = () => {
 
   const audioLimit = useMemo(() => {
     if (event === 'worldShow') return worldShowLimit;
-    else return type === 'group' || type === 'duo' ? groupsLimit : soloLimit;
-  }, [type, event]);
+    if (type === 'group' || type === 'duo') return groupsLimit;
+    if (type === 'solo' && level === 'professionals') return soloProfessionalsLimit;
+    return soloLimit;
+  }, [type, event, level]);
 
   // Check if audio is within limits
   useEffect(() => {
     audioLength > 0 && setIsDurationCorrect(audioLength <= audioLimit * margin);
   }, [audioLength, audioLimit]);
-
-  // Reset level on Age change
-  useEffect(() => {
-    setValue('level', undefined);
-  }, [ageGroup, setValue]);
-
-  // Reset everything on type change
-  useEffect(() => {
-    setValue('level', undefined);
-    setValue('ageGroup', undefined);
-    setValue('categories', undefined);
-    setValue('groupName', undefined);
-    setValue('name', undefined);
-    setValue('surname', undefined);
-    setValue('event', undefined);
-  }, [type, setValue]);
-
-  // Reset everything contest related on event change
-  useEffect(() => {
-    setValue('level', undefined);
-    setValue('ageGroup', undefined);
-    setValue('categories', undefined);
-  }, [event, setValue]);
-
-  // Reset style on level change
-  useEffect(() => {
-    setValue('category', undefined);
-  }, [level, setValue]);
 
   // Map contest levels and styles by age group and type
   useEffect(() => {
@@ -120,7 +102,6 @@ const Music: NextPage = () => {
 
       setValue('categories', styles);
       setValue('levels', levels);
-      // !level && setValue('level', levels[0]);
     }
   }, [ageGroup, setValue, type, level]);
 

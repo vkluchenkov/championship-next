@@ -3,9 +3,11 @@
   "form": {
     "required": "Это поле обязательно",
     "name": "Имя участницы (латиницей)",
-    "email": "Email",
-    "emailError": "Введен некорректный email",
     "surname": "Фамилия участницы (латиницей)",
+    "stageName": "Сценическое имя (если есть в регистрации)",
+    "email": "Email",
+    "password": "Пароль",
+    "emailError": "Введен некорректный email",
     "groupName": "Название группы / дуэта",
     "event": "Мероприятие",
     "file": "Файл с музыкой",
@@ -44,10 +46,5 @@
     },
     "audio1": "Длительность вашей музыки: ",
     "audio2": " превышает лимит "
-  },
-  "email": {
-    "title": "New music uploaded by",
-    "subtitle": "Form details:",
-    "copyright": "Open Bellydance Championship"
   }
 }
