@@ -1,8 +1,8 @@
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useFormContext } from 'react-hook-form';
-import Trans from 'next-translate/Trans';
 import clsx from 'clsx';
+import Trans from 'next-translate/Trans';
 import Link from 'next/link';
 
 import textStyles from '@/styles/Text.module.css';
@@ -11,11 +11,11 @@ import { SummaryStepProps, FormFields } from './types';
 import { SupportedLangs } from '@/src/types';
 import { FormInputCheckbox } from '@/src/ui-kit/input';
 import { contestCategories } from '@/src/ulis/contestCategories';
-import { currencySymbol } from '@/src/ulis/constants';
+import { currencySymbol, defaultUrl } from '@/src/ulis/constants';
 
 export const Summary: React.FC<SummaryStepProps> = ({
   fullPassPrice,
-  wsPrices,
+  soloPassPrice,
   total,
   setIsNextDisabled,
 }) => {
@@ -25,11 +25,27 @@ export const Summary: React.FC<SummaryStepProps> = ({
   const methods = useFormContext<FormFields>();
   const { watch, control } = methods;
 
+  const settings = watch('settings');
+  const wsPrices = watch('wsPrices');
   const form = watch();
+
+  const [isDev, setIsDev] = useState(false);
+
+  useEffect(() => {
+    setIsDev(!window.location.href.startsWith(defaultUrl));
+  }, [setIsDev]);
 
   useEffect(() => {
     setIsNextDisabled(!form.rulesAccepted);
   }, [setIsNextDisabled, form]);
+
+  const isPromo = useMemo((): boolean => {
+    const livePromo = isDev
+      ? settings?.price.promoPeriodDev.isLivePromo.toLowerCase()
+      : settings?.price.promoPeriod.isLivePromo.toLowerCase();
+
+    return livePromo === 'true' ? true : false;
+  }, [settings, isDev]);
 
   // translations with HTML
   const acceptRules = (
@@ -44,41 +60,59 @@ export const Summary: React.FC<SummaryStepProps> = ({
 
   // Personal
   const personal = useMemo(() => {
-    return ['name', 'surname', 'stageName', 'age'].map((i) => ({
+    const list = ['name', 'surname', 'stageName', 'age'];
+    return list.map((i) => ({
       key: i,
       value: form[i as keyof FormFields],
     }));
   }, [form]);
 
   const personalData = personal.map((i) => {
-    if (!i.value) return <></>;
-    return (
-      <li key={i.key}>
-        {t(`form.personal.${i.key}`)}:{' '}
-        <span className={textStyles.accent}>{i.value as string}</span>
-      </li>
-    );
+    if (i.value)
+      return (
+        <li key={i.key}>
+          {t(`form.personal.${i.key}`)}:{' '}
+          <span className={textStyles.accent}>{i.value as string}</span>
+        </li>
+      );
   });
+
+  // // Years before
+  // const yearsBeforeData = useMemo(() => {
+  //   const yearsSelected = form.yearsBefore2.filter((year) => year.selected);
+  //   const yearsSelectedValues = yearsSelected.map((year) => year.year);
+
+  //   const yearsElements = (
+  //     <li>
+  //       {t('form.personal.yearsBefore')}:{' '}
+  //       <span className={textStyles.accent}>{yearsSelectedValues.join(', ')}</span>
+  //     </li>
+  //   );
+
+  //   return yearsElements;
+  // }, [form, t]);
 
   // Contacts
   const contacts = useMemo(() => {
-    return ['social', 'country', 'city', 'tel', 'email'].map((i) => ({
+    const list = ['social', 'country', 'city', 'tel', 'email'];
+    return list.map((i) => ({
       key: i,
       value: form[i as keyof FormFields],
     }));
   }, [form]);
 
   const contactsData = contacts.map((i) => {
-    if (!i.value) return <></>;
-    return (
-      <li key={i.key}>
-        {t(`form.personal.${i.key}`)}:{' '}
-        <span className={textStyles.accent}>{i.value as string}</span>
-      </li>
-    );
+    if (i.value)
+      return (
+        <li key={i.key}>
+          {t(`form.personal.${i.key}`)}:{' '}
+          <span className={textStyles.accent}>{i.value as string}</span>
+        </li>
+      );
   });
 
   // Workshops
+
   const isFullPass = form.isFullPass;
   const workshops = form.workshops.filter((ws) => ws.selected);
 
@@ -86,30 +120,34 @@ export const Summary: React.FC<SummaryStepProps> = ({
     if (isFullPass) {
       return (
         <>
-          <h3 className={clsx(textStyles.h3, textStyles.centered)}>{t('form.workshops.title')}</h3>
-          <ul className={clsx(textStyles.list, textStyles.list_summary)}>
-            <li>
-              {t('form.workshops.fullPass')}:{' '}
-              <span className={textStyles.accent}>
-                {fullPassPrice}
-                {currencySymbol}
-              </span>
-            </li>
+          <li>
+            {t('form.workshops.fullPass')}:{' '}
+            <span className={textStyles.accent}>
+              {fullPassPrice}
+              {currencySymbol}
+            </span>
+          </li>
 
-            <li>
-              {t('form.workshops.discounts.title')}:{' '}
-              <span className={textStyles.accent}>
-                {t(`form.workshops.discounts.${form.fullPassDiscount}`)}
-              </span>
-            </li>
+          <li>
+            {t('form.workshops.discounts.title')}:{' '}
+            <span className={textStyles.accent}>
+              {t(`form.workshops.discounts.${form.fullPassDiscount}`)}
+            </span>
+          </li>
 
-            {form.fullPassDiscount != 'none' && (
-              <li>
-                {t('form.workshops.discounts.details')}:{' '}
-                <span className={textStyles.accent}>{form.fullPassDiscountSource}</span>
-              </li>
-            )}
-          </ul>
+          {form.fullPassDiscount === 'group' && (
+            <li>
+              {t('form.workshops.discounts.groupName')}:{' '}
+              <span className={textStyles.accent}>{form.fullPassGroupName}</span>
+            </li>
+          )}
+
+          {form.fullPassDiscount != 'group' && form.fullPassDiscount != 'none' && (
+            <li>
+              {t('form.workshops.discounts.details')}:{' '}
+              <span className={textStyles.accent}>{form.fullPassDiscountSource}</span>
+            </li>
+          )}
         </>
       );
     }
@@ -132,12 +170,11 @@ export const Summary: React.FC<SummaryStepProps> = ({
 
       return (
         <>
-          <h3 className={clsx(textStyles.h3, textStyles.centered)}>{t('form.workshops.title')}</h3>
           <ul className={clsx(textStyles.list, textStyles.list_summary)}>{wsList}</ul>
         </>
       );
     }
-  }, [fullPassPrice, isFullPass, t, workshops, currentLang, wsPrices, form]);
+  }, [fullPassPrice, t, form, currentLang, isFullPass, workshops, wsPrices]);
 
   // Contest solo
   const contestSoloData = useMemo(() => {
@@ -145,7 +182,10 @@ export const Summary: React.FC<SummaryStepProps> = ({
 
     const stylesData = (
       <li>
-        <ul className={clsx(textStyles.list, textStyles.list_summary, styles.summary__group)}>
+        <ul
+          className={clsx(textStyles.list, textStyles.list_summary, styles.summary__group)}
+          translate='no'
+        >
           <li>
             <h4 className={clsx(textStyles.h4)}>{t('form.contest.stylesTitle')}:</h4>
           </li>
@@ -191,12 +231,22 @@ export const Summary: React.FC<SummaryStepProps> = ({
               </li>
             )}
 
+            {form.isSoloPass && (
+              <li>
+                {t('form.contest.soloPassTitle')}:{' '}
+                <span className={textStyles.accent}>
+                  {soloPassPrice}
+                  {currencySymbol}
+                </span>
+              </li>
+            )}
+
             {stylesData}
           </ul>
         </>
       );
     } else return <></>;
-  }, [form, t, currentLang]);
+  }, [form, t, soloPassPrice, currentLang]);
 
   // Contest groups
   const contestGroupsData = useMemo(() => {
@@ -209,23 +259,13 @@ export const Summary: React.FC<SummaryStepProps> = ({
             {t('form.contest.groups.title')}
           </h3>
 
-          <ul className={clsx(textStyles.list, textStyles.list_summary)}>
-            {!form.isSoloContest && (
-              <li>
-                {t('form.contest.ageGroups.title')}:{' '}
-                <span className={textStyles.accent}>
-                  {t(`form.contest.ageGroups.${form.contestAgeGroup}`)}
-                </span>
-              </li>
-            )}
+          <ul className={clsx(textStyles.list, textStyles.list_summary)} translate='no'>
             {form.groupContest.map((group, index) => {
               // Category style translation
-              const isDuoType = group.type === 'duo';
-              const isGroupType = group.type === 'group';
               const contestCategory = contestCategories.find(
                 (cat) =>
-                  (cat.ageGroup === form.contestAgeGroup && cat.isDuoCategory === isDuoType) ||
-                  cat.isGroupCategory === isGroupType
+                  cat.ageGroup === form.groupContest[index].ageGroup &&
+                  (cat.isDuoCategory || cat.isGroupCategory)
               );
               const catStyle = contestCategory?.categories.find(
                 (style) => style.translations.en.categoryTitle === group.style
@@ -247,6 +287,13 @@ export const Summary: React.FC<SummaryStepProps> = ({
                       {t('form.contest.groups.groupOrDuo')}:{' '}
                       <span className={textStyles.accent}>
                         {t(`form.contest.groups.${group.type}`)}
+                      </span>
+                    </li>
+
+                    <li>
+                      {t('form.contest.groups.ageGroupTitle')}:{' '}
+                      <span className={textStyles.accent}>
+                        {t(`form.contest.ageGroups.${group.ageGroup}`)}
                       </span>
                     </li>
 
@@ -278,10 +325,8 @@ export const Summary: React.FC<SummaryStepProps> = ({
     else return <></>;
   }, [form, t, currentLang]);
 
-  // gala show
-  const galaShowData = useMemo(() => {
-    const soloPrice = form.settings?.price.worldShow?.solo;
-
+  // WorldShow
+  const worldShowData = useMemo(() => {
     if (form.isWorldShowSolo || form.isWorldShowGroup)
       return (
         <>
@@ -291,7 +336,7 @@ export const Summary: React.FC<SummaryStepProps> = ({
             <p className={textStyles.p}>
               {t('form.worldShow.solo')}:{' '}
               <span className={textStyles.accent}>
-                {soloPrice}
+                {settings?.price.worldShow?.solo!}
                 {currencySymbol}
               </span>
             </p>
@@ -299,7 +344,7 @@ export const Summary: React.FC<SummaryStepProps> = ({
 
           {form.isWorldShowGroup && (
             <>
-              <p className={textStyles.p}>
+              <p className={textStyles.p} translate='no'>
                 {t('form.summary.worldShowGroup')}:{' '}
                 <span className={textStyles.accent}>
                   {form.worldShowGroup?.price}
@@ -316,7 +361,7 @@ export const Summary: React.FC<SummaryStepProps> = ({
           )}
         </>
       );
-  }, [form, t]);
+  }, [form, t, settings]);
 
   return (
     <div className={styles.form}>
@@ -326,14 +371,20 @@ export const Summary: React.FC<SummaryStepProps> = ({
       <h3 className={clsx(textStyles.h3, textStyles.centered)}>
         {t('form.summary.personalTitle')}
       </h3>
-      <ul className={clsx(textStyles.list, textStyles.list_summary)}>{personalData}</ul>
+      <ul className={clsx(textStyles.list, textStyles.list_summary)}>
+        {personalData}
+        {/* {yearsBeforeData} */}
+      </ul>
 
       {/* Contacts */}
       <h3 className={clsx(textStyles.h3, textStyles.centered)}>{t('form.personal.contacts')}</h3>
       <ul className={clsx(textStyles.list, textStyles.list_summary)}>{contactsData}</ul>
 
       {/* Workshops */}
-      {workshopsData}
+      <h3 className={clsx(textStyles.h3, textStyles.centered)}>{t('form.workshops.title')}</h3>
+      <ul className={clsx(textStyles.list, textStyles.list_summary)} translate='no'>
+        {workshopsData}
+      </ul>
 
       {/* Competition solo */}
       {contestSoloData}
@@ -342,7 +393,7 @@ export const Summary: React.FC<SummaryStepProps> = ({
       {contestGroupsData}
 
       {/* World show */}
-      {galaShowData}
+      {worldShowData}
 
       {/* Finance options*/}
       <h3 className={clsx(textStyles.h3, textStyles.centered)}>{t('form.summary.money.title')}</h3>
@@ -353,6 +404,33 @@ export const Summary: React.FC<SummaryStepProps> = ({
           {currencySymbol}
         </span>
       </h4>
+      {!isPromo && form.isFullPass && form.fullPassDiscount !== 'free' && (
+        <>
+          <p className={textStyles.p}>{t('form.summary.money.installmentsDetails')}</p>
+          <FormInputCheckbox
+            name='isInstallments'
+            control={control}
+            label={<p className={textStyles.p}>{t('form.summary.money.installments')}</p>}
+          />
+          {form.isInstallments && (
+            <>
+              <p className={textStyles.p}>
+                {t('form.summary.money.amountNow')}:{' '}
+                <span className={textStyles.accent}>
+                  {total / 2}
+                  {currencySymbol}
+                </span>
+                <br />
+                {t('form.summary.money.amountAfter')}:{' '}
+                <span className={textStyles.accent}>
+                  {total / 2}
+                  {currencySymbol}
+                </span>
+              </p>
+            </>
+          )}
+        </>
+      )}
 
       {/* Rules */}
       <h3 className={clsx(textStyles.h3, textStyles.centered)}>{t('form.summary.lastThing')}</h3>
