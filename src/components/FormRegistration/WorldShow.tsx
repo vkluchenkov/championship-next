@@ -7,6 +7,7 @@ import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/Registration.module.css';
 import { WorldShowStepProps, FormFields } from './types';
 import { FormInputCheckbox, FormInputField } from '@/src/ui-kit/input';
+import { currencySymbol } from '@/src/ulis/constants';
 
 export const WorldShow: React.FC<WorldShowStepProps> = ({ setStepTotal, isEligible }) => {
   const { t } = useTranslation('registration');
@@ -72,7 +73,10 @@ export const WorldShow: React.FC<WorldShowStepProps> = ({ setStepTotal, isEligib
             label={
               <p className={textStyles.p}>
                 {t('form.worldShow.solo')}:{' '}
-                <span className={textStyles.accent}>{settings?.price.worldShow?.solo!}€</span>
+                <span className={textStyles.accent}>
+                  {settings?.price.worldShow?.solo!}
+                  {currencySymbol}
+                </span>
               </p>
             }
           />
@@ -84,7 +88,8 @@ export const WorldShow: React.FC<WorldShowStepProps> = ({ setStepTotal, isEligib
               <p className={textStyles.p}>
                 {t('form.worldShow.group')}:{' '}
                 <span className={textStyles.accent}>
-                  {settings?.price.worldShow?.groups!}€ / {t('form.worldShow.perPerson')}
+                  {settings?.price.worldShow?.groups!}
+                  {currencySymbol} / {t('form.worldShow.perPerson')}
                 </span>
               </p>
             }
@@ -121,7 +126,10 @@ export const WorldShow: React.FC<WorldShowStepProps> = ({ setStepTotal, isEligib
 
               <p className={textStyles.p}>
                 {t('form.contest.groups.price')}:{' '}
-                <span className={textStyles.accent}>{worldShowGroup?.price}€</span>
+                <span className={textStyles.accent}>
+                  {worldShowGroup?.price}
+                  {currencySymbol}
+                </span>
               </p>
             </div>
           </Collapse>
