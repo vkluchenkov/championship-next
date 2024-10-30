@@ -1,9 +1,10 @@
 import { Client } from '@notionhq/client';
+import { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints';
 import { Translate } from 'next-translate';
 
-import { OrderPayload } from '../components/FormRegistration/types';
-import { contestCategories } from '../ulis/contestCategories';
-import { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints';
+import { OrderPayload } from '@/src/components/FormRegistration/types';
+import { contestCategories } from '@/src/ulis/contestCategories';
+import { config } from '@/src/config';
 
 interface saveRegistrationToNotionProps {
   form: OrderPayload;
@@ -13,10 +14,13 @@ interface saveRegistrationToNotionProps {
 export const saveRegistrationToNotion = async (props: saveRegistrationToNotionProps) => {
   const { form, t } = props;
 
-  const notion = new Client({ auth: process.env.NOTION_TOKEN });
+  const notion = new Client({ auth: config.notion.token });
 
   const fullPassDiscountSelect = () => {
     switch (form.fullPassDiscount) {
+      case 'group':
+        return '20% Group';
+
       case '30%':
         return '30% Certificate';
 
@@ -45,18 +49,18 @@ export const saveRegistrationToNotion = async (props: saveRegistrationToNotionPr
     return { name: category.translations.en.categoryTitle };
   });
 
-  const contestGroups = form.groupContest.map((group) => {
+  const contestGroups = form.groupContest.map((group, index) => {
     // Category style translation
-    const isDuoType = group.type === 'duo';
-    const isGroupType = group.type === 'group';
     const contestCategory = contestCategories.find(
       (cat) =>
-        (cat.ageGroup === form.contestAgeGroup && cat.isDuoCategory === isDuoType) ||
-        cat.isGroupCategory === isGroupType
+        cat.ageGroup === form.groupContest[index].ageGroup &&
+        (cat.isDuoCategory || cat.isGroupCategory)
     );
     const catStyle = contestCategory?.categories.find(
       (style) => style.translations.en.categoryTitle === group.style
     );
+
+    const ageGroup = t(`form.contest.ageGroups.${group.ageGroup}`);
 
     return {
       name:
@@ -66,6 +70,8 @@ export const saveRegistrationToNotion = async (props: saveRegistrationToNotionPr
         ' | ' +
         group.qty +
         ' pers. | ' +
+        ageGroup +
+        ' | ' +
         catStyle?.translations.en.categoryTitle,
     };
   });
@@ -76,7 +82,7 @@ export const saveRegistrationToNotion = async (props: saveRegistrationToNotionPr
 
   const notionPayload: CreatePageParameters = {
     parent: {
-      database_id: process.env.NOTION_DATABASE_LIVE!,
+      database_id: config.notion.liveDbId,
       type: 'database_id',
     },
     properties: {
@@ -85,7 +91,7 @@ export const saveRegistrationToNotion = async (props: saveRegistrationToNotionPr
         title: [
           {
             type: 'text',
-            text: { content: form.name },
+            text: { content: form.name.trim() },
           },
         ],
       },
@@ -94,7 +100,7 @@ export const saveRegistrationToNotion = async (props: saveRegistrationToNotionPr
         rich_text: [
           {
             type: 'text',
-            text: { content: form.surname },
+            text: { content: form.surname.trim() },
           },
         ],
       },
@@ -103,7 +109,7 @@ export const saveRegistrationToNotion = async (props: saveRegistrationToNotionPr
         rich_text: [
           {
             type: 'text',
-            text: { content: form.stageName },
+            text: { content: form.stageName.trim() },
           },
         ],
       },
@@ -116,25 +122,16 @@ export const saveRegistrationToNotion = async (props: saveRegistrationToNotionPr
         rich_text: [
           {
             type: 'text',
-            text: { content: form.social },
+            text: { content: form.social.trim() },
           },
         ],
       },
-      Country: {
+      From: {
         type: 'rich_text',
         rich_text: [
           {
             type: 'text',
-            text: { content: form.country },
-          },
-        ],
-      },
-      City: {
-        type: 'rich_text',
-        rich_text: [
-          {
-            type: 'text',
-            text: { content: form.city },
+            text: { content: form.city.trim() + ', ' + form.country.trim() },
           },
         ],
       },
@@ -146,13 +143,17 @@ export const saveRegistrationToNotion = async (props: saveRegistrationToNotionPr
         type: 'email',
         email: form.email,
       },
-      FP: {
+      FullPass: {
         type: 'checkbox',
         checkbox: form.isFullPass,
       },
-      'Full Pass discount': {
+      Discount: {
         type: 'select',
         select: fullPassDiscountSelect() ? { name: fullPassDiscountSelect()! } : null,
+      },
+      'Group name': {
+        type: 'select',
+        select: form.fullPassGroupName ? { name: form.fullPassGroupName } : null,
       },
       'Certificate source': {
         type: 'rich_text',
@@ -185,6 +186,10 @@ export const saveRegistrationToNotion = async (props: saveRegistrationToNotionPr
             ? { name: t(`form.contest.levels.${form.contestLevel}`)! }
             : null,
       },
+      'Solo Pass': {
+        type: 'checkbox',
+        checkbox: !!form.isSoloPass,
+      },
       Styles: {
         type: 'multi_select',
         multi_select: contestSoloStyles!,
@@ -197,19 +202,23 @@ export const saveRegistrationToNotion = async (props: saveRegistrationToNotionPr
         type: 'multi_select',
         multi_select: contestGroups,
       },
-      'Show solo': {
+      'World Show solo': {
         type: 'checkbox',
         checkbox: !!form.isWorldShowSolo,
       },
-      'Show group': {
+      'World Show group': {
         type: 'rich_text',
         rich_text: [
           {
             text: {
-              content: worldShowGroup,
+              content: worldShowGroup.trim(),
             },
           },
         ],
+      },
+      Installments: {
+        type: 'checkbox',
+        checkbox: !!form.isInstallments,
       },
       Total: {
         type: 'number',
@@ -222,5 +231,6 @@ export const saveRegistrationToNotion = async (props: saveRegistrationToNotionPr
     await notion.pages.create(notionPayload);
   } catch (error) {
     console.log(error);
+    throw new Error('Notion save failed');
   }
 };
