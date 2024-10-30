@@ -31,7 +31,7 @@ import { StepsNavigation } from './StepsNavigation';
 import { Loader } from '../Loader';
 import { WordpressApi } from '@/src/api/wordpressApi';
 import { kidsDiscount } from '@/src/ulis/price';
-import { defaultValues, liveSteps } from './helpers';
+import { defaultValues, getWsPrices, liveSteps } from './helpers';
 import { schedule } from '@/src/ulis/schedule';
 
 interface FormRegistrationProps {
@@ -81,6 +81,7 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ priceData })
   const contestLevel = watch('contestLevel');
   const settings = watch('settings');
   const workshops = watch('workshops');
+  const wsPrices = watch('wsPrices');
 
   const selectedWorkshops = workshops.filter((ws) => ws.selected);
 
@@ -119,46 +120,10 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ priceData })
     setValue('ageGroup', initialAgeGroup);
   }, [initialAgeGroup, setValue]);
 
-  // Set workshops prices into form state
-  const wsPrices = useMemo(() => {
-    if (settings) {
-      const isPromo = (): boolean => {
-        const livePromo = isDev
-          ? settings.price.promoPeriodDev.isLivePromo.toLowerCase()
-          : settings.price.promoPeriod.isLivePromo.toLowerCase();
-        return livePromo === 'true' ? true : false;
-      };
-
-      const promoWsPrices = isDev
-        ? settings.price.promoPeriodDev.singlews
-        : settings.price.promoPeriod.singlews;
-
-      const periods = Object.entries(settings.price.periods);
-      const today = DateTime.now().setZone('Europe/Warsaw');
-
-      const getCurrentWsPrice = () => {
-        const periodWsPrices = periods.find((p) => {
-          const startDate = DateTime.fromISO(p[1].start)
-            .setZone('UTC')
-            .setZone('Europe/Warsaw', { keepLocalTime: true });
-
-          const endDate = DateTime.fromISO(p[1].end)
-            .setZone('UTC')
-            .setZone('Europe/Warsaw', { keepLocalTime: true });
-
-          return startDate <= today && today <= endDate;
-        })?.[1].singlews;
-
-        return isPromo() ? promoWsPrices : periodWsPrices;
-      };
-
-      return getCurrentWsPrice();
-    } else return undefined;
-  }, [settings, isDev]);
-
+  // Write workshops prices into form state
   useEffect(() => {
-    setValue('wsPrices', wsPrices);
-  }, [wsPrices, setValue]);
+    setValue('wsPrices', getWsPrices(settings, isDev));
+  }, [settings, isDev, setValue]);
 
   // Map solo contest styles and levels into form state
   useEffect(() => {
