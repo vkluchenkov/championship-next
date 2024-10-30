@@ -7,14 +7,10 @@ import clsx from 'clsx';
 import textStyles from '@/styles/Text.module.css';
 import { SupportedLangs } from '@/src/types';
 import { InputCheckbox } from '@/src/ui-kit/input/InputCheckbox';
-import { FormFields, WsPrices } from './types';
+import { FormFields } from './types';
 import { currencySymbol } from '@/src/ulis/constants';
 
-interface WorkshopsSingleProps {
-  wsPrices: WsPrices;
-}
-
-export const WorkshopsList: React.FC<WorkshopsSingleProps> = ({ wsPrices }) => {
+export const WorkshopsList: React.FC = () => {
   const { t, lang } = useTranslation('registration');
 
   const methods = useFormContext<FormFields>();
@@ -29,6 +25,7 @@ export const WorkshopsList: React.FC<WorkshopsSingleProps> = ({ wsPrices }) => {
   const currentLang = lang as SupportedLangs;
 
   const watchWorkshops = watch('workshops');
+  const wsPrices = watch('wsPrices');
 
   const controlledFields = fields.map((field, index) => {
     return {
@@ -51,7 +48,7 @@ export const WorkshopsList: React.FC<WorkshopsSingleProps> = ({ wsPrices }) => {
 
   const workshops = uniqueDays.map((day) => {
     const workshopsInputs = controlledFields.map((ws) => {
-      const price = wsPrices[ws.teachersPriceGroup].price;
+      const price = wsPrices?.[ws.teachersPriceGroup].price;
       if (ws.day === day)
         return (
           <FormControlLabel

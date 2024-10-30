@@ -93,7 +93,6 @@ export type WsPrices = {
 };
 
 export type WorkshopsStepProps = StepProps & {
-  wsPrices: WsPrices | undefined;
   fullPassPrice: number | undefined;
   setStepTotal: (total: number) => void;
   fullPassDiscountList: FullPassDiscount[];

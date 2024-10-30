@@ -19,7 +19,6 @@ import { schedule } from '@/src/ulis/schedule';
 import { SupportedLangs } from '@/src/types';
 
 export const Workshops: React.FC<WorkshopsStepProps> = ({
-  wsPrices,
   setStepTotal,
   fullPassPrice,
   fullPassDiscountList,
@@ -42,6 +41,7 @@ export const Workshops: React.FC<WorkshopsStepProps> = ({
   const isFullPass = watch('isFullPass');
   const workshops = watch('workshops');
   const workshopsType = watch('workshopsType');
+  const wsPrices = watch('wsPrices');
   const isFullPassDiscount = watch('fullPassDiscount');
 
   const selectedWorkshops = workshops.filter((ws) => ws.selected);
@@ -144,7 +144,7 @@ export const Workshops: React.FC<WorkshopsStepProps> = ({
       </FormControl>
 
       <Collapse in={workshopsType === 'single'} unmountOnExit>
-        <WorkshopsList wsPrices={wsPrices!} />
+        <WorkshopsList />
       </Collapse>
 
       <Collapse in={isFullPass} unmountOnExit>

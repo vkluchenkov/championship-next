@@ -368,8 +368,6 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ priceData })
               transition={{ type: 'linear', duration: 0.3 }}
             >
               <Workshops
-                // currentPricePeriod={currentPricePeriod}
-                wsPrices={wsPrices}
                 fullPassPrice={fullPassPrice}
                 fullPassDiscountList={fullPassDiscountList}
                 setStepTotal={setWsTotal}
