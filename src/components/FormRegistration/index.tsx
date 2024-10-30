@@ -264,12 +264,7 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ priceData })
           ? settings.price.promoPeriodDev.price.live
           : settings.price.promoPeriod.price.live;
 
-        const currentPrice: number | undefined = isPromo() ? promoPrice : periodPrice!.live;
-
-        // Kids discount for live version
-        if ((ageGroup === 'baby' || ageGroup === 'kids') && currentPrice)
-          return Number.parseFloat((currentPrice * kidsDiscount).toFixed(2));
-        else return currentPrice;
+        return isPromo() ? promoPrice : periodPrice!.live;
       };
 
       // additional discounts (certificates, etc.)
@@ -282,6 +277,10 @@ export const FormRegistration: React.FC<FormRegistrationProps> = ({ priceData })
       if (fullPassDiscount === '50%' && basePrice())
         return Number.parseFloat((basePrice()! * 0.5).toFixed(2));
       if (fullPassDiscount === 'free') return 0;
+
+      // Kids discount
+      if ((ageGroup === 'baby' || ageGroup === 'kids') && basePrice())
+        return Number.parseFloat((basePrice()! * kidsDiscount).toFixed(2));
       else return basePrice();
     } else return undefined;
   }, [ageGroup, settings, fullPassDiscount, isDev]);
