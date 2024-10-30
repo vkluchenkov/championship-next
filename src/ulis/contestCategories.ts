@@ -68,7 +68,6 @@ const mainSoloSet: Style[] = [
   },
   {
     isSolo: true,
-    isImprovisation: true,
     isForWin: true,
     translations: {
       en: {
