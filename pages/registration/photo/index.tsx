@@ -1,15 +1,16 @@
-import { useState, useCallback, useEffect, useMemo } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { NextPage } from 'next';
 import useTranslation from 'next-translate/useTranslation';
 import { FormProvider, useForm } from 'react-hook-form';
 import { ThemeProvider } from '@mui/material';
 import axios from 'axios';
+import clsx from 'clsx';
 
 import { Layout } from '@/src/components/Layout';
 import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/Registration.module.css';
 import { Loader } from '@/src/components/Loader';
-import { darkTheme, photoFileSizeLimit } from '@/src/utils/constants';
+import { darkTheme, photoFileSizeLimit, telegramUrl } from '@/src/utils/constants';
 import { PhotoFormFields } from '@/src/types/photo.types';
 import { FormPhoto } from '@/src/components/FormPhoto';
 
@@ -85,6 +86,14 @@ const Photo: NextPage = () => {
             {isLoading && <Loader />}
           </FormProvider>
         </ThemeProvider>
+
+        <h2 className={clsx(textStyles.h2, textStyles.accent)}>{t('telegramTitle')}</h2>
+        <p className={textStyles.p}>
+          {t('telegramText')}{' '}
+          <a href={telegramUrl} target='_blank'>
+            {t('telegramLink')}
+          </a>
+        </p>
       </section>
     </Layout>
   );

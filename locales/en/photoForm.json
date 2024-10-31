@@ -9,5 +9,8 @@
     "error": "Oops. Something went wrong. Please try again later or contact us to resolve the issue.",
     "success": "Congrats! Your file was successfully sent.",
     "sizeError": "Selected file exceeds the limit of 10Mb"
-  }
+  },
+  "telegramTitle": "Where do I find the poster?",
+  "telegramText": "All ready posters are posted in our Telegram group for participants (and ONLY there), along with all the important information and updates, such as shedules, posters and other announcements. You can join it by following ",
+  "telegramLink": "this link"
 }
