@@ -165,7 +165,7 @@ const Price: NextPage = () => {
           <p className={clsx(textStyles.p, styles.period__fullPass)}>
             {isSoldOut
               ? `${t('workshops.fullPass')}: ${t('workshops.soldOut')}`
-              : `${t('workshops.fullPass')}: ${period[1].price.live}€`}
+              : `${t('workshops.fullPass')}: ${period[1].price.live}{currencySymbol}`}
           </p>
           <h5 className={styles.period__singleTitle}>
             {period[1].singlews.group1.names}:{' '}
@@ -227,7 +227,8 @@ const Price: NextPage = () => {
             styles.table__cell_singlePrice
           )}
         >
-          {contestSoloPrice?.soloPassKids}€
+          {contestSoloPrice?.soloPassKids}
+          {currencySymbol}
         </p>
       </div>
 
@@ -276,25 +277,24 @@ const Price: NextPage = () => {
       {/* Price table */}
       <div className={styles.table}>
         <div className={styles.table__row}>
-          <h4 className={clsx(textStyles.h4, styles.table__header, styles.table__cell)}>
-            {t('competition.categoryTitle')}
-          </h4>
-          <h4
+          <div className={clsx(styles.table__header, styles.table__cell)}>
+            <h4 className={textStyles.h4}>{t('competition.categoryTitle')}</h4>
+          </div>
+          <div
             className={clsx(
-              textStyles.h4,
               styles.table__header,
               styles.table__cell,
               styles.table__cell_singlePrice
             )}
           >
-            {t('competition.price')}
-          </h4>
+            <h4 className={textStyles.h4}>{t('competition.price')}</h4>
+          </div>
         </div>
 
         <div className={styles.table__row}>
-          <h3 className={clsx(textStyles.h3, styles.table__cell, styles.table__cell_fullWidth)}>
-            {t('competition.kids')}
-          </h3>
+          <div className={clsx(styles.table__cell, styles.table__cell_fullWidth)}>
+            <h3 className={textStyles.h3}>{t('competition.kids')}</h3>
+          </div>
         </div>
 
         <div className={styles.table__row}>
@@ -307,14 +307,15 @@ const Price: NextPage = () => {
               styles.table__cell_singlePrice
             )}
           >
-            {contestSoloPrice?.kids}€
+            {contestSoloPrice?.kids}
+            {currencySymbol}
           </p>
         </div>
 
         <div className={styles.table__row}>
-          <h3 className={clsx(textStyles.h3, styles.table__cell, styles.table__cell_fullWidth)}>
-            {t('competition.juniors+')}
-          </h3>
+          <div className={clsx(styles.table__cell, styles.table__cell_fullWidth)}>
+            <h3 className={textStyles.h3}>{t('competition.juniors+')}</h3>
+          </div>
         </div>
 
         <div className={styles.table__row}>
@@ -327,7 +328,8 @@ const Price: NextPage = () => {
               styles.table__cell_singlePrice
             )}
           >
-            {contestSoloPrice?.risingstar}€
+            {contestSoloPrice?.risingstar}
+            {currencySymbol}
           </p>
         </div>
 
@@ -345,11 +347,12 @@ const Price: NextPage = () => {
               styles.table__cell_singlePrice
             )}
           >
-            {contestSoloPrice?.professionals}€
+            {contestSoloPrice?.professionals}
+            {currencySymbol}
           </p>
         </div>
 
-        {version === 'live' && soloPassTable}
+        {soloPassTable}
 
         <div className={styles.table__row}>
           <div className={clsx(styles.table__cell, styles.table__cell_fullWidth)}>
@@ -367,7 +370,8 @@ const Price: NextPage = () => {
               styles.table__cell_singlePrice
             )}
           >
-            {price?.contest?.contestGroupPrice}€
+            {price?.contest?.contestGroupPrice}
+            {currencySymbol}
           </p>
         </div>
       </div>
