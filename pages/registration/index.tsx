@@ -56,7 +56,7 @@ const Registration: NextPage = () => {
       {!isRegOpen && <h1 className={textStyles.h1}>{t('allClosed')}</h1>}
       <section className={styles.section}>
         <ThemeProvider theme={darkTheme}>
-          <FormRegistration priceData={data} />
+          {isRegOpen && <FormRegistration priceData={data} />}
         </ThemeProvider>
       </section>
     </Layout>
