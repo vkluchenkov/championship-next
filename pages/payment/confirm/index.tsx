@@ -11,7 +11,7 @@ import axios from 'axios';
 import Button from '@mui/material/Button';
 import { useRouter } from 'next/router';
 import { Loader } from '@/src/components/Loader';
-import { darkTheme } from '@/src/ulis/constants';
+import { darkTheme } from '@/src/utils/constants';
 import { PaymentConfirmFields } from '@/src/types/payment.types';
 import { SupportedLangs } from '@/src/types';
 

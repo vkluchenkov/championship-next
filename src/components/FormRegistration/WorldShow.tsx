@@ -7,7 +7,7 @@ import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/Registration.module.css';
 import { WorldShowStepProps, FormFields } from './types';
 import { FormInputCheckbox, FormInputField } from '@/src/ui-kit/input';
-import { currencySymbol } from '@/src/ulis/constants';
+import { currencySymbol } from '@/src/utils/constants';
 
 export const WorldShow: React.FC<WorldShowStepProps> = ({ setStepTotal, isEligible }) => {
   const { t } = useTranslation('registration');

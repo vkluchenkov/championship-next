@@ -4,7 +4,7 @@ import textStyles from '@/styles/Text.module.css';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 import Link from 'next/link';
-import { telegramUrl } from '@/src/ulis/constants';
+import { telegramUrl } from '@/src/utils/constants';
 import clsx from 'clsx';
 
 const PaymentThankYou: NextPage = () => {

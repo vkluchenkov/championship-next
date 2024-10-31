@@ -13,8 +13,8 @@ import {
 } from '@faire/mjml-react';
 import { Translate } from 'next-translate';
 import { OrderPayload } from '../components/FormRegistration/types';
-import { currencySymbol, defaultUrl } from '../ulis/constants';
-import { contestCategories } from '../ulis/contestCategories';
+import { currencySymbol, defaultUrl } from '../utils/constants';
+import { contestCategories } from '../utils/contestCategories';
 
 import { renderReactToMjml } from './renderReactToMjml';
 

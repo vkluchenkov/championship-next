@@ -9,7 +9,7 @@ import { Layout } from '@/src/components/Layout';
 import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/Registration.module.css';
 import { FormRegistration } from '@/src/components/FormRegistration';
-import { darkTheme } from '@/src/ulis/constants';
+import { darkTheme } from '@/src/utils/constants';
 
 export const getStaticProps: GetStaticProps = async () => {
   const queryClient = new QueryClient();

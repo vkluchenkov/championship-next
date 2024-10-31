@@ -9,7 +9,7 @@ import { ContestSoloStepProps, FormFields } from './types';
 import { FormInputCheckbox, FormInputSelect } from '@/src/ui-kit/input';
 import { getContestAgeGroupsList } from './helpers';
 import { ContestSoloList } from './ContestSoloList';
-import { minSoloPass } from '@/src/ulis/constants';
+import { minSoloPass } from '@/src/utils/constants';
 
 export const ContestSolo: React.FC<ContestSoloStepProps> = ({
   setStepTotal,

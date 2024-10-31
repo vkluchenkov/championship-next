@@ -6,7 +6,7 @@ import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { atlasUrl, cpkUrl, emailUrl, facebookUrl, instagramUrl } from '@/src/ulis/constants';
+import { atlasUrl, cpkUrl, emailUrl, facebookUrl, instagramUrl } from '@/src/utils/constants';
 
 const Contacts: NextPage = () => {
   const { t, lang } = useTranslation('contacts');

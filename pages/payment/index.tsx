@@ -15,7 +15,7 @@ import textStyles from '@/styles/Text.module.css';
 import { FormInputField, FormInputSelect } from '@/src/ui-kit/input';
 import { PaymentFormFields } from '@/src/types/payment.types';
 import { Loader } from '@/src/components/Loader';
-import { currencyCode, currencySymbol, darkTheme } from '@/src/ulis/constants';
+import { currencyCode, currencySymbol, darkTheme } from '@/src/utils/constants';
 
 const stripeKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!;
 const stripePromise = loadStripe(stripeKey);

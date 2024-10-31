@@ -7,7 +7,7 @@ import clsx from 'clsx';
 import { Layout } from '@/src/components/Layout';
 import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/Thanks.module.css';
-import { telegramUrl } from '@/src/ulis/constants';
+import { telegramUrl } from '@/src/utils/constants';
 
 const ThankYou: NextPage = () => {
   const { t, lang } = useTranslation('thank-you');

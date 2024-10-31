@@ -11,7 +11,7 @@ import {
   MjmlText,
 } from '@faire/mjml-react';
 import { Translate } from 'next-translate';
-import { currencySymbol, defaultUrl } from '../ulis/constants';
+import { currencySymbol, defaultUrl } from '../utils/constants';
 import { renderReactToMjml } from './renderReactToMjml';
 import { PaymentFormFields } from '../types/payment.types';
 

@@ -6,10 +6,10 @@ import useTranslation from 'next-translate/useTranslation';
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 
-import { currencySymbol, worldShowLimit } from '@/src/ulis/constants';
+import { currencySymbol, worldShowLimit } from '@/src/utils/constants';
 import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query';
 import { WordpressApi } from '@/src/api/wordpressApi';
-import { formatTime } from '@/src/ulis/formatTime';
+import { formatTime } from '@/src/utils/formatTime';
 
 export const getStaticProps: GetStaticProps = async () => {
   const queryClient = new QueryClient();

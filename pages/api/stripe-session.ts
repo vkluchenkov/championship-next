@@ -3,7 +3,7 @@ import Stripe from 'stripe';
 
 import { PaymentFormFields } from '@/src/types/payment.types';
 import { config } from '@/src/config';
-import { currencyCode } from '@/src/ulis/constants';
+import { currencyCode } from '@/src/utils/constants';
 
 const stripe = new Stripe(config.stripe.stripeSecretKey, { apiVersion: undefined });
 

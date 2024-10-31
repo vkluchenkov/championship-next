@@ -3,7 +3,7 @@ import { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints';
 import { Translate } from 'next-translate';
 
 import { OrderPayload } from '@/src/components/FormRegistration/types';
-import { contestCategories } from '@/src/ulis/contestCategories';
+import { contestCategories } from '@/src/utils/contestCategories';
 import { config } from '@/src/config';
 
 interface saveRegistrationToNotionProps {

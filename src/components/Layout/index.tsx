@@ -5,7 +5,7 @@ import { Footer } from '../Footer';
 import { Header } from '../Header';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './layout.module.css';
-import { motionVariants } from '@/src/ulis/constants';
+import { motionVariants } from '@/src/utils/constants';
 
 interface LayoutProps {
   children: any;

@@ -7,7 +7,7 @@ import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/Registration.module.css';
 import { ContestGroupStepProps, FormFields, GroupContest } from './types';
 import { ContestGroup } from './ContestGroup';
-import { maxGroups } from '@/src/ulis/constants';
+import { maxGroups } from '@/src/utils/constants';
 import { FormInputCheckbox } from '@/src/ui-kit/input';
 
 export const ContestGroups: React.FC<ContestGroupStepProps> = ({

@@ -10,8 +10,8 @@ import styles from '@/styles/Registration.module.css';
 import { SummaryStepProps, FormFields } from './types';
 import { SupportedLangs } from '@/src/types';
 import { FormInputCheckbox } from '@/src/ui-kit/input';
-import { contestCategories } from '@/src/ulis/contestCategories';
-import { currencySymbol, defaultUrl } from '@/src/ulis/constants';
+import { contestCategories } from '@/src/utils/contestCategories';
+import { currencySymbol, defaultUrl } from '@/src/utils/constants';
 
 export const Summary: React.FC<SummaryStepProps> = ({
   fullPassPrice,

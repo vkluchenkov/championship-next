@@ -16,9 +16,9 @@ import {
   soloLimit,
   soloProfessionalsLimit,
   worldShowLimit,
-} from '@/src/ulis/constants';
+} from '@/src/utils/constants';
 import { MusicFormFields } from '@/src/types/music.types';
-import { Style, Level, contestCategories } from '@/src/ulis/contestCategories';
+import { Style, Level, contestCategories } from '@/src/utils/contestCategories';
 import { FormMusic } from '@/src/components/FormMusic';
 
 const Music: NextPage = () => {

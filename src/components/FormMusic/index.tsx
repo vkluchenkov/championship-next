@@ -7,7 +7,7 @@ import { AgeGroup, SupportedLangs } from '@/src/types';
 import { MusicFormFields } from '@/src/types/music.types';
 import { FormInputField, FormInputSelect } from '@/src/ui-kit/input';
 import styles from '@/styles/Registration.module.css';
-import { contestCategories } from '@/src/ulis/contestCategories';
+import { contestCategories } from '@/src/utils/contestCategories';
 
 interface FormMusicProps {
   isSuccess: boolean;

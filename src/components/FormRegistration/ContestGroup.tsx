@@ -9,9 +9,9 @@ import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/Registration.module.css';
 import { GroupContest, FormFields } from './types';
 import { FormInputField, FormInputSelect } from '@/src/ui-kit/input';
-import { contestCategories } from '@/src/ulis/contestCategories';
+import { contestCategories } from '@/src/utils/contestCategories';
 import { ageGroupArray, SupportedLangs } from '@/src/types';
-import { currencySymbol } from '@/src/ulis/constants';
+import { currencySymbol } from '@/src/utils/constants';
 
 interface ContestGroupProps {
   field: GroupContest & { id: string; index: number };

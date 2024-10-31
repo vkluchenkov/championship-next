@@ -1,7 +1,7 @@
 import styles from './DesktopMenu.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { menu } from '@/src/ulis/menu';
+import { menu } from '@/src/utils/menu';
 import clsx from 'clsx';
 import useTranslation from 'next-translate/useTranslation';
 import { SupportedLangs } from '@/src/types';

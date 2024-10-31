@@ -9,7 +9,7 @@ import { Layout } from '@/src/components/Layout';
 import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/Registration.module.css';
 import { Loader } from '@/src/components/Loader';
-import { darkTheme, photoFileSizeLimit } from '@/src/ulis/constants';
+import { darkTheme, photoFileSizeLimit } from '@/src/utils/constants';
 import { PhotoFormFields } from '@/src/types/photo.types';
 import { FormPhoto } from '@/src/components/FormPhoto';
 

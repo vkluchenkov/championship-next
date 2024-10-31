@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import styles from './footer.module.css';
-import { emailUrl, facebookUrl, instagramUrl } from '@/src/ulis/constants';
+import { emailUrl, facebookUrl, instagramUrl } from '@/src/utils/constants';
 
 export const Footer: React.FC = () => {
   const { t, lang } = useTranslation();

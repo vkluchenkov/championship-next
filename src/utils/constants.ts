@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material';
-import { montserrat } from '@/src/ulis/font';
+import { montserrat } from '@/src/utils/font';
 
 // Age groups
 export const babyMinAge = 4;

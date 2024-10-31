@@ -1,4 +1,4 @@
-import { montserrat } from '@/src/ulis/font';
+import { montserrat } from '@/src/utils/font';
 import '@/styles/globals.css';
 import { HydrationBoundary, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { AppProps } from 'next/app';

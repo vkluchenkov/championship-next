@@ -12,8 +12,8 @@ import styles from '@/styles/Price.module.css';
 import textStyles from '@/styles/Text.module.css';
 import { Layout } from '@/src/components/Layout';
 import { WordpressApi } from '@/src/api/wordpressApi';
-import { isFullPassSoldOut } from '@/src/ulis/price';
-import { currencySymbol, defaultUrl, motionVariants } from '@/src/ulis/constants';
+import { isFullPassSoldOut } from '@/src/utils/price';
+import { currencySymbol, defaultUrl, motionVariants } from '@/src/utils/constants';
 import { SupportedLangs, Version } from '@/src/types';
 
 export const getStaticProps: GetStaticProps = async () => {

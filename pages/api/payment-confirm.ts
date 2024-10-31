@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import getT from 'next-translate/getT';
 import { PaymentConfirmFields } from '@/src/types/payment.types';
-import { senderEmail, senderName } from '@/src/ulis/constants';
+import { senderEmail, senderName } from '@/src/utils/constants';
 import { sendMail } from '@/src/email/sendMail';
 import { paymentConfirmEmail } from '@/src/email/paymentConfirmEmail';
 

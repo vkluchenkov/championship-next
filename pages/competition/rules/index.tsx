@@ -12,15 +12,15 @@ import {
   motionVariants,
   soloLimit,
   soloProfessionalsLimit,
-} from '@/src/ulis/constants';
-import { contestCategories } from '@/src/ulis/contestCategories';
+} from '@/src/utils/constants';
+import { contestCategories } from '@/src/utils/contestCategories';
 import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/Rules.module.css';
 import { SupportedLangs } from '@/src/types';
 import { WordpressApi } from '@/src/api/wordpressApi';
 import { useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
-import { formatTime } from '@/src/ulis/formatTime';
+import { formatTime } from '@/src/utils/formatTime';
 
 export const getStaticProps: GetStaticProps = async () => {
   const queryClient = new QueryClient();

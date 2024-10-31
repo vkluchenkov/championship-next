@@ -15,7 +15,7 @@ import {
 import { FormFields, WorkshopsField, WorkshopsStepProps, WorkshopsType } from './types';
 import { WorkshopsList } from './WorkshopsList';
 import { FormInputField, FormInputSelect } from '@/src/ui-kit/input';
-import { schedule } from '@/src/ulis/schedule';
+import { schedule } from '@/src/utils/schedule';
 import { SupportedLangs } from '@/src/types';
 
 export const Workshops: React.FC<WorkshopsStepProps> = ({

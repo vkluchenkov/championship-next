@@ -1,7 +1,7 @@
 import { WordpressApi } from '@/src/api/wordpressApi';
 import { AgeGroup, SupportedLangs } from '@/src/types';
-import { Style, Level } from '@/src/ulis/contestCategories';
-import { Workshop } from '@/src/ulis/schedule';
+import { Style, Level } from '@/src/utils/contestCategories';
+import { Workshop } from '@/src/utils/schedule';
 
 export interface GroupContest {
   type: 'duo' | 'group';

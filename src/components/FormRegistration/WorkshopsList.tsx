@@ -8,7 +8,7 @@ import textStyles from '@/styles/Text.module.css';
 import { SupportedLangs } from '@/src/types';
 import { InputCheckbox } from '@/src/ui-kit/input/InputCheckbox';
 import { FormFields } from './types';
-import { currencySymbol } from '@/src/ulis/constants';
+import { currencySymbol } from '@/src/utils/constants';
 
 export const WorkshopsList: React.FC = () => {
   const { t, lang } = useTranslation('registration');

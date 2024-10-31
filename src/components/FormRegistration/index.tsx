@@ -20,19 +20,19 @@ import {
   SoloContestField,
   WorkshopsField,
 } from './types';
-import { getAgeGroup } from '@/src/ulis/getAgeGroup';
+import { getAgeGroup } from '@/src/utils/getAgeGroup';
 import { ContestSolo } from './ContestSolo';
-import { defaultUrl, minWsAdults, minWsKids, motionVariants } from '@/src/ulis/constants';
-import { contestCategories, Level } from '@/src/ulis/contestCategories';
+import { defaultUrl, minWsAdults, minWsKids, motionVariants } from '@/src/utils/constants';
+import { contestCategories, Level } from '@/src/utils/contestCategories';
 import { ContestGroups } from './ContestGroups';
 import { WorldShow } from './WorldShow';
 import { Summary } from './Summary';
 import { StepsNavigation } from './StepsNavigation';
 import { Loader } from '../Loader';
 import { WordpressApi } from '@/src/api/wordpressApi';
-import { kidsDiscount } from '@/src/ulis/price';
+import { kidsDiscount } from '@/src/utils/price';
 import { defaultValues, getWsPrices, liveSteps } from './helpers';
-import { schedule } from '@/src/ulis/schedule';
+import { schedule } from '@/src/utils/schedule';
 
 interface FormRegistrationProps {
   priceData: Awaited<ReturnType<typeof WordpressApi.getSettings>>;

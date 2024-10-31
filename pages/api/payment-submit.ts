@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import getT from 'next-translate/getT';
 import { PaymentFormFields } from '@/src/types/payment.types';
 import { paymentAdminEmail } from '@/src/email/paymentAdminEmail';
-import { senderEmail, senderName } from '@/src/ulis/constants';
+import { senderEmail, senderName } from '@/src/utils/constants';
 import { sendMail } from '@/src/email/sendMail';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
