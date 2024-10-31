@@ -13,9 +13,9 @@ import {
 } from '@faire/mjml-react';
 import { Translate } from 'next-translate';
 
-import { OrderPayload } from '../components/FormRegistration/types';
-import { currencySymbol, defaultUrl, telegramUrl } from '../ulis/constants';
-import { contestCategories } from '../ulis/contestCategories';
+import { OrderPayload } from '@/src/components/FormRegistration/types';
+import { currencySymbol, defaultUrl, telegramUrl } from '@/src/utils/constants';
+import { contestCategories } from '@/src/utils/contestCategories';
 import { renderReactToMjml } from './renderReactToMjml';
 
 interface registrationUserEmailProps {
@@ -473,11 +473,16 @@ export const registrationUserEmail = (props: registrationUserEmailProps) => {
               </a>
             </MjmlText>
 
+            {/* Divider */}
+            <MjmlDivider mj-class='divider' />
+
+            <MjmlText mj-class='h3'>{t('email.telegramTitle')}</MjmlText>
             <MjmlText mj-class='text'>
               {t('email.telegram1')}{' '}
               <a href={telegramUrl} target='_blank' rel='noreferrer' style={{ color: accentColor }}>
-                {t('email.telegram2')}
+                {t('email.telegram2')}{' '}
               </a>
+              {t('email.telegram3')}
             </MjmlText>
           </MjmlColumn>
         </MjmlSection>
