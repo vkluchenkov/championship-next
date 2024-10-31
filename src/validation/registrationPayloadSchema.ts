@@ -5,12 +5,10 @@ export const registrationPayloadSchema = Joi.object({
   currentLang: Joi.string().required().equal('en', 'ru'),
   soloPassPrice: Joi.number().required(),
   total: Joi.number().required(),
-  version: Joi.string().required().equal('live'),
   name: Joi.string().required(),
   surname: Joi.string().required(),
   stageName: Joi.string().allow(''),
   age: Joi.number().required(),
-  beenBefore: Joi.boolean().required(),
   email: Joi.string().email().required(),
   social: Joi.string(),
   country: Joi.string().required(),
@@ -24,6 +22,7 @@ export const registrationPayloadSchema = Joi.object({
       start: Joi.string().required(),
       end: Joi.string().required(),
       type: Joi.string().required().equal('workshop'),
+      teachersPriceGroup: Joi.string().required().equal('group1', 'group2'),
       translations: Joi.object({
         ru: Joi.object({
           title: Joi.string().required(),
