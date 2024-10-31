@@ -20,9 +20,6 @@ export const menu: MenuItem[] = [
       ru: {
         title: 'Регистрация',
       },
-      pl: {
-        title: 'Rejestracja',
-      },
     },
   },
   {
@@ -33,9 +30,6 @@ export const menu: MenuItem[] = [
       },
       ru: {
         title: 'Цены',
-      },
-      pl: {
-        title: 'Ceny',
       },
     },
   },
@@ -48,9 +42,6 @@ export const menu: MenuItem[] = [
       ru: {
         title: 'Конкурс',
       },
-      pl: {
-        title: 'Konkurs',
-      },
     },
     subItems: [
       {
@@ -62,9 +53,6 @@ export const menu: MenuItem[] = [
           ru: {
             title: 'Положение конкурса',
           },
-          pl: {
-            title: 'Zasady',
-          },
         },
       },
       {
@@ -75,9 +63,6 @@ export const menu: MenuItem[] = [
           },
           ru: {
             title: 'Судейство',
-          },
-          pl: {
-            title: 'Ocenianie',
           },
         },
       },
@@ -92,9 +77,6 @@ export const menu: MenuItem[] = [
       ru: {
         title: 'Гала Шоу',
       },
-      pl: {
-        title: 'Gala',
-      },
     },
   },
   {
@@ -105,9 +87,6 @@ export const menu: MenuItem[] = [
       },
       ru: {
         title: 'Информация',
-      },
-      pl: {
-        title: 'Informacje',
       },
     },
     subItems: [
@@ -120,9 +99,6 @@ export const menu: MenuItem[] = [
           ru: {
             title: 'Расписание',
           },
-          pl: {
-            title: 'Harmonogram',
-          },
         },
       },
       {
@@ -133,9 +109,6 @@ export const menu: MenuItem[] = [
           },
           ru: {
             title: 'Фото и видео съемка',
-          },
-          pl: {
-            title: 'Zdjęcia i filmy',
           },
         },
       },
@@ -148,9 +121,6 @@ export const menu: MenuItem[] = [
           ru: {
             title: 'Базар',
           },
-          pl: {
-            title: 'Bazaar',
-          },
         },
       },
       {
@@ -160,9 +130,6 @@ export const menu: MenuItem[] = [
             title: 'FAQ',
           },
           ru: {
-            title: 'FAQ',
-          },
-          pl: {
             title: 'FAQ',
           },
         },
@@ -175,9 +142,6 @@ export const menu: MenuItem[] = [
           },
           ru: {
             title: 'Контакты',
-          },
-          pl: {
-            title: 'Kontakt',
           },
         },
       },
