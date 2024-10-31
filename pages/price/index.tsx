@@ -165,7 +165,7 @@ const Price: NextPage = () => {
           <p className={clsx(textStyles.p, styles.period__fullPass)}>
             {isSoldOut
               ? `${t('workshops.fullPass')}: ${t('workshops.soldOut')}`
-              : `${t('workshops.fullPass')}: ${period[1].price.live}{currencySymbol}`}
+              : `${t('workshops.fullPass')}: ${period[1].price.live}${currencySymbol}`}
           </p>
           <h5 className={styles.period__singleTitle}>
             {period[1].singlews.group1.names}:{' '}
