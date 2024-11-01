@@ -1,13 +1,14 @@
-import { Layout } from '@/src/components/Layout';
 import { NextPage } from 'next';
-import textStyles from '@/styles/Text.module.css';
-import styles from '@/styles/PhotoVideo.module.css';
 import useTranslation from 'next-translate/useTranslation';
-import { Hero } from '@/src/ui-kit/Hero';
-import vladimir from '/public/images/vladimir.jpg';
 import Trans from 'next-translate/Trans';
 import Link from 'next/link';
 import clsx from 'clsx';
+
+import { Layout } from '@/src/components/Layout';
+import { Hero } from '@/src/ui-kit/Hero';
+import textStyles from '@/styles/Text.module.css';
+import styles from '@/styles/PhotoVideo.module.css';
+import vladimir from '/public/images/vladimir.jpg';
 
 const PhotoVideo: NextPage = () => {
   const { t } = useTranslation('photoVideo');
@@ -15,7 +16,7 @@ const PhotoVideo: NextPage = () => {
   const videographerText = (
     <Trans
       i18nKey='photoVideo:videographerText'
-      components={[<Link href='https://www.bestpicture.pro' target='_blank' key={1} />]}
+      components={[<span className={textStyles.accent} key={1} />]}
     />
   );
 
@@ -24,12 +25,6 @@ const PhotoVideo: NextPage = () => {
       <section className={styles.section}>
         <Hero name={t('vladimir')} title={t('videographer')} image={vladimir} />
         <p className={textStyles.p}>{videographerText}</p>
-        <h3 className={clsx(textStyles.h3, textStyles.accent)}>{t('price')}:</h3>
-        <ul className={textStyles.list}>
-          <li>{t('photoPack')}</li>
-          <li>{t('videoPrice')}</li>
-          <li>{t('offer')}</li>
-        </ul>
       </section>
     </div>
   );
