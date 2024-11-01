@@ -112,17 +112,17 @@ export const menu: MenuItem[] = [
           },
         },
       },
-      {
-        link: '/info/bazaar',
-        translations: {
-          en: {
-            title: 'Bazaar',
-          },
-          ru: {
-            title: 'Базар',
-          },
-        },
-      },
+      // {
+      //   link: '/info/bazaar',
+      //   translations: {
+      //     en: {
+      //       title: 'Bazaar',
+      //     },
+      //     ru: {
+      //       title: 'Базар',
+      //     },
+      //   },
+      // },
       {
         link: '/info/faq',
         translations: {
