@@ -29,6 +29,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const chatId = config.telegram.chatId;
       const threadId = config.telegram.threadId;
 
+      console.log('bot', config.telegram.botToken);
+      console.log('chatId', config.telegram.chatId);
+      console.log('threadId', config.telegram.threadId);
+
       const message = `
       New registration from ${orderPayload.name.trim()} ${orderPayload.surname.trim()}.
       Total: ${orderPayload.total}${currencySymbol}.
