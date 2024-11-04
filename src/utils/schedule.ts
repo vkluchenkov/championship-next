@@ -175,10 +175,10 @@ export const schedule: Day[] = [
   {
     translations: {
       en: {
-        dayTitle: '5.04 Sunday',
+        dayTitle: '6.04 Sunday',
       },
       ru: {
-        dayTitle: '5.04 Воскресенье',
+        dayTitle: '6.04 Воскресенье',
       },
     },
     dayEvents: [
