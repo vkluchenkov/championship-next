@@ -156,7 +156,7 @@ const Payment: NextPage = () => {
                         return actions.order.create({
                           purchase_units: [
                             {
-                              amount: { currency_code: 'EUR', value: value },
+                              amount: { currency_code: currencyCode, value: value },
                               description: 'Registration payment for ' + name,
                             },
                           ],
