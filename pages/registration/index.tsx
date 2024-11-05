@@ -43,9 +43,9 @@ const Registration: NextPage = () => {
   }, [data]);
 
   const isRegOpen = useMemo(() => {
-    if (process.env.NODE_ENV === 'development')
+    if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'development')
       return regState?.isLiveOpenDev.toLowerCase() === 'true' ? true : false;
-    if (process.env.NODE_ENV === 'production')
+    if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'production')
       return regState?.isLiveOpen.toLowerCase() === 'true' ? true : false;
     else return false;
   }, [regState]);
