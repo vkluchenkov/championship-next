@@ -1,10 +1,13 @@
-import { AgeGroup, PricePeriod, SupportedLangs, Version } from '@/src/types';
-import { Style, Level } from '@/src/ulis/contestCategories';
-import { Workshop } from '@/src/ulis/schedule';
+import { WordpressApi } from '@/src/api/wordpressApi';
+import { AgeGroup, SupportedLangs } from '@/src/types';
+import { Style, Level } from '@/src/utils/contestCategories';
+import { Workshop } from '@/src/utils/schedule';
 
 export interface GroupContest {
   type: 'duo' | 'group';
+  ageGroup: AgeGroup | null;
   style: string;
+  styles?: Style[];
   qty: number;
   name: string;
   price: number;
@@ -21,12 +24,10 @@ export type SoloContestField = (Style & { selected: boolean; id: string; price: 
 
 export type WorkshopsType = 'fullPass' | 'single' | '';
 
-export type FullPassDiscount = '30%' | '50%' | 'free' | 'none';
+export type FullPassDiscount = 'group' | '30%' | '50%' | 'free' | 'none';
 
 export interface FormFields {
-  isFullPass: boolean;
-  fullPassDiscount: FullPassDiscount;
-  fullPassDiscountSource: string;
+  settings: Awaited<ReturnType<typeof WordpressApi.getSettings>>;
   name: string;
   surname: string;
   stageName: string;
@@ -36,14 +37,19 @@ export interface FormFields {
   country: string;
   city: string;
   tel: string;
-  isWorkshops: boolean;
   workshops: WorkshopsField;
   workshopsType: WorkshopsType;
+  wsPrices: WsPrices | undefined;
+  isFullPass: boolean;
+  fullPassDiscount: FullPassDiscount;
+  fullPassDiscountSource: string;
+  fullPassGroupName: string;
   ageGroup: AgeGroup | null;
   isSoloContest: boolean;
   contestAgeGroup: AgeGroup | null;
+  isSoloPass: boolean;
   contestLevels: Level[];
-  contestLevel: Level;
+  contestLevel?: Level;
   soloContest: SoloContestField;
   isGroupContest: boolean;
   groupContest: GroupContest[];
@@ -51,6 +57,7 @@ export interface FormFields {
   isWorldShowGroup: boolean;
   worldShowGroup: WorldShowGroup | null;
   rulesAccepted: boolean;
+  isInstallments: boolean;
   currentStep: StepId;
 }
 
@@ -68,12 +75,24 @@ export interface Step {
   next: StepId | null;
 }
 
-export interface StepProps {
-  // onStepSubmit: (direction: 'next' | 'prev') => void;
-}
+export interface StepProps {}
+
+export type PersonalStepProps = StepProps & {
+  setIsNextDisabled: (state: boolean) => void;
+};
+
+export type WsPrices = {
+  group1: {
+    names: string;
+    price: number;
+  };
+  group2: {
+    names: string;
+    price: number;
+  };
+};
 
 export type WorkshopsStepProps = StepProps & {
-  currentPricePeriod: PricePeriod | undefined;
   fullPassPrice: number | undefined;
   setStepTotal: (total: number) => void;
   fullPassDiscountList: FullPassDiscount[];
@@ -82,7 +101,9 @@ export type WorkshopsStepProps = StepProps & {
 
 export type ContestSoloStepProps = StepProps & {
   setStepTotal: (total: number) => void;
+  soloPassPrice: number;
   setIsNextDisabled: (state: boolean) => void;
+  isEligible: boolean;
 };
 
 export type ContestGroupStepProps = StepProps & {
@@ -92,22 +113,20 @@ export type ContestGroupStepProps = StepProps & {
 };
 
 export type WorldShowStepProps = StepProps & {
-  isEligible: boolean;
   setStepTotal: (total: number) => void;
-  setIsNextDisabled: (state: boolean) => void;
-  isNextDisabled: boolean;
+  isEligible: boolean;
 };
 
 export type SummaryStepProps = StepProps & {
   fullPassPrice: number | undefined;
-  currentPricePeriod: PricePeriod | undefined;
+  soloPassPrice: number;
   total: number;
   setIsNextDisabled: (state: boolean) => void;
 };
 
 export type OrderPayload = FormFields & {
   fullPassPrice: number | undefined;
-  currentPricePeriod: PricePeriod | undefined;
   currentLang: SupportedLangs;
+  soloPassPrice: number;
   total: number;
 };

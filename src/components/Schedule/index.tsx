@@ -1,7 +1,7 @@
 import useTranslation from 'next-translate/useTranslation';
 import styles from './schedule.module.css';
 import textStyles from '@/styles/Text.module.css';
-import { schedule } from '@/src/ulis/schedule';
+import { schedule } from '@/src/utils/schedule';
 import { useMemo } from 'react';
 import { SupportedLangs } from '@/src/types';
 import clsx from 'clsx';

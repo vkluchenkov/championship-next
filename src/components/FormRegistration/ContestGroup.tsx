@@ -1,24 +1,24 @@
+import { useEffect, useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Button, MenuItem } from '@mui/material';
+import { useFormContext } from 'react-hook-form';
+import clsx from 'clsx';
+
 import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/Registration.module.css';
 import { GroupContest, FormFields } from './types';
-import { Button, MenuItem } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { FormInputField, FormInputSelect } from '@/src/ui-kit/input';
-import { useFormContext } from 'react-hook-form';
-import { useEffect, useState } from 'react';
-import { contestGroupPrice } from '@/src/ulis/price';
-import clsx from 'clsx';
-import { Style } from '@/src/ulis/contestCategories';
-import { SupportedLangs } from '@/src/types';
+import { contestCategories } from '@/src/utils/contestCategories';
+import { ageGroupArray, SupportedLangs } from '@/src/types';
+import { currencySymbol } from '@/src/utils/constants';
 
 interface ContestGroupProps {
   field: GroupContest & { id: string; index: number };
   onDelete: () => void;
-  catStyles: Style[] | undefined;
 }
 
-export const ContestGroup: React.FC<ContestGroupProps> = ({ field, onDelete, catStyles }) => {
+export const ContestGroup: React.FC<ContestGroupProps> = ({ field, onDelete }) => {
   const { t, lang } = useTranslation('registration');
   const currentLang = lang as SupportedLangs;
 
@@ -29,6 +29,9 @@ export const ContestGroup: React.FC<ContestGroupProps> = ({ field, onDelete, cat
     watch,
     formState: { errors },
   } = methods;
+
+  const settings = watch('settings');
+  const ageGroup = watch(`groupContest.${field.index}.ageGroup`);
 
   const fieldErrors = errors.groupContest?.[field.index];
 
@@ -52,9 +55,13 @@ export const ContestGroup: React.FC<ContestGroupProps> = ({ field, onDelete, cat
 
   // Calculate selection price
   useEffect(() => {
-    const price = field.qty * contestGroupPrice;
+    const price = field.qty * settings?.price.contest?.contestGroupPrice!;
     setValue(`groupContest.${field.index}.price`, price);
-  }, [setValue, field.qty, field.index]);
+  }, [setValue, field.qty, field.index, settings]);
+
+  const contestCategory = contestCategories.find(
+    (cat) => cat.ageGroup === ageGroup && (cat.isDuoCategory || cat.isGroupCategory)
+  );
 
   return (
     <div className={clsx(styles.form)}>
@@ -77,16 +84,40 @@ export const ContestGroup: React.FC<ContestGroupProps> = ({ field, onDelete, cat
       </div>
 
       <FormInputSelect
+        translate='no'
         control={control}
         label={t('form.contest.groups.groupOrDuo')}
         fullWidth
         name={`groupContest.${field.index}.type`}
       >
-        <MenuItem value='duo'>{t('form.contest.groups.duo')}</MenuItem>
-        <MenuItem value='group'>{t('form.contest.groups.group')}</MenuItem>
+        <MenuItem value='duo' translate='no'>
+          {t('form.contest.groups.duo')}
+        </MenuItem>
+        <MenuItem value='group' translate='no'>
+          {t('form.contest.groups.group')}
+        </MenuItem>
       </FormInputSelect>
 
       <FormInputSelect
+        translate='no'
+        name={`groupContest.${field.index}.ageGroup`}
+        control={control}
+        label={t('form.contest.groups.ageGroupTitle')}
+        rules={{
+          required: t('form.common.required'),
+        }}
+        error={!!fieldErrors?.style}
+        helperText={fieldErrors?.style?.message as string | undefined}
+      >
+        {ageGroupArray.map((group) => (
+          <MenuItem key={group} value={group} translate='no'>
+            {t(`form.contest.ageGroups.${group}`)}
+          </MenuItem>
+        ))}
+      </FormInputSelect>
+
+      <FormInputSelect
+        translate='no'
         control={control}
         label={t('form.contest.groups.style')}
         fullWidth
@@ -97,11 +128,11 @@ export const ContestGroup: React.FC<ContestGroupProps> = ({ field, onDelete, cat
         error={!!fieldErrors?.style}
         helperText={fieldErrors?.style?.message as string | undefined}
       >
-        {catStyles?.map((style) => {
+        {contestCategory?.categories?.map((style) => {
           const id = style.translations.en.categoryTitle;
           const title = style.translations[currentLang].categoryTitle;
           return (
-            <MenuItem key={id} value={id}>
+            <MenuItem key={id} value={id} translate='no'>
               {title}
             </MenuItem>
           );
@@ -138,7 +169,11 @@ export const ContestGroup: React.FC<ContestGroupProps> = ({ field, onDelete, cat
       />
 
       <p className={textStyles.p}>
-        {t('form.contest.groups.price')}: <span className={textStyles.accent}>{field.price}zł</span>
+        {t('form.contest.groups.price')}:{' '}
+        <span className={textStyles.accent}>
+          {field.price}
+          {currencySymbol}
+        </span>
       </p>
     </div>
   );

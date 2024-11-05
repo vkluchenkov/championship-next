@@ -3,11 +3,11 @@ import clsx from 'clsx';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import styles from './footer.module.css';
-import { emailUrl, facebookUrl, instagramUrl } from '@/src/ulis/constants';
+import { emailUrl, facebookUrl, instagramUrl } from '@/src/utils/constants';
 
 export const Footer: React.FC = () => {
   const { t, lang } = useTranslation();
-  const year = new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className={styles.footer}>
@@ -38,9 +38,12 @@ export const Footer: React.FC = () => {
           </Link>
         </p>
         <p className={styles.footer__copyright}>
-          ©{year} Open Bellydance Championship of Poland
+          ©{currentYear === 2024 ? currentYear : '2024-' + currentYear.toString()} Open Bellydance
+          Championship
           <br />
-          {t('common:footerCopyright')}
+          <a href='https://github.com/vkluchenkov' target='_blank'>
+            {t('common:footerCopyright')}
+          </a>
         </p>
       </div>
     </footer>

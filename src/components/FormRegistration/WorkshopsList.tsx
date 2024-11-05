@@ -1,18 +1,16 @@
+import React, { useCallback } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useFieldArray, useFormContext } from 'react-hook-form';
-import textStyles from '@/styles/Text.module.css';
 import { FormControlLabel } from '@mui/material';
-import { PricePeriod, SupportedLangs } from '@/src/types';
+import clsx from 'clsx';
+
+import textStyles from '@/styles/Text.module.css';
+import { SupportedLangs } from '@/src/types';
 import { InputCheckbox } from '@/src/ui-kit/input/InputCheckbox';
 import { FormFields } from './types';
-import clsx from 'clsx';
-import React, { useCallback } from 'react';
+import { currencySymbol } from '@/src/utils/constants';
 
-interface WorkshopsSingleProps {
-  currentPricePeriod: PricePeriod | undefined;
-}
-
-export const WorkshopsList: React.FC<WorkshopsSingleProps> = ({ currentPricePeriod }) => {
+export const WorkshopsList: React.FC = () => {
   const { t, lang } = useTranslation('registration');
 
   const methods = useFormContext<FormFields>();
@@ -27,6 +25,7 @@ export const WorkshopsList: React.FC<WorkshopsSingleProps> = ({ currentPricePeri
   const currentLang = lang as SupportedLangs;
 
   const watchWorkshops = watch('workshops');
+  const wsPrices = watch('wsPrices');
 
   const controlledFields = fields.map((field, index) => {
     return {
@@ -49,7 +48,7 @@ export const WorkshopsList: React.FC<WorkshopsSingleProps> = ({ currentPricePeri
 
   const workshops = uniqueDays.map((day) => {
     const workshopsInputs = controlledFields.map((ws) => {
-      const price = currentPricePeriod?.price[`${ws.teachersPriceGroup!}Price`];
+      const price = wsPrices?.[ws.teachersPriceGroup].price;
       if (ws.day === day)
         return (
           <FormControlLabel
@@ -64,7 +63,10 @@ export const WorkshopsList: React.FC<WorkshopsSingleProps> = ({ currentPricePeri
                 <br />
                 {ws.translations[currentLang].title}: {ws.translations[currentLang].description}
                 <br />
-                <span className={textStyles.accent}>{price}zł</span>
+                <span className={textStyles.accent}>
+                  {price}
+                  {currencySymbol}
+                </span>
               </p>
             }
           />

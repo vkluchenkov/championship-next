@@ -1,6 +1,6 @@
 {
   "pageTitle": "Registration",
-  "allClosed": "Registration to this edition of the Championship is closed, everything is sold out. See you next year!",
+  "allClosed": "Registration to this edition of the Championship is not yet open or already closed. Please follow our social media for the news.",
   "form": {
     "common": {
       "required": "This field is required",
@@ -32,10 +32,14 @@
       "selectTitle": "Full Pass or one by one?",
       "fullPass": "Full Pass",
       "fullPassDescription1": "It’s possible to buy workshops as a package — Full Pass or single workshops of your choice. ",
+      "fullPassDescription2Live": "Full Pass unlocks all the workshops, competition and Gala Show. You can pay for it in installments (except Promo tariff). Kids and Baby have 30% discount.",
       "fullPassDescriptionSoldOut": "Full Pass for this edition of Championship has been sold out. It is only possible to buy single workshops.",
       "singleWs": "Single workshops",
       "discounts": {
         "title": "Full Pass discounts",
+        "group": "Group discount 20%",
+        "groupName": "Group name",
+        "groupDescription": "20% discount on Full Pass for registration of 3+ participants as a group. Discount won't be summarized with personal discounts or discounts for kids.",
         "30%": "Certificate 30%",
         "50%": "Certificate 50%",
         "free": "Certificate Free Full Pass",
@@ -47,6 +51,10 @@
     "contest": {
       "soloTitle": "Competition Solo",
       "checkboxLabel": "I want to take part in solo competition",
+      "soloPassLabel": "I want to buy Solo Pass",
+      "soloPassTitle": "Solo Pass",
+      "solosPassDescription": "With the Solo Pass you can dance unlimited times in all solo categories. You save, if you dance more than 3 times.",
+      "notEligible": "In order to take part in the competition all the participants are required to have at least 2 workshops (1 for baby/kids) or Full Pass.",
       "ageGroups": {
         "title": "Competition age group",
         "baby": "Baby",
@@ -65,12 +73,13 @@
       },
       "stylesTitle": "Styles",
       "free": "free",
-      "championTitle": "Championship styles",
+      "absoluteWinnerTitle": "Championship battle required styles",
       "restTitle": "Rest styles",
-      "championText": "The contestants, who take part in 4 categories at Professionals level (Classic, Folklore, Tabla solo and Improvisation) automatically take part in the Championship battle. To be able to compete for the Champion's title it is mandatory to dance in all 4 of those categories mentioned. The criteria for judging improvisation and overall Champion choosing process are described on <0>Judging</0> page.",
+      "absoluteWinnerText": "The contestants, who take part in 4 categories at Professionals level (Classic, Folklore, Tabla solo CD and Improvisation) automatically take part in the battle for the title of the Champion, who will get the main prizes, including the right to be a teacher for the next year. To be able to compete for the title it is mandatory to dance in all 4 of those categories mentioned. The criteria for judging improvisation and overall Champion choosing process are described on <0>Judging</0> page.",
       "groups": {
         "title": "Competition duos and groups",
         "checkboxLabel": "I want to register a duo or a group",
+        "ageGroupTitle": "Age group",
         "groupOrDuo": "Group or duo?",
         "style": "Style",
         "duo": "Duo",
@@ -85,8 +94,8 @@
     },
     "worldShow": {
       "title": "Gala show",
-      "description": "You have a unique opportunity to perform on stage with our teachers and judges during the Gala Show, which will take place on 2.02.2024!",
-      "oops": "In order to take part in the Gala Show all the participants are required to have at least one workshop, Full pass or participate in at least one competition category.",
+      "description": "You have a unique opportunity to perform on stage with our teachers and judges during the Gala Show, which will take place on 04.04.2025!",
+      "notEligible": "In order to take part in the Gala Show all the participants are required to have at least 2 workshops (1 for kids/baby) or Full pass.",
       "solo": "I want to perform solo",
       "group": "I want to add duo or group",
       "perPerson": "per person",
@@ -101,24 +110,28 @@
       "money": {
         "title": "Finances",
         "total": "Your registration total",
-        "amountNow": "Amount to pay now"
+        "installments": "I want to pay with 2 installments",
+        "installmentsDetails": "There is a possibility to pay for your package in 2 installments. The first 50% should be paid right after the registration, the other 50% any time before 1.03.2025. In case if the second payment is failed to be transferred in due time, you will be fined the amount of 100€, which must be paid with the second part before the festival begins.",
+        "amountNow": "Amount to pay now",
+        "amountAfter": "Amount to pay till 1.03.2025"
       }
     },
     "error": "Oops. Something went wrong. Please try again later or contact us to resolve the issue."
   },
   "email": {
     "title": "We received your registration!",
-    "intro": "Thank you for your registration to Open Bellydance Championship of Poland! We will contact you with payment confirmation and additional info as soon as we process your payment.",
+    "intro": "Thank you for your registration to Open Bellydance Championship! We will contact you with payment confirmation and additional info as soon as we process your payment.",
     "orderTitle": "Here is what you sent us",
     "paymentNote1": "For your registration to be accepted you need to make a payment on",
     "paymentNote2": "this page.",
-    "copyright": "Open Bellydance Championship of Poland",
-    "userSubj": "Welcome to Open Bellydance Championship of Poland!",
+    "copyright": "Open Bellydance Championship",
+    "userSubj": "Welcome to Open Bellydance Championship!",
     "adminSubj": "New registration from",
     "adminTitle": "New registration from",
-    "adminOrderTitle": "Registration detials",
+    "adminOrderTitle": "Registration details",
     "telegramTitle": "Telegram group",
-    "telegram1": "Join our Telegram group for participants to follow all the news and announcements by following ",
-    "telegram2": "this link."
+    "telegram1": "Join our Telegram group for participants by following ",
+    "telegram2": "this link.",
+    "telegram3": "ATTENTION! All internal information (contest schedules, personal posters, etc.) will be posted in this group ONLY."
   }
 }

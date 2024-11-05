@@ -1,12 +1,13 @@
 import { useMemo } from 'react';
-import { AgeGroup, SupportedLangs } from '@/src/types';
-import { MusicFormFields } from '@/src/types/music.types';
-import { FormInputField, FormInputSelect } from '@/src/ui-kit/input';
 import { Alert, Button, Collapse, FormHelperText, MenuItem, Snackbar } from '@mui/material';
 import useTranslation from 'next-translate/useTranslation';
 import { Controller, useFormContext } from 'react-hook-form';
+
+import { AgeGroup, SupportedLangs } from '@/src/types';
+import { MusicFormFields } from '@/src/types/music.types';
+import { FormInputField, FormInputSelect } from '@/src/ui-kit/input';
 import styles from '@/styles/Registration.module.css';
-import { contestCategories } from '@/src/ulis/contestCategories';
+import { contestCategories } from '@/src/utils/contestCategories';
 
 interface FormMusicProps {
   isSuccess: boolean;
@@ -42,9 +43,7 @@ export const FormMusic: React.FC<FormMusicProps> = ({
   const categories = watch('categories');
   const category = watch('category');
   const levels = watch('levels');
-  const level = watch('level');
   const type = watch('type');
-  const file = watch('file');
 
   const ageGroupOptions = useMemo(() => {
     const filtered = ageGroups.filter((group) => {
@@ -94,29 +93,25 @@ export const FormMusic: React.FC<FormMusicProps> = ({
     return `${min}:${sec < 10 ? '0' + sec : sec}`;
   };
 
-  const showFileField = useMemo(() => {
-    if (type && type === 'solo') {
-      if (event === 'worldShow') {
-        return true;
-      } else {
-        if (ageGroup === 'baby') return true;
-        else if (ageGroup && category) {
-          return true;
-        } else return false;
-      }
-    } else if (type) {
-      if (event === 'worldShow') return true;
-      else if (ageGroup && category) {
-        return true;
-      }
-      return false;
-    }
-    return false;
-  }, [type, event, ageGroup, category]);
-
   return (
     <>
       {/* Select group or solo */}
+
+      <FormInputSelect
+        name='type'
+        control={control}
+        label={t('form.type.title')}
+        rules={{
+          required: t('form.required'),
+        }}
+        error={!!errors.type}
+        helperText={errors?.type?.message as string | undefined}
+      >
+        <MenuItem value='solo'>{t('form.solo')}</MenuItem>
+        <MenuItem value='duo'>{t('form.type.duo')}</MenuItem>
+        <MenuItem value='group'>{t('form.type.group')}</MenuItem>
+      </FormInputSelect>
+
       <FormInputField
         name='email'
         type='email'
@@ -134,20 +129,6 @@ export const FormMusic: React.FC<FormMusicProps> = ({
         error={!!errors.email}
         helperText={errors.email?.message as string | undefined}
       />
-      <FormInputSelect
-        name='type'
-        control={control}
-        label={t('form.type.title')}
-        rules={{
-          required: t('form.required'),
-        }}
-        error={!!errors.type}
-        helperText={errors?.type?.message as string | undefined}
-      >
-        <MenuItem value='solo'>{t('form.solo')}</MenuItem>
-        <MenuItem value='duo'>{t('form.type.duo')}</MenuItem>
-        <MenuItem value='group'>{t('form.type.group')}</MenuItem>
-      </FormInputSelect>
 
       {/* Solo fields */}
       <Collapse in={type === 'solo'} unmountOnExit>
@@ -180,6 +161,20 @@ export const FormMusic: React.FC<FormMusicProps> = ({
             label={t('form.surname')}
             error={!!errors.surname}
             helperText={errors.surname?.message as string | undefined}
+          />
+
+          <FormInputField
+            name='stageName'
+            control={control}
+            rules={{
+              pattern: {
+                value: /^[a-zA-Z0-9\s\-]+$/,
+                message: t('form.patternError'),
+              },
+            }}
+            label={t('form.stageName')}
+            error={!!errors.stageName}
+            helperText={errors.stageName?.message as string | undefined}
           />
         </div>
       </Collapse>
@@ -276,7 +271,10 @@ export const FormMusic: React.FC<FormMusicProps> = ({
       </Collapse>
 
       {/* File */}
-      <Collapse in={showFileField} unmountOnExit>
+      <Collapse
+        in={(event === 'worldShow' && type != undefined) || !!category || ageGroup === 'baby'}
+        unmountOnExit
+      >
         <div className={styles.form}>
           <Controller
             control={control}
@@ -314,7 +312,7 @@ export const FormMusic: React.FC<FormMusicProps> = ({
         size='large'
         disableElevation
         fullWidth
-        disabled={(!isDurationCorrect && audioLength > 0) || !file}
+        disabled={!isDurationCorrect && audioLength > 0}
       >
         {t('form.submit')}
       </Button>

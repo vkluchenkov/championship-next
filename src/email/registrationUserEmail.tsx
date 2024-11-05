@@ -12,12 +12,10 @@ import {
   MjmlDivider,
 } from '@faire/mjml-react';
 import { Translate } from 'next-translate';
-import Trans from 'next-translate/Trans';
-import { OrderPayload } from '../components/FormRegistration/types';
-import { defaultUrl, telegramUrl } from '../ulis/constants';
-import { contestCategories } from '../ulis/contestCategories';
-import { worldShowPrice } from '../ulis/price';
 
+import { OrderPayload } from '@/src/components/FormRegistration/types';
+import { currencySymbol, defaultUrl, telegramUrl } from '@/src/utils/constants';
+import { contestCategories } from '@/src/utils/contestCategories';
 import { renderReactToMjml } from './renderReactToMjml';
 
 interface registrationUserEmailProps {
@@ -115,7 +113,10 @@ export const registrationUserEmail = (props: registrationUserEmailProps) => {
             <ul style={{ listStyle: 'none', padding: 0, lineHeight: 1.5 }}>
               <li>
                 {t('form.workshops.fullPass')}:{' '}
-                <span style={{ color: accentColor }}>{form.fullPassPrice}zł</span>
+                <span style={{ color: accentColor }}>
+                  {form.fullPassPrice}
+                  {currencySymbol}
+                </span>
               </li>
 
               <li>
@@ -138,14 +139,17 @@ export const registrationUserEmail = (props: registrationUserEmailProps) => {
     }
     if (workshops.length) {
       const wsList = workshops.map((ws) => {
-        const price = form.currentPricePeriod?.price[`${ws.teachersPriceGroup!}Price`];
+        const price = form.wsPrices?.[ws.teachersPriceGroup].price;
         return (
           <li key={ws.id}>
             <span style={{ color: accentColor }}>{ws.translations[form.currentLang].title}</span>
             <br />
             {ws.translations[form.currentLang].description}
             <br />
-            <span style={{ color: accentColor }}>{price}zł</span>
+            <span style={{ color: accentColor }}>
+              {price}
+              {currencySymbol}
+            </span>
           </li>
         );
       });
@@ -174,7 +178,11 @@ export const registrationUserEmail = (props: registrationUserEmailProps) => {
               - {cat.translations[form.currentLang].categoryTitle}
               {cat.price > 0 && (
                 <>
-                  : <span style={{ color: accentColor }}>{cat.price}zł</span>
+                  :{' '}
+                  <span style={{ color: accentColor }}>
+                    {cat.price}
+                    {currencySymbol}
+                  </span>
                 </>
               )}
             </li>
@@ -248,7 +256,11 @@ export const registrationUserEmail = (props: registrationUserEmailProps) => {
                   <li key={group.name}>
                     <p style={{ ...h4Style, padding: '15px 0 0' }}>
                       {t('form.contest.groups.group')}/{t('form.contest.groups.duo')} #{index + 1} :
-                      <span style={{ color: accentColor }}> {group.price}zł</span>
+                      <span style={{ color: accentColor }}>
+                        {' '}
+                        {group.price}
+                        {currencySymbol}
+                      </span>
                     </p>
 
                     <ul style={{ listStyle: 'none', padding: 0, lineHeight: 1.5 }}>
@@ -290,7 +302,7 @@ export const registrationUserEmail = (props: registrationUserEmailProps) => {
 
   // WorldShow
   const worldShowData = () => {
-    const soloPrice = worldShowPrice.soloPriceNormal;
+    const soloPrice = form.settings?.price.worldShow?.solo;
 
     if (form.isWorldShowSolo || form.isWorldShowGroup)
       return (
@@ -299,14 +311,21 @@ export const registrationUserEmail = (props: registrationUserEmailProps) => {
 
           {form.isWorldShowSolo && (
             <MjmlText mj-class='text'>
-              {t('form.worldShow.solo')}: <span style={{ color: accentColor }}>{soloPrice}zł</span>
+              {t('form.worldShow.solo')}:{' '}
+              <span style={{ color: accentColor }}>
+                {soloPrice}
+                {currencySymbol}
+              </span>
             </MjmlText>
           )}
 
           {form.isWorldShowGroup && (
             <MjmlText mj-class='text'>
               {t('form.summary.worldShowGroup')}:{' '}
-              <span style={{ color: accentColor }}>{form.worldShowGroup?.price}zł</span>
+              <span style={{ color: accentColor }}>
+                {form.worldShowGroup?.price}
+                {currencySymbol}
+              </span>
               <br />
               {t('form.contest.groups.name')}:{' '}
               <span style={{ color: accentColor }}>{form.worldShowGroup?.name}</span>
@@ -433,7 +452,10 @@ export const registrationUserEmail = (props: registrationUserEmailProps) => {
 
             <MjmlText mj-class='text'>
               {t('form.summary.money.total')}:{' '}
-              <span style={{ color: accentColor }}>{form.total}zł</span>
+              <span style={{ color: accentColor }}>
+                {form.total}
+                {currencySymbol}
+              </span>
             </MjmlText>
 
             {/* Divider */}
@@ -451,11 +473,16 @@ export const registrationUserEmail = (props: registrationUserEmailProps) => {
               </a>
             </MjmlText>
 
+            {/* Divider */}
+            <MjmlDivider mj-class='divider' />
+
+            <MjmlText mj-class='h3'>{t('email.telegramTitle')}</MjmlText>
             <MjmlText mj-class='text'>
               {t('email.telegram1')}{' '}
               <a href={telegramUrl} target='_blank' rel='noreferrer' style={{ color: accentColor }}>
-                {t('email.telegram2')}
+                {t('email.telegram2')}{' '}
               </a>
+              {t('email.telegram3')}
             </MjmlText>
           </MjmlColumn>
         </MjmlSection>

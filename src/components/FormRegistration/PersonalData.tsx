@@ -1,17 +1,20 @@
-import { FormInputField } from '@/src/ui-kit/input';
-import useTranslation from 'next-translate/useTranslation';
 import { useFormContext } from 'react-hook-form';
+import useTranslation from 'next-translate/useTranslation';
+
+import { FormInputField } from '@/src/ui-kit/input';
 import textStyles from '@/styles/Text.module.css';
 import styles from '@/styles/Registration.module.css';
-import { FormFields, StepProps } from './types';
+import { FormFields, PersonalStepProps } from './types';
 
-export const PersonalData: React.FC<StepProps> = () => {
+export const PersonalData: React.FC<PersonalStepProps> = ({ setIsNextDisabled }) => {
   const { t } = useTranslation('registration');
 
   const methods = useFormContext<FormFields>();
   const {
     control,
     trigger,
+    watch,
+    setValue,
     formState: { errors },
   } = methods;
 
@@ -33,6 +36,7 @@ export const PersonalData: React.FC<StepProps> = () => {
           }}
           error={!!errors.name}
           helperText={errors?.name?.message as string | undefined}
+          autoComplete='given-name'
         />
 
         <FormInputField
@@ -48,6 +52,7 @@ export const PersonalData: React.FC<StepProps> = () => {
           }}
           error={!!errors.surname}
           helperText={errors?.surname?.message as string | undefined}
+          autoComplete='family-name'
         />
 
         <FormInputField
@@ -106,7 +111,7 @@ export const PersonalData: React.FC<StepProps> = () => {
 
         <FormInputField
           name='social'
-          placeholder='instagram, facebook @danceweekendwarsaw'
+          placeholder='instagram, facebook @championship.dance'
           label={t('form.personal.social')}
           control={control}
           rules={{
@@ -125,6 +130,7 @@ export const PersonalData: React.FC<StepProps> = () => {
           }}
           error={!!errors.country}
           helperText={errors?.country?.message as string | undefined}
+          autoComplete='country-name'
         />
 
         <FormInputField
@@ -149,6 +155,7 @@ export const PersonalData: React.FC<StepProps> = () => {
           }}
           error={!!errors.tel}
           helperText={errors?.tel?.message as string | undefined}
+          autoComplete='tel'
         />
       </div>
     </>

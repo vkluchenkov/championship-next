@@ -1,12 +1,13 @@
-import { Layout } from '@/src/components/Layout';
 import { NextPage } from 'next';
-import textStyles from '@/styles/Text.module.css';
-import styles from '@/styles/Contacts.module.css';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { atlasUrl, cpkUrl, emailUrl, facebookUrl, instagramUrl } from '@/src/ulis/constants';
+
+import { Layout } from '@/src/components/Layout';
+import textStyles from '@/styles/Text.module.css';
+import styles from '@/styles/Contacts.module.css';
+import { atlasUrl, cpkUrl, emailUrl, facebookUrl, instagramUrl } from '@/src/utils/constants';
 
 const Contacts: NextPage = () => {
   const { t, lang } = useTranslation('contacts');
@@ -46,9 +47,10 @@ const Contacts: NextPage = () => {
       <section className={styles.section}>
         <h3 className={textStyles.h3}>{t('AtlasTitle')}</h3>
         <p className={textStyles.p}>
-          <Link href={atlasUrl} target='_blank'>
+          {/* <Link href={atlasUrl} target='_blank'>
             {t('Atlas')}
-          </Link>
+          </Link> */}
+          {t('TBA')}
         </p>
         {/* <p className={textStyles.p}>{t('AtlasInfo')}</p> */}
       </section>

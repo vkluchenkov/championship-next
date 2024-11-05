@@ -11,7 +11,7 @@ import {
   MjmlText,
 } from '@faire/mjml-react';
 import { Translate } from 'next-translate';
-import { defaultUrl } from '../ulis/constants';
+import { defaultUrl } from '../utils/constants';
 import { renderReactToMjml } from './renderReactToMjml';
 import { FormFields, MusicFormFields } from '../types/music.types';
 

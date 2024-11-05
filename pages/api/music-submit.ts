@@ -1,13 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import formidable, { File } from 'formidable';
 import path from 'path';
-import { FormFields, FormData } from '@/src/types/music.types';
 import * as ftp from 'basic-ftp';
 import sanitize from 'sanitize-filename';
 import getT from 'next-translate/getT';
-import { musicAdminEmail } from '@/src/email/musicAdminEmal';
-import { senderEmail, senderName } from '@/src/ulis/constants';
-import { sendMail } from '@/src/email/sendMail';
+import TelegramBot from 'node-telegram-bot-api';
+
+import { config as appConfig } from '@/src/config';
+import { FormFields, FormData } from '@/src/types/music.types';
 
 export const config = {
   api: {
@@ -21,16 +21,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const t = await getT('en', 'music');
 
-  const form = new formidable.IncomingForm();
+  const form = formidable();
 
   const formData = await new Promise<FormData | undefined>((resolve, reject) => {
     let file: File;
 
     const fields: FormFields = {
       event: 'contest',
+      email: '',
       type: 'solo',
       audioLength: 0,
-      email: '',
     };
 
     form.on('file', (field, formFile) => {
@@ -57,11 +57,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   });
 
   if (formData) {
-    const { event, name, surname, type, groupName, ageGroup, level, category, audioLength } =
-      formData.fields;
-
+    const {
+      event,
+      name,
+      email,
+      surname,
+      stageName,
+      type,
+      groupName,
+      ageGroup,
+      level,
+      category,
+      audioLength,
+    } = formData.fields;
     const tempPath = formData.file.filepath;
     const extName = path.extname(formData.file.originalFilename!);
+    const fileStageName = stageName ? '(' + sanitize(stageName) + ')' : '';
     const fileName = () => {
       if (type === 'duo' || type === 'group')
         return sanitize(groupName!) + '_' + Math.round(audioLength) + 'sec' + extName;
@@ -70,7 +81,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           sanitize(name!) +
           ' ' +
           sanitize(surname!) +
-          '_' +
+          ' ' +
+          fileStageName +
+          ' ' +
           Math.round(audioLength) +
           'sec' +
           extName
@@ -79,73 +92,113 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // FTP
     const ftpClient = new ftp.Client();
-    // ftpClient.ftp.verbose = true;
-
-    const ftpDir = process.env.FTP_DIR!;
+    const ftpDir = appConfig.ftp.musicDir;
 
     const ftpUploadDir = () => {
       if (event === 'worldShow') {
-        if (type === 'solo') return `/Show/solo/`;
-        else return `/Show/Groups and Duos/`;
+        if (type === 'solo') return `/World Show/solo/`;
+        else return `/World Show/Groups and Duos/`;
       }
-
       if (event === 'contest') {
         const isCategory = !!category;
         const safeCategory = sanitize(category!);
+
+        const groupOrSolo = type === 'group' || type === 'duo' ? 'Groups and Duos/' : 'Solo/';
+
         return (
           '/Contest/' +
+          groupOrSolo +
           ageGroup! +
           '/' +
           (level != undefined ? level + '/' : '') +
-          (type === 'duo' ? 'Duos/' : '') +
-          (type === 'group' ? 'Groups/' : '') +
           (isCategory ? safeCategory + '/' : '')
         );
       }
       return '';
     };
 
-    // console.log(ftpUploadDir());
-
     try {
       await ftpClient.access({
-        host: process.env.FTP_HOST,
-        user: process.env.FTP_USER,
-        password: process.env.FTP_PASSWORD,
+        host: appConfig.ftp.ftpHost,
+        user: appConfig.ftp.ftpUser,
+        password: appConfig.ftp.ftpPassword,
         secure: false,
       });
 
-      await ftpClient.ensureDir(ftpDir + ftpUploadDir());
+      // Debug
+      // ftpClient.ftp.verbose = true;
+
+      // Get full path
+      const fullDirName = ftpDir + ftpUploadDir();
+      // Create dir or make sure it exists
+      await ftpClient.ensureDir(fullDirName);
+      // Remove any file with this name if exists and ignore errors if it doesn't
+      await ftpClient.remove(fileName(), true);
+      // upload new file
       await ftpClient.uploadFrom(tempPath, fileName());
 
-      // Emails
-      const getSubj = () => {
-        if (name && surname) return t('email.title') + ' ' + name + ' ' + surname;
-        if (groupName) return t('email.title') + ' ' + groupName;
-        return t('email.title');
+      // Telegram
+      const bot = new TelegramBot(appConfig.telegram.botToken, { polling: false });
+      const chatId = appConfig.telegram.chatId;
+      const threadId = appConfig.telegram.threadId;
+
+      const getCaption = () => {
+        const form = formData.fields;
+
+        const musicForm = [
+          'email',
+          'type',
+          'event',
+          'groupName',
+          'ageGroup',
+          'level',
+          'category',
+          'audioLength',
+        ].map((i) => ({
+          key: i,
+          value: form[i as keyof FormFields],
+        }));
+
+        const formEntries = musicForm
+          .map((i) => {
+            const value = i.value as string;
+            if (!i.value) return '';
+            if (i.key === 'type') return `Type: ${t(`form.${value.trim()}`)}`;
+            if (i.key === 'event') return `Event: ${t(`form.${value.trim()}`)}`;
+            if (i.key === 'ageGroup') return `Age group: ${t(`form.ageGroups.${value.trim()}`)}`;
+            if (i.key === 'level') return `Level: ${t(`form.levels.${value.trim()}`)}`;
+            if (i.key === 'category') return `Style: ${value.trim()}`;
+            if (i.key === 'audioLength')
+              return `Audio length: ${Math.round(value as unknown as number)} sec`;
+            return t(`form.${i.key}`) + ': ' + value.trim();
+          })
+          .join('\n')
+          .replaceAll('\n\n', '\n')
+          .replaceAll('\n\n', '\n')
+          .replaceAll('\n\n', '\n');
+
+        const getSubj = () => {
+          if (name && surname)
+            return t('email.title') + ' ' + name + ' ' + surname + ' ' + fileStageName;
+          if (groupName) return t('email.title') + ' ' + groupName;
+          return t('email.title');
+        };
+
+        return getSubj() + `\n` + formEntries + `\n` + 'Uploaded to: ' + ftpUploadDir();
       };
 
-      const adminEmailContent = musicAdminEmail({
-        form: formData.fields,
-        t: t,
-        subj: getSubj(),
-      }).html;
-      const adminEmailErrors = musicAdminEmail({
-        form: formData.fields,
-        t: t,
-        subj: getSubj(),
-      }).errors;
+      // console.log(fileName());
+      // console.log(tempPath);
 
-      const adminMailPayload = {
-        senderEmail: senderEmail,
-        senderName: senderName,
-        recipientEmail: senderEmail,
-        recipientName: senderName,
-        recipientSubj: getSubj(),
-        mailContent: adminEmailContent,
-      };
-
-      sendMail(adminMailPayload);
+      bot.sendAudio(
+        chatId,
+        tempPath,
+        {
+          caption: getCaption(),
+          reply_to_message_id: parseInt(threadId),
+        },
+        { filename: fileName() }
+      );
     } catch (error) {
       console.log(error);
       status = 500;

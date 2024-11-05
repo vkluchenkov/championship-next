@@ -8,7 +8,7 @@
     "method": "Payment method",
     "paypal": "PayPal",
     "stripe": "Credit / debit card",
-    "qtyMinError": "Minimum payment amount is 40zł",
+    "qtyMinError": "Minimum payment amount is 10",
     "stripeBtn": "Pay with card",
     "error": "Oops. Something went wrong. Please try again later or contact us to resolve the issue.",
     "patternError": "This field can contain only Latin characters and numbers."
@@ -22,6 +22,6 @@
   "email": {
     "title": "New payment from",
     "subtitle": "Payment details",
-    "copyright": "©Open Bellydance Championship of Poland"
+    "copyright": "©Open Bellydance Championship"
   }
 }

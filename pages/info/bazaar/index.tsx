@@ -1,15 +1,15 @@
-import { Layout } from '@/src/components/Layout';
 import { NextPage } from 'next';
-import textStyles from '@/styles/Text.module.css';
-import styles from '@/styles/Bazaar.module.css';
 import useTranslation from 'next-translate/useTranslation';
-import { Hero } from '@/src/ui-kit/Hero';
-import aliah from '/public/images/aliah_fashion_logo.png';
-import ostrovska from '/public/images/anna_ostrovska_logo.png';
 import Trans from 'next-translate/Trans';
 import Link from 'next/link';
 import clsx from 'clsx';
 import Image from 'next/image';
+
+import { Layout } from '@/src/components/Layout';
+import textStyles from '@/styles/Text.module.css';
+import styles from '@/styles/Bazaar.module.css';
+import aliah from '/public/images/aliah_fashion_logo.png';
+import ostrovska from '/public/images/anna_ostrovska_logo.png';
 
 const Bazaar: NextPage = () => {
   const { t, lang } = useTranslation('bazaar');
@@ -38,13 +38,13 @@ const Bazaar: NextPage = () => {
         </Link>
       </section>
 
-      <section className={styles.section}>
+      {/* <section className={styles.section}>
         <div className={clsx(styles.logoWrapper, styles.logoWrapper_ostrovska)}>
           <Image src={ostrovska} alt={t('ostrovska.title')} style={{ objectFit: 'contain' }} fill />
         </div>
         <h2 className={clsx(textStyles.h2, textStyles.accent)}>{t('ostrovska.title')}</h2>
         {ostrovskaText}
-      </section>
+      </section> */}
     </div>
   );
 

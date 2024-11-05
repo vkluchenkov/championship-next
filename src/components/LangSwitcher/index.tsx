@@ -15,13 +15,6 @@ export const LangSwitcher: React.FC = () => {
       </button>
 
       <button
-        className={clsx(styles.lang, lang === 'pl' && styles.langActive)}
-        onClick={async () => await setLanguage('pl')}
-      >
-        PL
-      </button>
-
-      <button
         className={clsx(styles.lang, lang === 'ru' && styles.langActive)}
         onClick={async () => await setLanguage('ru')}
       >

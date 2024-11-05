@@ -2,7 +2,7 @@ import { MobileMenuProps } from './types';
 import styles from './MobileMenu.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { menu } from '@/src/ulis/menu';
+import { menu } from '@/src/utils/menu';
 import { useEffect } from 'react';
 import clsx from 'clsx';
 import useTranslation from 'next-translate/useTranslation';

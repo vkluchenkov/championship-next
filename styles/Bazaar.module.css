@@ -30,9 +30,12 @@
   .contentWrapper {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
     column-gap: 25px;
     padding: 15px 0 0;
+  }
+
+  .contentWrapper_2columns {
+    grid-template-columns: 1fr 1fr;
   }
 
   .section {

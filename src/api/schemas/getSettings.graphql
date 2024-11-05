@@ -1,0 +1,121 @@
+query getSettings {
+  page(id: "settings-championship", idType: URI) {
+    title
+    settingsChampionship {
+      price {
+        promoPeriod {
+          isLivePromo
+          ru
+          en
+          price {
+            live
+          }
+          singlews {
+            group1 {
+              names
+              price
+            }
+            group2 {
+              names
+              price
+            }
+          }
+        }
+        promoPeriodDev {
+          isLivePromo
+          ru
+          en
+          price {
+            live
+          }
+          singlews {
+            group1 {
+              names
+              price
+            }
+            group2 {
+              names
+              price
+            }
+          }
+        }
+        periods {
+          pricePeriod1 {
+            start
+            end
+            price {
+              live
+            }
+            singlews {
+              group1 {
+                names
+                price
+              }
+              group2 {
+                names
+                price
+              }
+            }
+          }
+          pricePeriod2 {
+            start
+            end
+            price {
+              live
+            }
+            singlews {
+              group1 {
+                names
+                price
+              }
+              group2 {
+                names
+                price
+              }
+            }
+          }
+          pricePeriod3 {
+            start
+            end
+            price {
+              live
+            }
+            singlews {
+              group1 {
+                names
+                price
+              }
+              group2 {
+                names
+                price
+              }
+            }
+          }
+        }
+        contest {
+          contestsoloprice {
+            kids
+            risingstar
+            professionals
+            soloPassKids
+            soloPassRisingStar
+            soloPassProfessionals
+          }
+          contestGroupPrice
+          from
+          version
+        }
+        worldShow {
+          groups
+          solo
+        }
+      }
+      registrationState {
+        isLiveOpen
+        isLiveOpenDev
+        isOnlineOpen
+        isOnlineOpenDev
+      }
+    }
+  }
+}
