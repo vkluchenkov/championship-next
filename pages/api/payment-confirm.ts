@@ -1,9 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import getT from 'next-translate/getT';
+
 import { PaymentConfirmFields } from '@/src/types/payment.types';
 import { senderEmail, senderName } from '@/src/utils/constants';
 import { sendMail } from '@/src/email/sendMail';
 import { paymentConfirmEmail } from '@/src/email/paymentConfirmEmail';
+import { config } from '@/src/config';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   let status = 200,
@@ -12,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const orderPayload: PaymentConfirmFields = req.body;
   const t = await getT(orderPayload.lang, 'paymentConfirm');
 
-  const savedPassword = process.env.ADMIN_PIN;
+  const savedPassword = config.other.adminPin;
 
   const { name, email, password } = orderPayload;
 
@@ -24,8 +26,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const mailPayload = {
         senderEmail: senderEmail,
         senderName: senderName,
-        recipientEmail: email,
-        recipientName: name,
+        recipientEmail: email.trim(),
+        recipientName: name.trim(),
         recipientSubj: t('email.subj'),
         mailContent: emailContent,
       };
