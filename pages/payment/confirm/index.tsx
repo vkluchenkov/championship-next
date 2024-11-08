@@ -1,19 +1,18 @@
 import { useState, useCallback } from 'react';
-import { Layout } from '@/src/components/Layout';
 import { NextPage } from 'next';
-import textStyles from '@/styles/Text.module.css';
-import styles from '@/styles/Registration.module.css';
 import useTranslation from 'next-translate/useTranslation';
-import { FormInputField, FormInputSelect } from '@/src/ui-kit/input';
 import { FormProvider, useForm } from 'react-hook-form';
 import { ThemeProvider, Snackbar, Alert, MenuItem } from '@mui/material';
 import axios from 'axios';
 import Button from '@mui/material/Button';
-import { useRouter } from 'next/router';
+
+import { Layout } from '@/src/components/Layout';
+import textStyles from '@/styles/Text.module.css';
+import styles from '@/styles/Registration.module.css';
+import { FormInputField, FormInputSelect } from '@/src/ui-kit/input';
 import { Loader } from '@/src/components/Loader';
 import { darkTheme } from '@/src/utils/constants';
 import { PaymentConfirmFields } from '@/src/types/payment.types';
-import { SupportedLangs } from '@/src/types';
 
 const PaymentConfirm: NextPage = () => {
   const { t } = useTranslation('paymentConfirm');
@@ -101,7 +100,6 @@ const PaymentConfirm: NextPage = () => {
               >
                 <MenuItem value='en'>{t('form.en')}</MenuItem>
                 <MenuItem value='ru'>{t('form.ru')}</MenuItem>
-                <MenuItem value='pl'>{t('form.pl')}</MenuItem>
               </FormInputSelect>
 
               <FormInputField
