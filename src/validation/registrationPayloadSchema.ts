@@ -93,7 +93,9 @@ export const registrationPayloadSchema = Joi.object({
     qty: Joi.number().required(),
     name: Joi.string().required(),
     price: Joi.number().required(),
-  }),
+  })
+    .allow(null)
+    .optional(),
   rulesAccepted: Joi.boolean().required(),
   isInstallments: Joi.boolean(),
   currentStep: Joi.string(),
