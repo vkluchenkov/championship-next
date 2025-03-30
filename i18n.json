@@ -14,6 +14,7 @@
     "/info/schedule": ["schedule"],
     "/info/contacts": ["contacts"],
     "/music": ["music"],
+    "/musicaliah": ["music"],
     "/price": ["price"],
     "/payment": ["payment"],
     "/payment/thank-you": ["payment"],
