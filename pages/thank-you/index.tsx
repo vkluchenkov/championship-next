@@ -88,8 +88,8 @@ const ThankYou: NextPage = () => {
           </span>
         </p>
 
-        <h3 className={textStyles.h3}>{t('revolutTitle')}</h3>
-        <p className={textStyles.p}>{revolut}</p>
+        {/* <h3 className={textStyles.h3}>{t('revolutTitle')}</h3> */}
+        {/* <p className={textStyles.p}>{revolut}</p> */}
 
         <h3 className={textStyles.h3}>{t('bank')}</h3>
         <p className={textStyles.p}>

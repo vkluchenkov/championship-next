@@ -36,7 +36,7 @@ export const defaultUrl = 'https://championship.dance';
 
 // emails
 export const senderEmail = 'danceweekend@aliah.dance';
-export const senderName = 'Open Bellydance Championship of Poland';
+export const senderName = 'Open Bellydance Championship';
 
 // telegram
 export const telegramUrl = 'https://t.me/+eyMB-THBxdwyNDJk';
