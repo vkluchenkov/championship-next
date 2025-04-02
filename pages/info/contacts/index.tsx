@@ -47,12 +47,18 @@ const Contacts: NextPage = () => {
       <section className={styles.section}>
         <h3 className={textStyles.h3}>{t('AtlasTitle')}</h3>
         <p className={textStyles.p}>
-          {/* <Link href={atlasUrl} target='_blank'>
+          <p className={textStyles.p}>{t('Friday')}:</p>
+          <Link href={atlasUrl} target='_blank'>
             {t('Atlas')}
-          </Link> */}
-          {t('TBA')}
+          </Link>
         </p>
         {/* <p className={textStyles.p}>{t('AtlasInfo')}</p> */}
+        <p className={textStyles.p}>{t('Sunday')}:</p>
+        <p className={textStyles.p}>
+          <Link href={cpkUrl} target='_blank'>
+            {t('CPK')}
+          </Link>
+        </p>
       </section>
     </Layout>
   );
